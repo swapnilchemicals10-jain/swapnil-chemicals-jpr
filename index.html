@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Home new code 04-09-26 -->
+<!-- Home new code 25-09-26 -->
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
         <link rel="apple-touch-icon" href="SC Logo.jpg" />
         <link
             rel="manifest"
-            href='data:application/manifest+json,{"name":"Swapnil Chemicals - Home Cleaning Products","short_name":"Swapnil Chemicals","description":"Manufacturers and marketers of home cleaning products in Jaipur - dashboard polish, tyre polish, car wash, glass cleaner and more.","start_url":".","scope":".","display":"standalone","background_color":"%23f8fafc",<"theme_color":"%231e293b","lang":"en-IN","icons":[{"src":"SC Logo.jpg","sizes":"any","type":"image/jpeg"}]}'
+            href='data:application/manifest+json,{"name":"Swapnil Chemicals - Home Cleaning Products","short_name":"Swapnil Chemicals","description":"Manufacturers and marketers of home cleaning products in Jaipur - dashboard polish, tyre polish, car wash, glass cleaner and more.","start_url":".","scope":".","display":"standalone","background_color":"%23f8fafc","theme_color":"%231e293b","lang":"en-IN","icons":[{"src":"SC Logo.jpg","sizes":"any","type":"image/jpeg"}]}'
         />
         <meta
             name="description"
@@ -47,8 +47,9 @@
 
         <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.gstatic.com https://api.qrserver.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self';"
+            content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.gstatic.com https://api.qrserver.com; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self';"
         />
+        <!-- frame-ancestors is ignored by browsers when set via <meta>; real clickjacking protection needs an X-Frame-Options/CSP response header from the server -->
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -73,7 +74,7 @@
             };
         </script>
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700;800&display=swap"
             rel="stylesheet"
         />
         <style>
@@ -82,6 +83,8 @@
                 --radius-lg: 16px;
                 --brand-accent: #3b82f6;
                 --brand-accent-dark: #1d4ed8;
+                --brand-cta: #ea580c;
+                --brand-cta-dark: #c2410c;
                 --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.08);
                 --shadow-md: 0 12px 32px rgba(15, 23, 42, 0.12);
                 --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
@@ -153,14 +156,6 @@
             .hero-gradient {
                 position: relative;
                 overflow: hidden;
-            }
-
-            .hero-band-top {
-                background: #4c1d95;
-            }
-
-            .hero-band-bottom {
-                background: #6d28d9;
             }
 
             .hero-gradient::before {
@@ -340,12 +335,14 @@
                 @keyframes reveal-in {
                     from {
                         opacity: 0;
-                        transform: translateY(30px);
+                        translate: 0 40px;
+                        scale: 0.96;
                     }
 
                     to {
                         opacity: 1;
-                        transform: translateY(0);
+                        translate: 0 0;
+                        scale: 1;
                     }
                 }
             }
@@ -390,16 +387,14 @@
             }
 
             .btn-secondary {
-                /* background: linear-gradient(135deg, #f59e0b, #d97706); */
-                background: linear-gradient(135deg, #ea580c, #ea580c);
+                background: var(--brand-cta);
                 transition: all 0.3s ease;
             }
 
             .btn-secondary:hover {
-                /* background: linear-gradient(135deg, #d97706, #b45309); */
-                background: linear-gradient(135deg, #ea580c, #ea580c);
+                background: linear-gradient(135deg, var(--brand-cta), var(--brand-cta-dark));
                 transform: translateY(-2px);
-                box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+                box-shadow: 0 10px 25px rgba(234, 88, 12, 0.35);
             }
 
             #scrollToTop {
@@ -417,6 +412,10 @@
                 justify-content: center;
                 background: linear-gradient(135deg, var(--brand-accent), var(--brand-accent-dark));
                 box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+            }
+
+            #scrollToTop.hidden {
+                display: none;
             }
 
             #scrollToTop:hover {
@@ -513,8 +512,7 @@
                 padding: 9px 14px;
                 border-radius: 0.75rem;
                 border: none;
-                /* background: linear-gradient(135deg, #f59e0b, #d97706); */
-                background: linear-gradient(135deg, #ea580c, #ea580c);
+                background: var(--brand-cta);
                 color: white;
                 font-size: 0.8rem;
                 font-weight: 700;
@@ -527,15 +525,13 @@
             }
 
             .add-to-cart-btn:hover {
-                /* background: linear-gradient(135deg, #d97706, #b45309); */
-                background: linear-gradient(135deg, #ea580c, #ea580c);
+                background: linear-gradient(135deg, var(--brand-cta), var(--brand-cta-dark));
                 transform: translateY(-1px);
-                box-shadow: 0 6px 16px rgba(245, 158, 11, 0.35);
+                box-shadow: 0 6px 16px rgba(234, 88, 12, 0.4);
             }
 
             .enquiry-trigger-btn {
-                /* background: linear-gradient(135deg, #f97316, #ea580c); */
-                background: linear-gradient(135deg, #ea580c, #ea580c);
+                background: var(--brand-cta);
                 color: #fff;
                 border: none;
                 padding: 8px 14px;
@@ -551,9 +547,9 @@
             }
 
             .enquiry-trigger-btn:hover {
-                background: linear-gradient(135deg, #ea580c, #c2410c);
+                background: linear-gradient(135deg, var(--brand-cta), var(--brand-cta-dark));
                 transform: translateY(-2px);
-                box-shadow: 0 6px 18px rgba(249, 115, 22, 0.4);
+                box-shadow: 0 6px 18px rgba(234, 88, 12, 0.4);
             }
 
             .cart-icon-btn {
@@ -562,20 +558,21 @@
                 width: 46px;
                 height: 46px;
                 border-radius: 50%;
-                background: linear-gradient(135deg, #ea580c, #ea580c);
+                background: var(--brand-cta);
                 color: white;
                 border: none;
                 cursor: pointer;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+                box-shadow: 0 8px 25px rgba(234, 88, 12, 0.4);
                 transition: all 0.3s ease;
             }
 
             .cart-icon-btn:hover {
+                background: linear-gradient(135deg, var(--brand-cta), var(--brand-cta-dark));
                 transform: translateY(-2px);
-                box-shadow: 0 12px 30px rgba(245, 158, 11, 0.5);
+                box-shadow: 0 12px 30px rgba(234, 88, 12, 0.5);
             }
 
             .cart-badge {
@@ -1052,14 +1049,12 @@
             }
 
             .added-cart-viewcart-btn {
-                /* background: linear-gradient(135deg, #f59e0b, #d97706); */
-                background: linear-gradient(135deg, #ea580c, #ea580c);
+                background: var(--brand-cta);
                 color: #fff;
             }
 
             .added-cart-viewcart-btn:hover {
-                /* background: linear-gradient(135deg, #d97706, #b45309); */
-                background: linear-gradient(135deg, #ea580c, #ea580c);
+                background: linear-gradient(135deg, var(--brand-cta), var(--brand-cta-dark));
                 transform: translateY(-1px);
             }
 
@@ -1420,6 +1415,1138 @@
                 ):active {
                 transform: scale(0.96);
             }
+
+            /* ================================================================
+               Visual refresh — layered on top of the base styles above.
+               ================================================================ */
+            :root {
+                --page-bg: #f6f5fb;
+                --violet-deep: #1e0b4b;
+                --violet: #6d28d9;
+                --violet-bright: #7c3aed;
+                --indigo: #4f46e5;
+                --cyan: #22d3ee;
+                --font-display: "Sora", "Inter", system-ui, sans-serif;
+                --glow-violet:
+                    0 0 0 1px rgba(124, 58, 237, 0.18),
+                    0 24px 50px -16px rgba(76, 29, 149, 0.35);
+                interpolate-size: allow-keywords;
+            }
+
+            html,
+            body {
+                overflow-x: clip;
+            }
+
+            ::selection {
+                background: var(--violet-bright);
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background: linear-gradient(180deg, var(--violet-bright), var(--indigo));
+            }
+
+            body {
+                background: var(--page-bg);
+            }
+
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                z-index: -1;
+                pointer-events: none;
+                background:
+                    radial-gradient(40vw 40vw at 0% 30%, rgba(124, 58, 237, 0.08), transparent 70%),
+                    radial-gradient(35vw 35vw at 100% 60%, rgba(34, 211, 238, 0.08), transparent 70%),
+                    radial-gradient(30vw 30vw at 50% 100%, rgba(234, 88, 12, 0.05), transparent 70%);
+            }
+
+            h1,
+            h2,
+            h3 {
+                font-family: var(--font-display);
+                letter-spacing: -0.02em;
+            }
+
+            /* ---------- Header ---------- */
+            .nav-blur {
+                background: rgba(255, 255, 255, 0.72);
+                backdrop-filter: saturate(180%) blur(20px);
+                transition:
+                    box-shadow 0.3s var(--ease-standard),
+                    background 0.3s var(--ease-standard);
+            }
+
+            .nav-blur > .container {
+                transition: padding 0.3s var(--ease-standard);
+            }
+
+            .nav-blur.scrolled {
+                background: rgba(255, 255, 255, 0.9);
+                box-shadow: 0 12px 30px -14px rgba(30, 27, 75, 0.25);
+            }
+
+            .nav-blur.scrolled > .container {
+                padding-top: 0.6rem;
+                padding-bottom: 0.6rem;
+            }
+
+            .scroll-progress {
+                background: linear-gradient(90deg, var(--violet-bright), #3b82f6, var(--cyan));
+                box-shadow: 0 0 12px rgba(124, 58, 237, 0.6);
+            }
+
+            /* ---------- Gradient text & section headings ---------- */
+            .gradient-text {
+                background: linear-gradient(120deg, #4c1d95, var(--violet-bright) 35%, #2563eb 70%, #0891b2);
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+
+            .section-eyebrow {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                margin-bottom: 0.9rem;
+                padding: 6px 14px;
+                border-radius: 999px;
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--violet);
+                background: rgba(124, 58, 237, 0.08);
+                border: 1px solid rgba(124, 58, 237, 0.18);
+            }
+
+            .section-eyebrow::before {
+                content: "";
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--brand-cta);
+                box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.18);
+            }
+
+            .section-divider.max-w-xs {
+                height: 4px;
+                max-width: 88px;
+                margin: 1.25rem auto 0;
+                border-radius: 999px;
+                background: linear-gradient(90deg, var(--violet-bright), #3b82f6, var(--cyan), var(--violet-bright));
+                background-size: 300% 100%;
+                animation: gradient-pan 6s linear infinite;
+            }
+
+            @keyframes gradient-pan {
+                to {
+                    background-position: 300% 0;
+                }
+            }
+
+            /* ---------- Hero ---------- */
+            .hero-gradient {
+                isolation: isolate;
+                background:
+                    radial-gradient(1100px 600px at 8% -10%, rgba(124, 58, 237, 0.9), transparent 60%),
+                    radial-gradient(900px 520px at 105% 15%, rgba(14, 165, 233, 0.55), transparent 55%),
+                    radial-gradient(700px 400px at 50% 110%, rgba(234, 88, 12, 0.35), transparent 60%),
+                    linear-gradient(160deg, var(--violet-deep) 0%, #2e1065 45%, #4c1d95 80%, #312e81 100%);
+            }
+
+            .hero-gradient::before {
+                z-index: 0;
+            }
+
+            .hero-aurora {
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+                overflow: hidden;
+                pointer-events: none;
+            }
+
+            .aurora-orb {
+                position: absolute;
+                border-radius: 50%;
+                filter: blur(70px);
+                opacity: 0.55;
+                mix-blend-mode: screen;
+                animation: aurora-drift 18s ease-in-out infinite alternate;
+            }
+
+            .orb-1 {
+                width: 460px;
+                height: 460px;
+                top: -120px;
+                left: -80px;
+                background: #a855f7;
+            }
+
+            .orb-2 {
+                width: 380px;
+                height: 380px;
+                top: 30%;
+                right: -100px;
+                background: #06b6d4;
+                animation-duration: 22s;
+                animation-delay: -6s;
+            }
+
+            .orb-3 {
+                width: 320px;
+                height: 320px;
+                bottom: -120px;
+                left: 35%;
+                background: #f97316;
+                opacity: 0.35;
+                animation-duration: 26s;
+                animation-delay: -12s;
+            }
+
+            @keyframes aurora-drift {
+                0% {
+                    transform: translate(0, 0) scale(1);
+                }
+
+                50% {
+                    transform: translate(60px, 40px) scale(1.15);
+                }
+
+                100% {
+                    transform: translate(-40px, 70px) scale(0.95);
+                }
+            }
+
+            .hero-grid {
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+                pointer-events: none;
+                background-image:
+                    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+                background-size: 56px 56px;
+                mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+                -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+            }
+
+            .hero-bubbles {
+                position: absolute;
+                inset: 0;
+                z-index: 1;
+                overflow: hidden;
+                pointer-events: none;
+            }
+
+            .bubble {
+                position: absolute;
+                bottom: -60px;
+                left: var(--x);
+                width: var(--s);
+                height: var(--s);
+                border-radius: 50%;
+                background: radial-gradient(
+                    circle at 30% 30%,
+                    rgba(255, 255, 255, 0.85) 0 8%,
+                    rgba(255, 255, 255, 0.18) 22%,
+                    rgba(165, 243, 252, 0.08) 60%,
+                    rgba(255, 255, 255, 0.25) 100%
+                );
+                border: 1px solid rgba(255, 255, 255, 0.25);
+                animation: bubble-rise var(--dur) linear infinite;
+                animation-delay: var(--delay);
+            }
+
+            @keyframes bubble-rise {
+                0% {
+                    transform: translate(0, 0) scale(0.6);
+                    opacity: 0;
+                }
+
+                10% {
+                    opacity: 0.9;
+                }
+
+                100% {
+                    transform: translate(var(--drift), -105vh) scale(1.1);
+                    opacity: 0;
+                }
+            }
+
+            .hero-chip {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                padding: 8px 18px;
+                border-radius: 999px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                color: #e0e7ff;
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                backdrop-filter: blur(10px);
+            }
+
+            .hero-chip-dot {
+                position: relative;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: #4ade80;
+            }
+
+            .hero-chip-dot::after {
+                content: "";
+                position: absolute;
+                inset: -4px;
+                border-radius: 50%;
+                border: 2px solid #4ade80;
+                animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+            }
+
+            .hero-shine-text {
+                background: linear-gradient(90deg, #67e8f9, #a5b4fc, #f0abfc, #fdba74, #67e8f9);
+                background-size: 300% 100%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                filter: drop-shadow(0 6px 24px rgba(103, 232, 249, 0.25));
+                animation: gradient-pan 8s linear infinite;
+            }
+
+            .hero-lead {
+                color: rgba(226, 232, 240, 0.92);
+            }
+
+            .hero-trust {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px 14px;
+                margin-top: 2.75rem;
+                padding: 0;
+                list-style: none;
+            }
+
+            .hero-trust li {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 8px 14px;
+                border-radius: 12px;
+                font-size: 0.85rem;
+                font-weight: 500;
+                color: #e2e8f0;
+                background: rgba(255, 255, 255, 0.06);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                transition:
+                    background 0.3s ease,
+                    transform 0.3s ease;
+            }
+
+            .hero-trust li:hover {
+                background: rgba(255, 255, 255, 0.12);
+                transform: translateY(-2px);
+            }
+
+            .hero-trust i {
+                color: #67e8f9;
+            }
+
+            .hero-scroll-cue {
+                position: absolute;
+                left: 50%;
+                bottom: 78px;
+                z-index: 10;
+                translate: -50% 0;
+            }
+
+            .hero-scroll-mouse {
+                display: block;
+                width: 26px;
+                height: 42px;
+                border: 2px solid rgba(255, 255, 255, 0.5);
+                border-radius: 14px;
+                position: relative;
+            }
+
+            .hero-scroll-mouse span {
+                position: absolute;
+                top: 7px;
+                left: 50%;
+                width: 4px;
+                height: 8px;
+                margin-left: -2px;
+                border-radius: 2px;
+                background: #fff;
+                animation: scroll-wheel 1.8s ease-in-out infinite;
+            }
+
+            @keyframes scroll-wheel {
+                0% {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+
+                100% {
+                    transform: translateY(14px);
+                    opacity: 0;
+                }
+            }
+
+            @media (max-height: 980px), (max-width: 640px) {
+                .hero-scroll-cue {
+                    display: none;
+                }
+            }
+
+            .hero-wave {
+                position: absolute;
+                left: 0;
+                bottom: -1px;
+                z-index: 5;
+                width: 100%;
+                height: 70px;
+                color: var(--page-bg);
+            }
+
+            /* ---------- Product marquee ---------- */
+            .product-marquee {
+                overflow: hidden;
+                padding: 14px 0 6px;
+                mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+                -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+            }
+
+            .product-marquee-track {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+                width: max-content;
+                animation: marquee 38s linear infinite;
+            }
+
+            .product-marquee:hover .product-marquee-track {
+                animation-play-state: paused;
+            }
+
+.product-marquee span {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 0.9rem + 1vw, 1.6rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    background: linear-gradient(90deg, #4c1d95, var(--violet-bright) 25%, #2563eb 50%, #0891b2 75%, #4c1d95);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-pan 6s linear infinite;
+}
+
+.product-marquee span:nth-of-type(odd) {
+    color: #4c1d95;
+    -webkit-text-stroke: 0;
+}
+
+            .product-marquee i {
+                color: var(--brand-cta);
+                font-size: 0.9rem;
+            }
+
+            @keyframes marquee {
+                to {
+                    transform: translateX(calc(-50% - 1rem));
+                }
+            }
+
+            /* ---------- Buttons ---------- */
+            .btn-primary {
+                background: linear-gradient(135deg, var(--violet-bright), var(--indigo) 55%, #2563eb);
+                box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.7);
+            }
+
+            .btn-primary:hover {
+                background: linear-gradient(135deg, #6d28d9, #4338ca 55%, #1d4ed8);
+                box-shadow: 0 16px 36px -10px rgba(124, 58, 237, 0.8);
+            }
+
+            .btn-secondary {
+                background: linear-gradient(135deg, #f97316, var(--brand-cta) 60%, #db2777);
+                box-shadow: 0 10px 30px -10px rgba(234, 88, 12, 0.7);
+            }
+
+            .btn-shine,
+            .add-to-cart-btn,
+            .enquiry-trigger-btn,
+            .enquiry-submit-btn,
+            .added-cart-viewcart-btn {
+                position: relative;
+                overflow: hidden;
+                isolation: isolate;
+            }
+
+            .btn-shine::after,
+            .add-to-cart-btn::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                z-index: -1;
+                background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.35) 50%, transparent 65%);
+                transform: translateX(-120%);
+                transition: transform 0.8s var(--ease-standard);
+                pointer-events: none;
+            }
+
+            .btn-shine:hover::after,
+            .add-to-cart-btn:hover::after {
+                transform: translateX(120%);
+            }
+
+            .magnetic {
+                transform: translate(var(--tx, 0px), var(--ty, 0px));
+            }
+
+            .magnetic:hover:not(:active) {
+                transform: translate(var(--tx, 0px), calc(var(--ty, 0px) - 2px));
+            }
+
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.45);
+                transform: scale(0);
+                animation: ripple-out 0.6s ease-out forwards;
+                pointer-events: none;
+            }
+
+            @keyframes ripple-out {
+                to {
+                    transform: scale(1);
+                    opacity: 0;
+                }
+            }
+
+            .add-to-cart-btn {
+                background: linear-gradient(135deg, #f97316, var(--brand-cta) 60%, #db2777);
+                padding: 11px 14px;
+                font-size: 0.85rem;
+            }
+
+            .enquiry-trigger-btn {
+                background: linear-gradient(135deg, var(--violet-bright), var(--indigo));
+                box-shadow: 0 6px 16px -6px rgba(124, 58, 237, 0.6);
+            }
+
+            .enquiry-trigger-btn:hover {
+                background: linear-gradient(135deg, #6d28d9, #4338ca);
+                box-shadow: 0 10px 22px -8px rgba(124, 58, 237, 0.7);
+            }
+
+            .qty-btn.active,
+                .enquiry-qty-btn.active {
+                    background: linear-gradient(135deg, var(--violet-bright), var(--indigo));
+                    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
+            }
+
+            .qty-btn:hover {
+                border-color: var(--violet-bright);
+                color: var(--violet-bright);
+            }
+
+            .qty-btn.active:hover,
+                .enquiry-qty-btn.active:hover {
+                    color: #fff !important;
+                    border-color: transparent;
+            }
+
+            /* ---------- Cards (shared gradient border on hover) ---------- */
+            .feature-card,
+            .glass-card,
+            .product-card {
+                position: relative;
+            }
+
+            .feature-card::before,
+            .glass-card::before,
+            .product-card::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                z-index: 3;
+                padding: 1.5px;
+                border-radius: inherit;
+                background: linear-gradient(135deg, rgba(124, 58, 237, 0.7), rgba(34, 211, 238, 0.6) 50%, rgba(249, 115, 22, 0.5));
+                -webkit-mask:
+                    linear-gradient(#000 0 0) content-box,
+                    linear-gradient(#000 0 0);
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+                opacity: 0;
+                transition: opacity 0.4s var(--ease-standard);
+                pointer-events: none;
+            }
+
+            :is(.feature-card, .glass-card, .product-card):hover::before {
+                opacity: 1;
+            }
+
+            .feature-card {
+                overflow: hidden;
+                background: rgba(255, 255, 255, 0.72);
+                border: 1px solid rgba(255, 255, 255, 0.8);
+                box-shadow:
+                    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                    0 10px 30px -14px rgba(30, 27, 75, 0.18);
+                transition:
+                    transform 0.4s var(--ease-standard),
+                    box-shadow 0.4s var(--ease-standard);
+            }
+
+            .feature-card:hover {
+                transform: translateY(-6px);
+                box-shadow: var(--glow-violet);
+            }
+
+            .feature-card .shadow-lg,
+            .glass-card .contact-icon {
+                transition: transform 0.45s var(--ease-spring);
+            }
+
+            .feature-card:hover .shadow-lg {
+                transform: rotate(-6deg) scale(1.08);
+            }
+
+            .glass-card {
+                background: rgba(255, 255, 255, 0.8);
+                border: 1px solid rgba(255, 255, 255, 0.8);
+                box-shadow: 0 10px 30px -14px rgba(30, 27, 75, 0.2);
+            }
+
+            .glass-card:hover {
+                box-shadow: var(--glow-violet);
+            }
+
+            .product-card {
+                background: rgba(255, 255, 255, 0.85);
+                border: 1px solid rgba(255, 255, 255, 0.8);
+                box-shadow:
+                    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                    0 14px 34px -16px rgba(30, 27, 75, 0.22);
+                transition:
+                    transform 0.45s var(--ease-standard),
+                    box-shadow 0.45s var(--ease-standard);
+            }
+
+            .product-card:hover {
+                transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-8px);
+                box-shadow: var(--glow-violet);
+            }
+
+            .product-card.is-tilting {
+                transition:
+                    transform 0.12s ease-out,
+                    box-shadow 0.45s var(--ease-standard);
+            }
+
+            .product-spotlight {
+                position: absolute;
+                inset: 0;
+                z-index: 2;
+                pointer-events: none;
+                border-radius: inherit;
+                background: radial-gradient(
+                    380px circle at var(--mx, 50%) var(--my, 50%),
+                    rgba(124, 58, 237, 0.12),
+                    transparent 45%
+                );
+                opacity: 0;
+                transition: opacity 0.4s ease;
+            }
+
+            .product-card:hover .product-spotlight {
+                opacity: 1;
+            }
+
+            .product-image-container::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                z-index: 1;
+                background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.65) 50%, transparent 60%);
+                transform: translateX(-110%);
+                transition: transform 0.9s var(--ease-standard);
+                pointer-events: none;
+            }
+
+            .product-card:hover .product-image-container::after {
+                transform: translateX(110%);
+            }
+
+            .product-tag {
+                position: absolute;
+                top: 14px;
+                left: 14px;
+                z-index: 2;
+                padding: 4px 10px;
+                border-radius: 999px;
+                font-size: 0.7rem;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+                color: #fff;
+                background: rgba(30, 11, 75, 0.78);
+                backdrop-filter: blur(6px);
+            }
+
+            #productSearch {
+                border-radius: 999px;
+                box-shadow: 0 10px 30px -18px rgba(30, 27, 75, 0.35);
+            }
+
+            #productSearch:focus {
+                border-color: var(--violet-bright);
+                box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.15);
+            }
+
+            /* ---------- FAQ ---------- */
+            #faq details {
+                transition:
+                    box-shadow 0.3s ease,
+                    transform 0.3s ease;
+            }
+
+            #faq details:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 14px 30px -16px rgba(30, 27, 75, 0.3);
+            }
+
+            #faq details[open] {
+                box-shadow: var(--glow-violet);
+            }
+
+            #faq details::details-content {
+                block-size: 0;
+                overflow: hidden;
+                transition:
+                    block-size 0.35s var(--ease-standard),
+                    content-visibility 0.35s allow-discrete;
+            }
+
+            #faq details[open]::details-content {
+                block-size: auto;
+            }
+
+            /* ---------- Footer ---------- */
+            .site-footer {
+                position: relative;
+                overflow: hidden;
+                isolation: isolate;
+                background:
+                    radial-gradient(600px 300px at 90% 0%, rgba(34, 211, 238, 0.18), transparent 60%),
+                    radial-gradient(600px 300px at 0% 100%, rgba(124, 58, 237, 0.35), transparent 60%),
+                    linear-gradient(160deg, var(--violet-deep), #2e1065 55%, #312e81);
+            }
+
+            .site-footer .border-t {
+                border-color: rgba(255, 255, 255, 0.12);
+            }
+
+            .site-footer a {
+                transition:
+                    transform 0.3s var(--ease-spring),
+                    background 0.3s ease;
+            }
+
+            .site-footer a:hover {
+                transform: translateY(-3px);
+            }
+
+            .site-footer .footer-brand-name {
+                background: linear-gradient(90deg, #67e8f9, #a5b4fc, #f0abfc, #fdba74, #67e8f9);
+                background-size: 300% 100%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                filter: drop-shadow(0 6px 24px rgba(103, 232, 249, 0.25));
+                animation: gradient-pan 8s linear infinite;
+            }
+
+            .site-footer .footer-chip {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                padding: 7px 16px;
+                border-radius: 999px;
+                font-size: 0.82rem;
+                font-weight: 600;
+                color: #e0e7ff;
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                backdrop-filter: blur(10px);
+                transition:
+                    background 0.3s ease,
+                    transform 0.3s ease;
+            }
+
+            .site-footer .footer-chip:hover {
+                background: rgba(255, 255, 255, 0.14);
+                transform: translateY(-2px);
+            }
+
+            .site-footer .footer-chip-dot {
+                position: relative;
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: #4ade80;
+            }
+
+            .site-footer .footer-chip-dot::after {
+                content: "";
+                position: absolute;
+                inset: -4px;
+                border-radius: 50%;
+                border: 2px solid #4ade80;
+                animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+            }
+
+            .site-footer .footer-credentials {
+                background: linear-gradient(120deg, #67e8f9, #a5b4fc 45%, #f0abfc 75%, #67e8f9);
+                background-size: 300% 100%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                animation: gradient-pan 8s linear infinite;
+                font-weight: 600;
+                letter-spacing: 0.02em;
+            }
+
+            .site-footer .social-icon-link {
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.4);
+            }
+
+            .site-footer .social-icon-link:hover {
+                background: linear-gradient(135deg, var(--violet-bright), var(--indigo));
+                border-color: transparent;
+                box-shadow: 0 10px 26px -8px rgba(124, 58, 237, 0.6);
+                transform: translateY(-3px) scale(1.05);
+            }
+
+            /* ---------- Floating UI in theme ---------- */
+            .cart-panel-header,
+            .assistant-panel-header,
+            .enquiry-modal-header {
+                background: linear-gradient(135deg, var(--violet-deep), var(--violet) 55%, var(--indigo));
+            }
+
+            .cart-panel,
+            .assistant-panel {
+                background: rgba(255, 255, 255, 0.94);
+                backdrop-filter: blur(18px);
+                border: 1px solid rgba(255, 255, 255, 0.7);
+            }
+
+            #scrollToTop,
+            .ai-assistant-btn {
+                background: linear-gradient(135deg, var(--violet-bright), var(--indigo));
+                box-shadow: 0 10px 24px -6px rgba(124, 58, 237, 0.55);
+            }
+
+            .ai-assistant-btn-ring {
+                border-color: var(--violet-bright);
+            }
+
+            .assistant-msg.user {
+                background: linear-gradient(135deg, var(--violet-bright), var(--indigo));
+            }
+
+            .assistant-msg {
+                animation: msg-in 0.3s var(--ease-spring);
+            }
+
+            @keyframes msg-in {
+                from {
+                    opacity: 0;
+                    translate: 0 8px;
+                }
+            }
+
+            @keyframes enquiry-pop {
+                from {
+                    opacity: 0;
+                    transform: translateY(40px) scale(0.94);
+                    filter: blur(6px);
+                }
+            }
+
+            /* ---------- Added-to-cart & remove-confirm dialogs ---------- */
+            #addedCartModal,
+            #removeConfirmModal {
+                z-index: 10000;
+                background:
+                    radial-gradient(circle at 20% 10%, rgba(124, 58, 237, 0.3), transparent 50%),
+                    radial-gradient(circle at 80% 90%, rgba(34, 211, 238, 0.2), transparent 50%),
+                    rgba(15, 8, 40, 0.6);
+                backdrop-filter: blur(8px);
+            }
+
+            .added-cart-box,
+            .remove-confirm-box {
+                overflow: hidden;
+                border-radius: 28px;
+                padding: 0 0 22px;
+                background: linear-gradient(180deg, #fff, #faf9ff);
+                border: 1px solid rgba(255, 255, 255, 0.8);
+                box-shadow:
+                    0 0 0 1px rgba(124, 58, 237, 0.12),
+                    0 40px 100px -20px rgba(30, 11, 75, 0.6);
+                animation: enquiry-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+
+            .added-cart-box:focus,
+            .remove-confirm-box:focus {
+                outline: none;
+            }
+
+            .added-cart-hero {
+                position: relative;
+                padding: 26px 24px 20px;
+                color: #fff;
+                background:
+                    radial-gradient(240px 140px at 100% 0%, rgba(34, 211, 238, 0.45), transparent 70%),
+                    radial-gradient(220px 140px at 0% 120%, rgba(249, 115, 22, 0.4), transparent 70%),
+                    linear-gradient(135deg, var(--violet-deep), var(--violet) 55%, var(--indigo));
+            }
+
+            .added-cart-check {
+                width: 58px;
+                height: 58px;
+                margin: 0 auto 12px;
+                border-radius: 50%;
+                display: grid;
+                place-items: center;
+                font-size: 1.4rem;
+                color: #fff;
+                background: linear-gradient(135deg, #22c55e, #059669);
+                box-shadow:
+                    0 0 0 6px rgba(255, 255, 255, 0.14),
+                    0 14px 30px -10px rgba(5, 150, 105, 0.8);
+                animation: check-pop 0.6s var(--ease-spring) 0.15s backwards;
+            }
+
+            .added-cart-check i {
+                animation: check-draw 0.4s var(--ease-standard) 0.4s backwards;
+            }
+
+            @keyframes check-pop {
+                from {
+                    transform: scale(0);
+                }
+            }
+
+            @keyframes check-draw {
+                from {
+                    opacity: 0;
+                    transform: scale(0.4) rotate(-30deg);
+                }
+            }
+
+            .added-cart-close-btn {
+                z-index: 2;
+                border-radius: 12px;
+                border: 1px solid rgba(255, 255, 255, 0.22);
+                background: rgba(255, 255, 255, 0.12);
+                color: #fff;
+                transition:
+                    background 0.2s ease,
+                    transform 0.3s var(--ease-spring);
+            }
+
+            .added-cart-close-btn:hover {
+                background: rgba(255, 255, 255, 0.24);
+                color: #fff;
+                transform: rotate(90deg);
+            }
+
+            .added-cart-product-name {
+                margin: 0 24px 2px;
+                font-family: var(--font-display);
+                font-size: 1.1rem;
+                color: #fff;
+                text-decoration: none;
+            }
+
+            .added-cart-msg {
+                margin-bottom: 0;
+                font-size: 0.82rem;
+                color: rgba(224, 231, 255, 0.85);
+            }
+
+            .added-cart-body {
+                margin: 20px 24px 18px;
+                padding: 14px;
+                gap: 18px;
+                border-radius: 20px;
+                border: 1px solid transparent;
+                background:
+                    linear-gradient(135deg, #f5f3ff, #ecfeff) padding-box,
+                    linear-gradient(135deg, rgba(124, 58, 237, 0.45), rgba(34, 211, 238, 0.45)) border-box;
+            }
+
+            .added-cart-img-wrap {
+                width: 88px;
+                height: 88px;
+                border: none;
+                border-radius: 16px;
+                box-shadow: 0 10px 20px -12px rgba(76, 29, 149, 0.5);
+            }
+
+            .added-cart-qty p {
+                font-size: 0.66rem;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: var(--violet);
+            }
+
+            .added-cart-qty-ctrl {
+                gap: 0;
+                padding: 3px;
+                border-radius: 999px;
+                background: #fff;
+                border: 1px solid rgba(124, 58, 237, 0.18);
+            }
+
+            .added-cart-qty-ctrl button {
+                width: 32px;
+                height: 32px;
+                border: none;
+                border-radius: 50%;
+                background: #f5f3ff;
+                color: var(--violet);
+                transition:
+                    transform 0.2s var(--ease-spring),
+                    background 0.2s ease,
+                    color 0.2s ease;
+            }
+
+            .added-cart-qty-ctrl button:hover:not(:disabled) {
+                background: linear-gradient(135deg, var(--violet-bright), var(--indigo));
+                color: #fff;
+                transform: scale(1.08);
+            }
+
+            .added-cart-qty-ctrl button:disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
+            }
+
+            .added-cart-qty-ctrl input {
+                width: 44px;
+                border: none;
+                background: transparent;
+                font-family: var(--font-display);
+                font-size: 0.95rem;
+                color: #1e1b4b;
+            }
+
+            .added-cart-line,
+            .added-cart-subtotal,
+            .added-cart-actions {
+                padding: 0 24px;
+            }
+
+            .added-cart-line a {
+                color: var(--violet);
+                text-decoration-color: rgba(124, 58, 237, 0.35);
+                text-underline-offset: 3px;
+            }
+
+            .added-cart-subtotal b {
+                font-family: var(--font-display);
+                font-size: 1.1rem;
+                background: linear-gradient(120deg, #4c1d95, var(--violet-bright), #2563eb);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .added-cart-actions button {
+                padding: 13px;
+                border-radius: 14px;
+                transition:
+                    transform 0.3s var(--ease-spring),
+                    box-shadow 0.3s ease,
+                    background 0.2s ease;
+            }
+
+            .added-cart-continue-btn {
+                background: #f1f0fb;
+                color: #4c1d95;
+            }
+
+            .added-cart-continue-btn:hover {
+                background: #e7e4f8;
+                transform: translateY(-1px);
+            }
+
+            .added-cart-viewcart-btn {
+                background: linear-gradient(135deg, #f97316, var(--brand-cta) 60%, #db2777);
+                box-shadow: 0 12px 26px -12px rgba(219, 39, 119, 0.7);
+            }
+
+            .added-cart-viewcart-btn:hover {
+                background: linear-gradient(135deg, #ea580c, #c2410c 60%, #be185d);
+                transform: translateY(-2px);
+                box-shadow: 0 16px 30px -12px rgba(219, 39, 119, 0.8);
+            }
+
+            .remove-confirm-box {
+                padding: 30px 0 24px;
+            }
+
+            .remove-confirm-icon {
+                width: 64px;
+                height: 64px;
+                font-size: 1.5rem;
+                background: radial-gradient(circle at 30% 30%, #fff, #fee2e2 60%, #fecaca);
+                box-shadow:
+                    0 0 0 8px rgba(239, 68, 68, 0.08),
+                    0 16px 30px -14px rgba(239, 68, 68, 0.7);
+                animation: remove-wobble 0.6s var(--ease-spring) 0.2s backwards;
+            }
+
+            @keyframes remove-wobble {
+                0% {
+                    transform: scale(0) rotate(-20deg);
+                }
+
+                70% {
+                    transform: scale(1.1) rotate(6deg);
+                }
+            }
+
+            .remove-confirm-title {
+                font-family: var(--font-display);
+                font-size: 1.2rem;
+                color: #1e1b4b;
+            }
+
+            .remove-confirm-msg {
+                padding: 0 26px;
+            }
+
+            .remove-confirm-msg b {
+                color: var(--violet);
+            }
+
+            .remove-confirm-ok-btn {
+                box-shadow: 0 12px 26px -12px rgba(220, 38, 38, 0.7);
+            }
+
         </style>
         <script type="application/ld+json">
             {
@@ -1436,6 +2563,8 @@
                     "addressRegion": "Rajasthan",
                     "addressCountry": "IN"
                 },
+                "areaServed": "IN",
+                "priceRange": "₹70–₹2000",
                 "founder": {
                     "@type": "Person",
                     "name": "Gajendra Jain"
@@ -1504,73 +2633,41 @@
                 "@graph": [
                     {
                         "@type": "Product",
-                        "name": "Dashboard Polish",
-                        "image": "Dashboard Polish.jpeg",
-                        "description": "Premium dashboard polish for long-lasting shine",
+                        "name": "Handcare",
+                        "image": "Handcare.jpg",
+                        "description": "Handcare",
                         "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
                         "offers": { "@type": "Offer", "price": "200", "priceCurrency": "INR", "url": "#products" }
                     },
                     {
                         "@type": "Product",
-                        "name": "Tyre Polish",
-                        "image": "Tyre Polish.jpeg",
-                        "description": "High-gloss tyre polish for enhanced appearance",
+                        "name": "Dishwash",
+                        "image": "Dishwash.png",
+                        "description": "Dishwash",
                         "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
                         "offers": { "@type": "Offer", "price": "150", "priceCurrency": "INR", "url": "#products" }
                     },
                     {
                         "@type": "Product",
-                        "name": "Car Foaming Wash",
-                        "image": "Car Foaming Wash.jpeg",
-                        "description": "Advanced foaming wash for thorough cleaning",
+                        "name": "Detergent",
+                        "image": "Detergent.png",
+                        "description": "Detergent",
                         "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
                         "offers": { "@type": "Offer", "price": "70", "priceCurrency": "INR", "url": "#products" }
                     },
                     {
                         "@type": "Product",
-                        "name": "Glass Cleaner",
-                        "image": "Glass Cleaner.jpeg",
-                        "description": "Streak-free glass cleaner for crystal clear visibility",
+                        "name": "Tiles Cleaner",
+                        "image": "Tiles Cleaner.jpg",
+                        "description": "Tiles Cleaner",
                         "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
                         "offers": { "@type": "Offer", "price": "70", "priceCurrency": "INR", "url": "#products" }
                     },
                     {
                         "@type": "Product",
-                        "name": "Interior Cleaner",
-                        "image": "Interior Cleaner.png",
-                        "description": "Effective interior cleaner for all surfaces",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "130", "priceCurrency": "INR", "url": "#products" }
-                    },
-                    {
-                        "@type": "Product",
-                        "name": "Foaming Gun",
-                        "image": "Foaming Gun.jpeg",
-                        "description": "Professional foaming gun for car wash",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "2000", "priceCurrency": "INR", "url": "#products" }
-                    },
-                    {
-                        "@type": "Product",
-                        "name": "Micro Towel",
-                        "image": "Micro Towel.jpg",
-                        "description": "Ultra soft Micro Towel",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "70", "priceCurrency": "INR", "url": "#products" }
-                    },
-                    {
-                        "@type": "Product",
-                        "name": "Micro Towel",
-                        "image": "Micro Towel 2.jpg",
-                        "description": "Ultra soft Micro Towel",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "110", "priceCurrency": "INR", "url": "#products" }
-                    },
-                    {
-                        "@type": "Product",
-                        "name": "Micro Towel",
-                        "image": "Micro Towel 3.jpg",
-                        "description": "Ultra soft Micro Towel",
+                        "name": "Toilet Cleaner",
+                        "image": "Toilet Cleaner.png",
+                        "description": "Toilet Cleaner",
                         "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
                         "offers": { "@type": "Offer", "price": "130", "priceCurrency": "INR", "url": "#products" }
                     }
@@ -1631,16 +2728,16 @@
                     <div class="flex items-center gap-3">
                         <div class="glass-card px-4 py-2 rounded-lg">
                             <p class="text-gray-700 font-medium">
-                                <i class="fas fa-map-marker-alt text-blue-600 mr-2"></i>Jaipur • Bulk & Retail
+                                <i class="fas fa-map-marker-alt text-blue-600 mr-2" aria-hidden="true"></i>Jaipur • Bulk & Retail
                             </p>
                         </div>
                         <button
                             class="cart-icon-btn"
-                            onclick="toggleCart()"
+                            data-action="toggle-cart"
                             aria-label="Open cart"
                             aria-expanded="false"
                         >
-                            <i class="fas fa-shopping-cart text-base"></i>
+                            <i class="fas fa-shopping-cart text-base" aria-hidden="true"></i>
                             <span class="cart-badge" id="cartBadge" style="display: none" aria-live="polite">0</span>
                         </button>
                     </div>
@@ -1649,55 +2746,75 @@
         </header>
 
         <main id="main-content" tabindex="-1">
-            <section class="hero-gradient text-white min-h-[86.5vh] flex flex-col relative">
-                <div class="hero-band-top flex-1 flex items-start relative z-10 pt-16 md:pt-24 pb-6">
-                    <div class="container mx-auto px-4">
-                        <div class="max-w-5xl mx-auto text-center hero-content-in">
-                            <h2 class="text-4xl md:text-6xl font-bold leading-tight">
-                                Premium Home <br /><span class="text-blue-400">Cleaning Solutions</span>
-                            </h2>
+            <section class="hero-gradient text-white min-h-[88vh] flex items-center relative" id="hero">
+                <div class="hero-aurora" aria-hidden="true">
+                    <span class="aurora-orb orb-1"></span>
+                    <span class="aurora-orb orb-2"></span>
+                    <span class="aurora-orb orb-3"></span>
+                </div>
+                <div class="hero-grid" aria-hidden="true"></div>
+                <div class="hero-bubbles" id="heroBubbles" aria-hidden="true"></div>
+
+                <div class="container mx-auto px-4 relative z-10 py-16 md:py-24">
+                    <div class="max-w-5xl mx-auto text-center hero-content-in">
+                        <span class="hero-chip">
+                            <span class="hero-chip-dot" aria-hidden="true"></span>
+                            Jaipur-based manufacturer &bull; Since 2020
+                        </span>
+                        <h2 class="font-bold leading-tight mt-6 mb-6">
+                            Premium Home <br /><span class="hero-shine-text">Cleaning Solutions</span>
+                        </h2>
+                        <p class="text-lg md:text-xl mb-10 opacity-90 max-w-3xl mx-auto leading-relaxed hero-lead">
+                            Swapnil Chemicals is a Jaipur-based manufacturer of Premium Home Cleaning
+                            Products, trusted by bulk and retail customers since 2020. We produce our own
+                            Handcare, Dishwash, Detergent, Tiles Cleaner, Toilet Cleaner, ensuring
+                            consistent quality. As a GST registered, MSME and Udyam certified business, we supply
+                            orders across India. Call us at 9352470085 or 9024598298 for bulk orders or pricing.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+                            <a
+                                href="#products"
+                                class="btn-primary btn-shine magnetic text-white px-10 py-4 rounded-xl font-semibold text-lg"
+                                ><i class="fas fa-boxes mr-3" aria-hidden="true"></i>View Products</a
+                            ><a
+                                href="#contact"
+                                class="btn-secondary btn-shine magnetic text-white px-10 py-4 rounded-xl font-semibold text-lg"
+                                ><i class="fas fa-phone-alt fa-flip-horizontal mr-3" aria-hidden="true"></i>Contact Now</a
+                            >
                         </div>
+                        <ul class="hero-trust" aria-label="Business credentials">
+                            <!-- <li><i class="fas fa-industry" aria-hidden="true"></i> In-house manufacturing</li> -->
+                            <li><i class="fas fa-file-invoice" aria-hidden="true"></i> GST registered</li>
+                            <li><i class="fas fa-award" aria-hidden="true"></i> MSME &amp; Udyam certified</li>
+                            <li><i class="fas fa-truck-fast" aria-hidden="true"></i> Bulk &amp; retail</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="hero-band-bottom flex-1 flex items-start relative z-10 pt-6 pb-10">
-                    <div class="container mx-auto px-4">
-                        <div class="max-w-5xl mx-auto text-center">
-                            <p class="text-lg md:text-xl mb-10 opacity-90 max-w-3xl mx-auto leading-relaxed">
-    Swapnil Chemicals is a Jaipur-based manufacturer of Premium Home Cleaning
-    Products, trusted by bulk and retail customers since 2020. We produce our own
-    Handcare, Dishwash, Detergent and more, ensuring
-    consistent quality. As a GST registered, MSME and Udyam certified business, we
-    supply orders across India. Call us at 9352470085 or 9024598298 for bulk orders
-    or pricing.
-</p>
-                            <div class="flex flex-wrap justify-center gap-6">
-                                <a
-                                    href="#products"
-                                    class="btn-primary text-white px-10 py-4 rounded-xl font-semibold text-lg"
-                                    ><i class="fas fa-boxes mr-3"></i>View Products</a
-                                ><a
-                                    href="#contact"
-                                    class="btn-secondary text-white px-10 py-4 rounded-xl font-semibold text-lg"
-                                    ><i class="fas fa-phone-alt fa-flip-horizontal mr-3"></i>Contact Now</a
-                                >
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="absolute top-20 left-10 w-20 h-20 bg-blue-500/10 rounded-full blur-xl ambient-blob"></div>
-                <div
-                    class="absolute bottom-20 right-10 w-32 h-32 bg-purple-500/10 rounded-full blur-xl ambient-blob"
-                    style="animation-delay: -4s"
-                ></div>
-                <div
-                    class="absolute top-1/2 right-1/4 w-24 h-24 bg-cyan-400/10 rounded-full blur-xl ambient-blob"
-                    style="animation-delay: -2s"
-                ></div>
+
+                <a href="#business-details" class="hero-scroll-cue" aria-label="Scroll to business details">
+                    <span class="hero-scroll-mouse" aria-hidden="true"><span></span></span>
+                </a>
+                <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+                    <path
+                        d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,45 L1440,90 L0,90 Z"
+                        fill="currentColor"
+                    />
+                </svg>
             </section>
+
+            <div class="product-marquee" aria-hidden="true">
+                <div class="product-marquee-track">
+                    <span>Handcare</span><i class="fas fa-star"></i><span>Dishwash</span
+                    ><i class="fas fa-droplet"></i><span>Detergent</span><i class="fas fa-star"></i
+                    ><span>Tiles Cleaner</span><i class="fas fa-droplet"></i><span>Toilet Cleaner</span
+                    ><i class="fas fa-star"></i>
+                </div>
+            </div>
 
             <section id="business-details" class="pt-6 pb-0 relative">
                 <div class="container mx-auto px-4">
                     <div class="text-center mb-6 mt-8">
+                        <span class="section-eyebrow">Who we are</span>
                         <h2 class="text-4xl font-bold gradient-text mb-4">Business Details</h2>
                         <div class="section-divider max-w-xs mx-auto"></div>
                     </div>
@@ -1707,7 +2824,7 @@
                                 <div
                                     class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mr-6 shadow-lg"
                                 >
-                                    <i class="fas fa-user-tie text-white text-2xl"></i>
+                                    <i class="fas fa-user-tie text-white text-2xl" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <p class="text-2xl font-bold text-gray-800">Gajendra Jain</p>
@@ -1722,6 +2839,7 @@
                                     <i
                                         class="fas fa-phone-alt text-white text-2xl"
                                         style="transform: rotate(-270deg)"
+                                        aria-hidden="true"
                                     ></i>
                                 </div>
                                 <div>
@@ -1738,7 +2856,7 @@
                                 <div
                                     class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mr-6 shadow-lg"
                                 >
-                                    <i class="fas fa-file-invoice-dollar text-white text-2xl"></i>
+                                    <i class="fas fa-file-invoice-dollar text-white text-2xl" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-sm font-medium text-gray-600 uppercase tracking-wide">
@@ -1748,10 +2866,11 @@
                                         08CIJPS1734A1ZE<button
                                             type="button"
                                             class="text-gray-400 hover:text-blue-600"
-                                            onclick="copyText('08CIJPS1734A1ZE', this)"
+                                            data-action="copy"
+                                            data-copy-text="08CIJPS1734A1ZE"
                                             aria-label="Copy GST number"
                                         >
-                                            <i class="fas fa-copy text-sm"></i>
+                                            <i class="fas fa-copy text-sm" aria-hidden="true"></i>
                                         </button>
                                     </p>
                                 </div>
@@ -1762,7 +2881,7 @@
                                 <div
                                     class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mr-6 shadow-lg"
                                 >
-                                    <i class="fas fa-envelope text-white text-2xl"></i>
+                                    <i class="fas fa-envelope text-white text-2xl" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-sm font-medium text-gray-600 uppercase tracking-wide">Email</h3>
@@ -1777,7 +2896,7 @@
                                 <div
                                     class="w-16 h-16 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-2xl flex items-center justify-center mr-6 shadow-lg"
                                 >
-                                    <i class="fas fa-award text-white text-2xl"></i>
+                                    <i class="fas fa-award text-white text-2xl" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-sm font-medium text-gray-600 uppercase tracking-wide">MSME</h3>
@@ -1790,7 +2909,7 @@
                                 <div
                                     class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mr-6 shadow-lg"
                                 >
-                                    <i class="fas fa-certificate text-white text-2xl"></i>
+                                    <i class="fas fa-certificate text-white text-2xl" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-sm font-medium text-gray-600 uppercase tracking-wide">Udyam</h3>
@@ -1803,7 +2922,7 @@
                                 <div
                                     class="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mr-6 shadow-lg"
                                 >
-                                    <i class="fas fa-building text-white text-2xl"></i>
+                                    <i class="fas fa-building text-white text-2xl" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-sm font-medium text-gray-600 uppercase tracking-wide">BRN</h3>
@@ -1818,6 +2937,7 @@
             <section id="products" class="pt-2 pb-8 relative">
                 <div class="container mx-auto px-4">
                     <div class="text-center mb-8">
+                        <span class="section-eyebrow">Shop the range</span>
                         <h2 class="text-4xl font-bold gradient-text mb-4">Our Premium Products</h2>
                         <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                             Discover our range of high-quality home cleaning solutions designed for professional
@@ -1839,7 +2959,7 @@
                                 aria-label="Search products"
                             />
                             <button type="button" id="voiceSearchBtn" class="voice-btn" aria-label="Search by voice">
-                                <i class="fas fa-microphone"></i>
+                                <i class="fas fa-microphone" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -1853,6 +2973,7 @@
             <section id="faq" class="py-8 relative">
                 <div class="container mx-auto px-4">
                     <div class="text-center mb-8">
+                        <span class="section-eyebrow">Good to know</span>
                         <h2 class="text-4xl font-bold gradient-text mb-4">Frequently Asked Questions</h2>
                         <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                             Quick answers about ordering, payment and our products.
@@ -1965,6 +3086,7 @@
             <section id="contact" class="py-8 relative">
                 <div class="container mx-auto px-4">
                     <div class="text-center mb-8">
+                        <span class="section-eyebrow">Let's talk</span>
                         <h2 class="text-4xl font-bold gradient-text mb-4">Get In Touch</h2>
                         <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                             Ready to experience premium home cleaning solutions? Contact us today.
@@ -1982,6 +3104,7 @@
                                             <i
                                                 class="fas fa-phone-alt text-white text-2xl"
                                                 style="transform: rotate(-270deg)"
+                                                aria-hidden="true"
                                             ></i>
                                         </div>
                                         <div>
@@ -1996,7 +3119,7 @@
                                         <div
                                             class="contact-icon w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg"
                                         >
-                                            <i class="fas fa-envelope text-white text-2xl"></i>
+                                            <i class="fas fa-envelope text-white text-2xl" aria-hidden="true"></i>
                                         </div>
                                         <div>
                                             <h3 class="font-semibold text-xl text-gray-800 mb-2">Email</h3>
@@ -2032,10 +3155,11 @@
                                                 <button
                                                     type="button"
                                                     class="text-gray-400 hover:text-blue-600"
-                                                    onclick="copyText('boism-9352470085@boi', this)"
+                                                    data-action="copy"
+                                                    data-copy-text="boism-9352470085@boi"
                                                     aria-label="Copy UPI ID"
                                                 >
-                                                    <i class="fas fa-copy text-sm"></i>
+                                                    <i class="fas fa-copy text-sm" aria-hidden="true"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -2063,30 +3187,35 @@
         </main>
 
         <button id="scrollToTop" class="fixed bottom-6 right-6 text-white hidden z-50" aria-label="Scroll to top">
-            <i class="fas fa-arrow-up text-lg"></i>
+            <i class="fas fa-arrow-up text-lg" aria-hidden="true"></i>
         </button>
 
-        <footer
-            class="text-white py-12"
-            style="background: linear-gradient(180deg,#4C1D95 0%, #4C1D95 50%, #4C1D95 50%, #4C1D95 100%)">
+        <footer class="site-footer text-white py-12">
             <div class="container mx-auto px-4">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <div class="mb-8 md:mb-0 text-center md:text-left">
-                        <h3 class="text-3xl font-bold mb-3">Swapnil Chemicals</h3>
+                        <h3 class="text-3xl font-bold mb-3 footer-brand-name">Swapnil Chemicals</h3>
                         <p class="text-slate-300 text-lg">Manufacturers & marketers of home cleaning products</p>
-                        <p class="text-slate-300 mt-2">Jaipur • Bulk & Retail</p>
+                        <span class="footer-chip mt-3">
+                            <span class="footer-chip-dot" aria-hidden="true"></span>
+                            Jaipur • Bulk & Retail
+                        </span>
                     </div>
                     <div class="flex space-x-6">
                         <a
                             href="tel:9352470085"
-                            class="w-12 h-12 bg-slate-700 rounded-xl flex items-center justify-center hover:bg-blue-600 transition"
+                            class="social-icon-link w-12 h-12 rounded-xl flex items-center justify-center transition"
                             aria-label="Call Swapnil Chemicals"
-                            ><i class="fas fa-phone-alt text-lg" style="transform: rotate(-270deg)"></i></a
+                            ><i
+                                class="fas fa-phone-alt text-lg"
+                                style="transform: rotate(-270deg)"
+                                aria-hidden="true"
+                            ></i></a
                         ><a
                             href="mailto:swapnilchemicals10@gmail.com"
-                            class="w-12 h-12 bg-slate-700 rounded-xl flex items-center justify-center hover:bg-red-600 transition"
+                            class="social-icon-link w-12 h-12 rounded-xl flex items-center justify-center transition"
                             aria-label="Email Swapnil Chemicals"
-                            ><i class="fas fa-envelope text-lg"></i
+                            ><i class="fas fa-envelope text-lg" aria-hidden="true"></i
                         ></a>
                     </div>
                 </div>
@@ -2094,77 +3223,52 @@
                     <p class="text-slate-300">
                         © <span id="copyrightYear">2026</span> Swapnil Chemicals. All rights reserved.
                     </p>
-                    <p class="text-slate-400 text-sm mt-2">
+                    <p class="footer-credentials text-sm mt-2">
                         MSME Registered • GST Certified • Quality Assured Products
                     </p>
                 </div>
             </div>
         </footer>
 
-        <div class="cart-panel hidden" id="cartPanel">
+        <aside class="cart-panel hidden" id="cartPanel" role="dialog" aria-label="Shopping cart">
             <div class="cart-panel-header">
-                <div>
-                    <p class="font-bold text-base">Your Cart</p>
-                    <p class="text-xs opacity-70">Swapnil Chemicals</p>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                    <span class="font-bold text-base">Your Cart</span>
                 </div>
-
-                <div style="display: flex; align-items: center; gap: 14px; margin-left: 30px">
-                    <button
-                        onclick="toggleCart()"
-                        style="background: none; border: none; color: white; cursor: pointer; font-size: 16px"
-                        aria-label="Close cart"
-                    >
-                        <i class="fas fa-trash-can"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="cart-items-list" id="cartItemsList">
-                <div class="cart-empty-msg">
-                    <i class="fas fa-shopping-cart text-3xl mb-3 block opacity-30"></i>Your cart is empty
-                </div>
-            </div>
-            <div class="cart-panel-footer" id="cartFooter" style="display: none">
-                <div class="flex justify-between items-center mb-4">
-                    <span class="text-base font-bold">Grand Total</span
-                    ><span class="text-base font-bold text-blue-700" id="cartTotal">₹0</span>
-                </div>
-
-                <button id="cartGpayBtn" class="gpay-btn" onclick="openCartEnquiry()">
-                    <img
-                        src="https://www.gstatic.com/instantbuy/svg/dark_gpay.svg"
-                        style="height: 20px; filter: brightness(0) invert(1)"
-                        alt="Google Pay"
-                        loading="lazy"
-                        decoding="async"
-                    />
-                    Pay via GPay
-                </button>
-
                 <button
-                    onclick="clearCart()"
-                    style="
-                        width: 100%;
-                        margin-top: 8px;
-                        padding: 8px;
-                        background: none;
-                        color: #94a3b8;
-                        font-size: 12px;
-                        cursor: pointer;
-                    "
+                    class="cart-close-btn"
+                    data-action="toggle-cart"
+                    style="background: none; border: none; color: white; cursor: pointer"
+                    aria-label="Close cart"
                 >
-                    Clear cart
+                    <i class="fas fa-xmark" aria-hidden="true"></i>
                 </button>
             </div>
-        </div>
+            <div class="cart-items-list" id="cartItemsList"></div>
+            <div class="cart-panel-footer" id="cartFooter" style="display: none">
+                <div class="flex justify-between items-center mb-3">
+                    <span class="font-semibold text-gray-700">Total:</span>
+                    <span class="font-bold text-lg text-gray-800" id="cartTotal">₹0</span>
+                </div>
+                <button id="cartGpayBtn" class="gpay-btn" data-action="open-cart-enquiry">Send Enquiry</button>
+                <button
+                    class="w-full mt-2 text-xs text-gray-400 hover:text-red-500 font-semibold py-1"
+                    data-action="clear-cart"
+                >
+                    <i class="fas fa-trash-can mr-1" aria-hidden="true"></i> Clear cart
+                </button>
+            </div>
+        </aside>
 
         <button
             id="aiAssistantBtn"
             class="ai-assistant-btn"
-            onclick="toggleAssistant()"
+            data-action="toggle-assistant"
             aria-label="Open Swapnil Chemicals AI Assistant"
             aria-expanded="false"
         >
-            <i class="fas fa-robot"></i>
+            <i class="fas fa-robot" aria-hidden="true"></i>
             <span class="ai-assistant-btn-ring"></span>
         </button>
 
@@ -2176,18 +3280,18 @@
         >
             <div class="assistant-panel-header">
                 <div class="flex items-center gap-3">
-                    <div class="assistant-avatar"><i class="fas fa-robot"></i></div>
+                    <div class="assistant-avatar"><i class="fas fa-robot" aria-hidden="true"></i></div>
                     <div>
                         <p class="font-bold text-base leading-tight">Swapnil AI Assistant</p>
                         <p class="text-xs opacity-70">Products, pricing & orders</p>
                     </div>
                 </div>
                 <button
-                    onclick="toggleAssistant()"
+                    data-action="toggle-assistant"
                     style="background: none; border: none; color: white; cursor: pointer"
                     aria-label="Close assistant"
                 >
-                    <i class="fas fa-times"></i>
+                    <i class="fas fa-xmark" aria-hidden="true"></i>
                 </button>
             </div>
             <div class="assistant-messages" id="assistantMessages" aria-live="polite"></div>
@@ -2203,40 +3307,36 @@
                     aria-label="Ask the AI assistant a question"
                 />
                 <button type="button" id="voiceAssistantBtn" class="voice-btn-inline" aria-label="Ask by voice">
-                    <i class="fas fa-microphone"></i>
+                    <i class="fas fa-microphone" aria-hidden="true"></i>
                 </button>
                 <button type="submit" class="assistant-send-btn" aria-label="Send message">
-                    <i class="fas fa-paper-plane"></i>
+                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
                 </button>
             </form>
         </div>
 
         <div id="enquiryModal">
-            <div class="enquiry-modal-box" role="dialog" aria-modal="true" aria-label="Enquiry form" tabindex="-1">
+            <div class="enquiry-modal-box" role="dialog" aria-modal="true" aria-labelledby="enquiryModalTitle" tabindex="-1">
                 <div class="enquiry-modal-header">
                     <div>
-                        <h2 style="color: #fff; font-size: 1.15rem; font-weight: 700">📋 Enquiry Form</h2>
-                        <p style="color: rgba(255, 255, 255, 0.65); font-size: 0.75rem">
-                            Tell us about your requirements
-                        </p>
+                        <h2 id="enquiryModalTitle" class="text-white text-xl font-bold">Enquiry Form</h2>
+                        <p id="enquiryModalSubtitle" class="text-blue-100 text-xs mt-1">Tell us about your requirements</p>
                     </div>
-                    <button class="enquiry-close-btn" onclick="closeEnquiryModal()" aria-label="Close enquiry form">
-                        <i class="fas fa-trash-can"></i>
+                    <button class="enquiry-close-btn" data-action="close-enquiry" aria-label="Close enquiry form">
+                        <i class="fas fa-xmark" aria-hidden="true"></i>
                     </button>
                 </div>
                 <div class="enquiry-body">
                     <div class="enquiry-product-preview">
                         <img id="enquiry-product-img" src="" alt="Selected Product" loading="lazy" decoding="async" />
                         <div>
-                            <p class="text-xs font-bold text-sky-700">Selected Product</p>
-                            <p id="enquiry-product-name" class="font-bold text-gray-800"></p>
-                            <p id="enquiry-product-rate" class="text-sm font-semibold text-blue-600 mt-1"></p>
+                            <p class="text-xs text-gray-500">Selected Product</p>
+                            <p id="enquiry-product-name" class="font-bold text-gray-800 text-lg"></p>
+                            <p id="enquiry-product-rate" class="text-sm text-blue-600 font-semibold"></p>
                         </div>
                     </div>
-                    <div class="enquiry-field-wrap">
-                        <label class="text-xs font-bold text-gray-600 uppercase" id="enquiry-qty-label"
-                            >Quantity <i class="fas fa-layer-group"></i
-                        ></label>
+                    <div class="enquiry-field-wrap mb-4">
+                        <label class="block text-sm font-semibold text-gray-700 mb-1" id="enquiry-qty-label">Quantity</label>
                         <div
                             id="enquiry-qty-buttons"
                             class="enquiry-qty-buttons"
@@ -2245,46 +3345,55 @@
                         ></div>
                         <input type="hidden" id="enquiry-qty-value" />
                     </div>
-                    <div class="enquiry-field-wrap">
-                        <label class="text-xs font-bold text-gray-600 uppercase" for="enquiry-details"
-                            >Name & Address</label
-                        ><textarea
+                    <div class="enquiry-field-wrap mb-4">
+                        <label class="block text-sm font-semibold text-gray-700 mb-1" for="enquiry-details"
+                            >Workshop Name &amp; Address</label
+                        >
+                        <textarea
                             id="enquiry-details"
                             class="enquiry-textarea"
                             rows="2"
+                            maxlength="300"
                             placeholder="Any specific requirements..."
                         ></textarea>
                     </div>
-                    <div class="enquiry-field-wrap">
-                        <label class="text-xs font-bold text-gray-600 uppercase" for="enquiry-phone"
-                            >Your Phone Number *</label
-                        ><input
-                            type="tel"
-                            id="enquiry-phone"
-                            class="enquiry-input"
-                            maxlength="10"
-                            inputmode="numeric"
-                            placeholder="9876543210"
-                        />
-                        <p id="phone-error" class="text-red-500 text-xs hidden mt-1" role="alert">
-                            Enter valid 10-digit number
+                    <div class="enquiry-field-wrap mb-4">
+                        <label class="block text-sm font-semibold text-gray-700 mb-1" for="enquiry-phone"
+                            >Phone Number <span class="text-red-500">*</span></label
+                        >
+                        <div class="enquiry-phone-group">
+                            <input
+                                type="tel"
+                                id="enquiry-phone"
+                                class="enquiry-input"
+                                maxlength="10"
+                                inputmode="numeric"
+                                autocomplete="tel-national"
+                                placeholder="10-digit mobile number"
+                                aria-describedby="phone-error"
+                            />
+                        </div>
+                        <p id="phone-error" class="enquiry-error text-red-500 text-xs mt-1 hidden" role="alert">
+                            Enter a valid 10-digit mobile number
                         </p>
                     </div>
-                    <button class="enquiry-submit-btn" onclick="submitEnquiry()">
-                        <i class="fab fa-whatsapp"></i> Send Enquiry via WhatsApp
+                    <button class="enquiry-submit-btn" data-action="submit-enquiry">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i> Send Enquiry via WhatsApp
                     </button>
-                    <p class="text-center text-xs text-gray-400 mt-3">Directly sent to Swapnil Chemicals</p>
                 </div>
             </div>
         </div>
 
         <div id="addedCartModal">
             <div class="added-cart-box" role="dialog" aria-modal="true" aria-label="Added to cart" tabindex="-1">
-                <button class="added-cart-close-btn" onclick="closeAddedCartModal(event)" aria-label="Close">
-                    <i class="fas fa-trash-can"></i>
-                </button>
-                <p class="added-cart-product-name" id="addedCartProductName"></p>
-                <p class="added-cart-msg">has been added to your cart</p>
+                <div class="added-cart-hero">
+                    <button class="added-cart-close-btn" data-action="close-added-cart" aria-label="Close">
+                        <i class="fas fa-xmark" aria-hidden="true"></i>
+                    </button>
+                    <span class="added-cart-check" aria-hidden="true"><i class="fas fa-check"></i></span>
+                    <p class="added-cart-product-name" id="addedCartProductName"></p>
+                    <p class="added-cart-msg">has been added to your cart</p>
+                </div>
                 <div class="added-cart-body">
                     <div class="added-cart-img-wrap">
                         <img id="addedCartProductImg" src="" alt="" loading="lazy" decoding="async" />
@@ -2292,11 +3401,22 @@
                     <div class="added-cart-qty">
                         <p>Qty</p>
                         <div class="added-cart-qty-ctrl">
-                            <button type="button" onclick="changeAddedCartQty(-1)" aria-label="Decrease quantity">
+                            <button
+                                type="button"
+                                id="addedCartQtyMinus"
+                                data-action="added-cart-qty"
+                                data-delta="-1"
+                                aria-label="Decrease quantity"
+                            >
                                 −
                             </button>
                             <input type="text" id="addedCartQtyValue" value="1" readonly aria-live="polite" />
-                            <button type="button" onclick="changeAddedCartQty(1)" aria-label="Increase quantity">
+                            <button
+                                type="button"
+                                data-action="added-cart-qty"
+                                data-delta="1"
+                                aria-label="Increase quantity"
+                            >
                                 +
                             </button>
                         </div>
@@ -2304,13 +3424,13 @@
                 </div>
                 <p class="added-cart-line">
                     There are
-                    <a href="#" onclick="viewCartFromAddedModal(event)" id="addedCartItemsCount">0 items</a> in your
+                    <a href="#" data-action="view-cart-from-added" id="addedCartItemsCount">0 items</a> in your
                     cart.
                 </p>
                 <p class="added-cart-subtotal">Cart Subtotal: <b id="addedCartSubtotal">₹0</b></p>
                 <div class="added-cart-actions">
-                    <button class="added-cart-continue-btn" onclick="closeAddedCartModal(event)">Continue</button>
-                    <button class="added-cart-viewcart-btn" onclick="viewCartFromAddedModal(event)">View Cart</button>
+                    <button class="added-cart-continue-btn" data-action="close-added-cart">Continue</button>
+                    <button class="added-cart-viewcart-btn" data-action="view-cart-from-added">View Cart</button>
                 </div>
             </div>
         </div>
@@ -2323,15 +3443,15 @@
                 aria-label="Remove item from cart"
                 tabindex="-1"
             >
-                <div class="remove-confirm-icon"><i class="fas fa-trash-can"></i></div>
+                <div class="remove-confirm-icon"><i class="fas fa-trash-can" aria-hidden="true"></i></div>
                 <p class="remove-confirm-title">Remove item?</p>
                 <p class="remove-confirm-msg">
                     Are you sure you would like to remove <b id="removeConfirmProductName"></b> from the shopping cart?
                 </p>
                 <div class="added-cart-actions">
-                    <button class="added-cart-continue-btn" onclick="closeRemoveConfirmModal()">Cancel</button>
-                    <button class="remove-confirm-ok-btn" onclick="confirmRemoveFromCart(event)">
-                        <i class="fas fa-trash-can"></i> Remove
+                    <button class="added-cart-continue-btn" data-action="close-remove-confirm">Cancel</button>
+                    <button class="remove-confirm-ok-btn" data-action="confirm-remove">
+                        <i class="fas fa-trash-can" aria-hidden="true"></i> Remove
                     </button>
                 </div>
             </div>
@@ -2401,7 +3521,7 @@
                     if (btn) {
                         const original = btn.innerHTML;
                         btn.disabled = true;
-                        btn.innerHTML = '<i class="fas fa-check"></i>';
+                        btn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i>';
                         setTimeout(() => {
                             btn.innerHTML = original;
                             btn.disabled = false;
@@ -2410,22 +3530,6 @@
                 } catch (err) {
                     if (btn) btn.title = "Copy failed — please select the text manually";
                 }
-            }
-
-            async function shareProduct(productId) {
-                const product = products.find((p) => p.id === productId);
-                if (!product) return;
-                const shareText = `${product.name} — ${formatCurrency(product.price)}/${product.unit} at Swapnil Chemicals, Jaipur.`;
-                const shareUrl = window.location.href.split("#")[0] + "#products";
-                if (navigator.share) {
-                    try {
-                        await navigator.share({ title: product.name, text: shareText, url: shareUrl });
-                    } catch (err) {
-                        // user dismissed the native share sheet - nothing to do
-                    }
-                    return;
-                }
-                safeOpenNewTab(buildWhatsAppUrl(`${shareText}\n${shareUrl}`));
             }
 
             const products = [
@@ -2479,6 +3583,21 @@
             const LT_OPTIONS = [10, 35, 50];
             let cart = {};
             let lastCartBadgeCount = 0;
+
+            // Rebuild saved items from the live catalogue so stale or edited
+            // localStorage data can't inject markup or outdated prices.
+            function restoreCart(savedCart) {
+                const restored = {};
+                if (!savedCart || typeof savedCart !== "object") return restored;
+                Object.entries(savedCart).forEach(([key, item]) => {
+                    const product = products.find((p) => p.id === Number(item?.product?.id));
+                    const qty = Math.floor(Number(item?.qty));
+                    const selectedQty = Math.floor(Number(item?.selectedQty));
+                    if (!product || !(qty >= 1) || !(selectedQty >= 1)) return;
+                    restored[`${product.id}_${selectedQty}`] = { product, qty, selectedQty };
+                });
+                return restored;
+            }
 
             function addToCart(productId) {
                 const product = products.find((p) => p.id === productId);
@@ -2554,6 +3673,21 @@
                 });
             }
 
+            function cartUnitLabel(product) {
+                if (product.hasLtOptions && !product.qtyOptions) return "Lt";
+                return (product.qtyLabel || "pcs").trim();
+            }
+
+            function bumpElement(el) {
+                if (!el) return;
+                el.classList.remove("bump");
+                void el.offsetWidth;
+                el.classList.add("bump");
+            }
+
+            // Keys already on screen, so only newly added rows play the entrance animation.
+            let renderedCartKeys = new Set();
+
             function updateCartUI() {
                 const keys = Object.keys(cart);
                 const totalItems = keys.reduce((s, k) => s + cart[k].qty, 0);
@@ -2564,15 +3698,18 @@
 
                 badge.style.display = totalItems > 0 ? "flex" : "none";
                 badge.textContent = String(totalItems);
-                if (totalItems !== lastCartBadgeCount && totalItems > 0) {
-                    badge.classList.remove("bump");
-                    void badge.offsetWidth;
-                    badge.classList.add("bump");
-                }
+                if (totalItems !== lastCartBadgeCount && totalItems > 0) bumpElement(badge);
                 lastCartBadgeCount = totalItems;
 
+                const itemsLabel = `${totalItems} item${totalItems === 1 ? "" : "s"}`;
+                const headerCount = document.getElementById("cartHeaderCount");
+                if (headerCount) headerCount.textContent = itemsLabel;
+                const summaryItems = document.getElementById("cartSummaryItems");
+                if (summaryItems) summaryItems.textContent = String(totalItems);
+
                 if (keys.length === 0) {
-                    list.innerHTML = `<div class="cart-empty-msg"><i class="fas fa-shopping-cart text-3xl mb-3 block opacity-30"></i>Your cart is empty</div>`;
+                    renderedCartKeys = new Set();
+                    list.innerHTML = `<div class="cart-empty-msg"><i class="fas fa-shopping-cart text-3xl mb-2 block" aria-hidden="true"></i>Your cart is empty</div>`;
                     footer.style.display = "none";
                     return;
                 }
@@ -2586,31 +3723,40 @@
                     const totalQty = selectedQty * qty;
                     const lineTotal = product.price * totalQty;
                     grandTotal += lineTotal;
-                    const qLabel =
-                        product.hasLtOptions && !product.qtyOptions
-                            ? " Lt"
-                            : product.qtyOptions
-                              ? product.qtyLabel || " pcs"
-                              : " pcs";
+                    const unit = cartUnitLabel(product);
+                    const name = escapeHtml(product.name);
+                    const safeKey = escapeHtml(key);
 
-                    itemsHTML += `<div class="cart-item-row"><div style="flex:1"><p style="font-weight:500;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${product.name}</p>
-         <p style="font-size:11px;color:#64748b;">${totalQty}${qLabel} × ${formatCurrency(product.price)}/${qLabel.trim()} </p>
-          </div><div class="cart-item-qty-ctrl"><button class="cart-qty-btn" onclick="changeCartQty('${key}',-1,event)">−</button><span style="min-width:40px;text-align:center;font-size:12px;">${totalQty}${qLabel}</span><button class="cart-qty-btn" onclick="changeCartQty('${key}',1,event)">+</button></div><div style="display:flex;align-items:center;gap:8px;"><span style="font-weight:700;color:#1d4ed8;">${formatCurrency(lineTotal)}</span><button onclick="removeFromCart('${key}',event)" aria-label="Remove ${escapeHtml(product.name)} from cart" style="background:#fee2e2;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;color:#ef4444;border:none;cursor:pointer;flex-shrink:0;"><i class="fas fa-trash-can" style="font-size:11px;"></i></button></div></div>`;
+                    itemsHTML += `<div class="cart-item-row">
+                        <img src="${escapeHtml(product.image)}" alt="" loading="lazy" decoding="async" style="width:40px;height:40px;object-fit:contain;border-radius:8px;background:#f8fafc;flex-shrink:0">
+                        <div class="flex-1 min-w-0">
+                            <p class="font-semibold text-gray-800 truncate" title="${name}">${name}</p>
+                            <p class="text-xs text-gray-500">${totalQty} ${unit} &bull; ${formatCurrency(lineTotal)}</p>
+                        </div>
+                        <div class="cart-item-qty-ctrl">
+                            <button class="cart-qty-btn" data-action="cart-qty" data-key="${safeKey}" data-delta="-1" aria-label="Decrease ${name}"${qty <= 1 ? " disabled" : ""}>−</button>
+                            <span class="text-xs font-bold" aria-live="polite">${qty}</span>
+                            <button class="cart-qty-btn" data-action="cart-qty" data-key="${safeKey}" data-delta="1" aria-label="Increase ${name}">+</button>
+                            <button class="cart-item-remove text-red-400 hover:text-red-600 ml-1" data-action="remove-from-cart" data-key="${safeKey}" aria-label="Remove ${name} from cart" style="background:none;border:none;cursor:pointer"><i class="fas fa-trash-can text-xs" aria-hidden="true"></i></button>
+                        </div>
+                    </div>`;
                 });
 
                 list.innerHTML = itemsHTML;
-                const subtotalEl = document.getElementById("cartSubtotal");
-                const totalEl = document.getElementById("cartTotal");
-                if (subtotalEl) subtotalEl.innerHTML = formatCurrency(grandTotal);
-                if (totalEl) totalEl.innerHTML = formatCurrency(grandTotal);
+                renderedCartKeys = new Set(keys);
 
-                const safeAmount = Math.round(grandTotal);
+                const totalEl = document.getElementById("cartTotal");
+                if (totalEl) {
+                    const formatted = formatCurrency(grandTotal);
+                    if (totalEl.textContent !== formatted) {
+                        totalEl.textContent = formatted;
+                        bumpElement(totalEl);
+                    }
+                }
+
                 const gpayBtn = document.getElementById("cartGpayBtn");
                 if (gpayBtn) {
-                    gpayBtn.innerHTML = `
-      <i class="fab fa-whatsapp"></i>
-      Enquiry ${formatCurrency(safeAmount)}
-  `;
+                    gpayBtn.innerHTML = `<i class="fab fa-whatsapp" aria-hidden="true"></i> Send Enquiry &bull; ${formatCurrency(Math.round(grandTotal))}`;
                 }
             }
 
@@ -2694,6 +3840,11 @@
                 if (cartBtn) {
                     cartBtn.setAttribute("aria-expanded", "true");
                 }
+
+                const focusTarget =
+                    (cartPanel && cartPanel.querySelector(".cart-item-remove, .cart-browse-btn")) ||
+                    (cartPanel && cartPanel.querySelector(".cart-close-btn"));
+                if (focusTarget) focusTarget.focus({ preventScroll: true });
             }
 
             function clearCart() {
@@ -2703,6 +3854,7 @@
                 const cartPanel = document.getElementById("cartPanel");
                 const cartBtn = document.querySelector(".cart-icon-btn");
                 if (cartPanel) cartPanel.classList.add("hidden");
+                document.body.classList.remove("cart-open");
                 if (cartBtn) cartBtn.setAttribute("aria-expanded", "false");
             }
 
@@ -2711,10 +3863,19 @@
                 const btn = document.querySelector(".cart-icon-btn");
                 if (!panel) return;
                 const willOpen = panel.classList.contains("hidden");
+                if (willOpen) {
+                    renderedCartKeys = new Set();
+                    updateCartUI();
+                }
                 panel.classList.toggle("hidden");
+                document.body.classList.toggle("cart-open", willOpen);
                 if (btn) {
                     btn.setAttribute("aria-expanded", String(willOpen));
                     if (!willOpen) btn.focus();
+                }
+                if (willOpen) {
+                    const closeBtn = panel.querySelector(".cart-close-btn");
+                    if (closeBtn) setTimeout(() => closeBtn.focus({ preventScroll: true }), 50);
                 }
             }
 
@@ -2728,6 +3889,8 @@
                 const subtotalEl = document.getElementById("addedCartSubtotal");
                 if (!item || !qtyEl || !itemsCountEl || !subtotalEl) return;
                 qtyEl.value = String(item.qty);
+                const minusBtn = document.getElementById("addedCartQtyMinus");
+                if (minusBtn) minusBtn.disabled = item.qty <= 1;
                 const totalItems = Object.values(cart).reduce((s, i) => s + i.qty, 0);
                 const grandTotal = Object.values(cart).reduce((s, i) => s + i.product.price * i.selectedQty * i.qty, 0);
                 itemsCountEl.textContent = `${totalItems} item${totalItems === 1 ? "" : "s"}`;
@@ -2786,45 +3949,66 @@
                 if (panel && panel.classList.contains("hidden")) toggleCart();
             }
 
-            function openCartEnquiry() {
-                let productsHtml = "";
-                Object.keys(cart).forEach((key) => {
-                    const item = cart[key];
-                    const product = item.product;
-                    const qty = item.selectedQty * item.qty;
-                    const label = product.hasLtOptions && !product.qtyOptions ? "Lt" : product.qtyLabel || "pcs";
+            function setEnquiryHeader(title, subtitle, iconClass) {
+                const titleEl = document.getElementById("enquiryModalTitle");
+                const subtitleEl = document.getElementById("enquiryModalSubtitle");
+                const iconEl = document.querySelector(".enquiry-header-icon i");
+                if (titleEl) titleEl.textContent = title;
+                if (subtitleEl) subtitleEl.textContent = subtitle;
+                if (iconEl) iconEl.className = iconClass;
+            }
 
-                    productsHtml += `
-          <div class="enquiry-product-preview">
-              <img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async">
-              <div>
-                  <p class="text-xs font-bold text-sky-700">Selected Product</p>
-                  <p class="font-bold text-gray-800">${product.name}</p>
-                  <p class="text-sm font-semibold text-blue-600 mt-1">${qty} ${label} × ${formatCurrency(product.price)}/${label.trim()}</p>
-              </div>
-          </div>
-          `;
-                });
+            function openCartEnquiry() {
+                const keys = Object.keys(cart);
+                if (!keys.length) return;
+                let grandTotal = 0;
+                const itemsHtml = keys
+                    .map((key) => {
+                        const { product, qty: packs, selectedQty } = cart[key];
+                        const qty = selectedQty * packs;
+                        const unit = cartUnitLabel(product);
+                        const lineTotal = product.price * qty;
+                        grandTotal += lineTotal;
+                        return `<div class="flex items-center gap-3 py-2 border-b border-sky-100 last:border-0">
+                            <img src="${escapeHtml(product.image)}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-contain bg-white rounded-lg flex-shrink-0">
+                            <div class="flex-1 min-w-0">
+                                <p class="font-semibold text-gray-800 text-sm truncate">${escapeHtml(product.name)}</p>
+                                <p class="text-xs text-gray-500">${qty} ${unit} &times; ${formatCurrency(product.price)}/${unit}</p>
+                            </div>
+                            <span class="font-bold text-sm text-gray-800">${formatCurrency(lineTotal)}</span>
+                        </div>`;
+                    })
+                    .join("");
 
                 const body = document.querySelector(".enquiry-body");
                 if (!body) return;
                 body.innerHTML = `
-          ${productsHtml}
-          <div class="enquiry-field-wrap">
-              <label class="text-xs font-bold text-gray-600 uppercase" for="cart-enquiry-details">Name &amp; Address</label>
-              <textarea id="cart-enquiry-details" class="enquiry-textarea" rows="2" placeholder="Any specific requirements..."></textarea>
+          <div class="bg-sky-50 border border-sky-200 rounded-2xl p-4 mb-5" aria-label="Order summary">
+              ${itemsHtml}
+              <div class="flex justify-between items-center pt-3 font-bold text-gray-800"><span>Grand Total</span><span class="text-blue-600">${formatCurrency(grandTotal)}</span></div>
           </div>
-          <div class="enquiry-field-wrap">
-              <label class="text-xs font-bold text-gray-600 uppercase" for="cart-enquiry-phone">Your Phone Number *</label>
-              <input type="tel" id="cart-enquiry-phone" class="enquiry-input" maxlength="10" inputmode="numeric" placeholder="9876543210">
-              <p id="cart-phone-error" class="text-red-500 text-xs hidden mt-1" role="alert">Enter a valid 10-digit mobile number</p>
+          <div class="enquiry-field-wrap mb-4">
+              <label class="block text-sm font-semibold text-gray-700 mb-1" for="cart-enquiry-details">Workshop Name &amp; Address</label>
+              <textarea id="cart-enquiry-details" class="enquiry-textarea" rows="2" maxlength="300" placeholder="Workshop name, address, any specific requirements..."></textarea>
           </div>
-          <button class="enquiry-submit-btn" onclick="submitCartEnquiry()">
-              <i class="fab fa-whatsapp"></i>
-              Send Enquiry via WhatsApp
+          <div class="enquiry-field-wrap mb-4">
+              <label class="block text-sm font-semibold text-gray-700 mb-1" for="cart-enquiry-phone">Phone Number <span class="text-red-500">*</span></label>
+              <div class="enquiry-phone-group">
+                  <input type="tel" id="cart-enquiry-phone" class="enquiry-input" maxlength="10" inputmode="numeric" autocomplete="tel-national" placeholder="10-digit mobile number" aria-describedby="cart-phone-error">
+              </div>
+              <p id="cart-phone-error" class="enquiry-error text-red-500 text-xs mt-1 hidden" role="alert">Enter a valid 10-digit mobile number</p>
+          </div>
+          <button class="enquiry-submit-btn" data-action="submit-cart-enquiry">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> Send Enquiry via WhatsApp
           </button>
           <p class="text-center text-xs text-gray-400 mt-3">Your enquiry will be sent directly to <b>Swapnil Chemicals</b> on WhatsApp</p>
       `;
+                const totalItems = keys.reduce((s, k) => s + cart[k].qty, 0);
+                setEnquiryHeader(
+                    "Cart Enquiry",
+                    `${totalItems} item${totalItems === 1 ? "" : "s"} \u2022 ${formatCurrency(grandTotal)}`,
+                    "fas fa-bag-shopping"
+                );
                 const modal = document.getElementById("enquiryModal");
                 if (modal) {
                     lastFocusedBeforeEnquiry = document.activeElement;
@@ -2841,8 +4025,7 @@
                 const phoneErrorEl = document.getElementById("cart-phone-error");
                 const phone = phoneEl ? phoneEl.value.trim() : "";
                 if (!isValidIndianMobile(phone)) {
-                    if (phoneErrorEl) phoneErrorEl.classList.remove("hidden");
-                    if (phoneEl) phoneEl.focus();
+                    showPhoneError(phoneErrorEl, phoneEl);
                     return;
                 }
                 if (phoneErrorEl) phoneErrorEl.classList.add("hidden");
@@ -2860,12 +4043,9 @@
                         `📦 ${product.name} - Qty: ${qty} ${label}, Price: ${formatCurrency(product.price)} = Total: ${formatCurrency(lineTotal)}`
                     );
                 });
-                lines.push(
-                    ``,
-                    `📝 Details: ${details}`,
-                    `📱 Phone: ${phone}`,
-                    `💰 Grand Total: ${formatCurrency(grandTotal)}`
-                );
+                lines.push(``);
+                if (details) lines.push(`📝 Details: ${details}`);
+                lines.push(`📱 Phone: ${APP.COUNTRY_CODE} ${phone}`, `💰 Grand Total: ${formatCurrency(grandTotal)}`);
                 safeOpenNewTab(buildWhatsAppUrl(lines.join("\n")));
                 closeEnquiryModal();
             }
@@ -2881,14 +4061,14 @@
                         qtyOpts
                             .map(
                                 (qty, i) =>
-                                    `<button type="button" class="qty-btn ${i === 0 ? "active" : ""}" data-lt="${qty}" data-price="${product.price}" data-product="${encodeURIComponent(product.name)}" data-qty-label="${qtyLabel}" aria-pressed="${i === 0}" onclick="selectQty(this)">${qty} ${qtyLabel}</button>`
+                                    `<button type="button" class="qty-btn ${i === 0 ? "active" : ""}" data-lt="${qty}" data-price="${product.price}" data-product="${encodeURIComponent(product.name)}" data-qty-label="${qtyLabel}" aria-pressed="${i === 0}" data-action="select-qty">${qty} ${qtyLabel}</button>`
                             )
                             .join("") +
                         `</div></div>`;
                 } else {
                     qtyBtnsHtml = "";
                 }
-                return `<div class="product-card rounded-2xl overflow-hidden group" data-product-id="${product.id}"><div class="product-image-container"><img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.style.display='none'; this.nextElementSibling.style.opacity='1';"><div class="product-image-fallback"><i class="fas fa-image text-4xl mb-2"></i><p>Image not available</p></div></div><div class="p-6"><h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600">${product.name}</h3><p class="text-gray-600 mb-4">${product.description}</p><div class="flex justify-between items-center"><div class="text-2xl font-bold gradient-text">${formatCurrency(product.price)}<span class="text-lg text-gray-500 ml-1">/${product.unit}</span></div><div class="flex space-x-2"><a href="tel:9352470085" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-sm" aria-label="Call for ${product.name}"><i class="fas fa-phone"></i></a><button class="enquiry-trigger-btn" onclick="openEnquiryModal(${product.id})"><i class="fas fa-clipboard-list"></i> Enquiry</button></div></div>${qtyBtnsHtml}<button class="add-to-cart-btn" data-add-cart="${product.id}" onclick="addToCart(${product.id})"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div></div>`;
+                return `<div class="product-card rounded-2xl overflow-hidden group" data-product-id="${product.id}"><span class="product-spotlight" aria-hidden="true"></span><div class="product-image-container"><img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy" decoding="async"><div class="product-image-fallback"><i class="fas fa-image text-4xl mb-2" aria-hidden="true"></i><p>Image not available</p></div></div><div class="p-6"><h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600">${product.name}</h3><p class="text-gray-600 mb-4">${product.description}</p><div class="flex justify-between items-center"><div class="text-2xl font-bold gradient-text">${formatCurrency(product.price)}<span class="text-lg text-gray-500 ml-1">/${product.unit}</span></div><div class="flex space-x-2"><a href="tel:9352470085" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-sm" aria-label="Call for ${product.name}"><i class="fas fa-phone" aria-hidden="true"></i></a><button class="enquiry-trigger-btn" data-action="open-enquiry" data-product-id="${product.id}"><i class="fas fa-clipboard-list" aria-hidden="true"></i> Enquiry</button></div></div>${qtyBtnsHtml}<button class="add-to-cart-btn" data-action="add-to-cart" data-product-id="${product.id}"><i class="fas fa-shopping-cart" aria-hidden="true"></i> Add to Cart</button></div></div>`;
             }
 
             function selectQty(btn) {
@@ -3074,6 +4254,19 @@
             let currentEnquiryProduct = null;
             let lastFocusedBeforeEnquiry = null;
 
+            // The cart enquiry swaps out .enquiry-body, so keep the single-product
+            // markup to restore it the next time a product enquiry is opened.
+            const ENQUIRY_BODY_TEMPLATE = document.querySelector(".enquiry-body")?.innerHTML ?? "";
+
+            function showPhoneError(errorEl, inputEl) {
+                if (errorEl) {
+                    errorEl.classList.add("hidden");
+                    void errorEl.offsetWidth;
+                    errorEl.classList.remove("hidden");
+                }
+                if (inputEl) inputEl.focus();
+            }
+
             function getFocusableElements(container) {
                 return Array.from(
                     container.querySelectorAll(
@@ -3082,9 +4275,7 @@
                 ).filter((el) => el.offsetParent !== null);
             }
 
-            function trapEnquiryFocus(e) {
-                const modal = document.getElementById("enquiryModal");
-                const box = modal && modal.querySelector(".enquiry-modal-box");
+            function trapFocusWithin(box, e) {
                 if (e.key !== "Tab" || !box) return;
                 const focusable = getFocusableElements(box);
                 if (!focusable.length) return;
@@ -3103,6 +4294,9 @@
                 const product = products.find((p) => p.id === productId);
                 if (!product) return;
                 currentEnquiryProduct = product;
+                const body = document.querySelector(".enquiry-body");
+                if (body && ENQUIRY_BODY_TEMPLATE) body.innerHTML = ENQUIRY_BODY_TEMPLATE;
+                setEnquiryHeader("Product Enquiry", "Tell us about your requirements", "fas fa-clipboard-list");
                 const productName = document.getElementById("enquiry-product-name");
                 const productImg = document.getElementById("enquiry-product-img");
                 const productRate = document.getElementById("enquiry-product-rate");
@@ -3112,6 +4306,7 @@
 
                 productName.innerText = product.name;
                 productImg.src = product.image;
+                productImg.alt = product.name;
                 productRate.innerText = `${formatCurrency(product.price)} / ${product.unit}`;
                 const qtyOpts = product.qtyOptions || (product.hasLtOptions ? LT_OPTIONS : []);
                 const qtyLabel = product.qtyLabel || (product.hasLtOptions ? "Lt" : "pcs");
@@ -3146,7 +4341,7 @@
                 const phoneError = document.getElementById("phone-error");
                 if (details) details.value = "";
                 if (phone) phone.value = "";
-                if (phoneError) phoneError.style.display = "none";
+                if (phoneError) phoneError.classList.add("hidden");
 
                 const modal = document.getElementById("enquiryModal");
                 if (modal) {
@@ -3182,10 +4377,10 @@
 
                 const phone = phoneEl.value.trim();
                 if (!isValidIndianMobile(phone)) {
-                    phoneError.style.display = "block";
+                    showPhoneError(phoneError, phoneEl);
                     return;
                 }
-                phoneError.style.display = "none";
+                phoneError.classList.add("hidden");
 
                 const qtyEl = document.getElementById("enquiry-qty-value");
                 const detailsEl = document.getElementById("enquiry-details");
@@ -3203,6 +4398,27 @@
                 safeOpenNewTab(buildWhatsAppUrl(lines.join("\n")));
                 closeEnquiryModal();
             }
+
+            document.addEventListener("input", (e) => {
+                const input = e.target;
+                if (!input.matches || !input.matches('.enquiry-phone-group input[type="tel"]')) return;
+                const digits = input.value.replace(/\D/g, "").slice(0, 10);
+                if (digits !== input.value) input.value = digits;
+                const group = input.closest(".enquiry-phone-group");
+                if (group) group.classList.toggle("is-valid", isValidIndianMobile(digits));
+                const error = input.closest(".enquiry-field-wrap")?.querySelector(".enquiry-error");
+                if (error && isValidIndianMobile(digits)) error.classList.add("hidden");
+            });
+
+            document.addEventListener("input", (e) => {
+                const field = e.target;
+                if (!field.matches || !field.matches(".enquiry-textarea")) return;
+                const counter = document.getElementById(`${field.id}-count`);
+                if (!counter) return;
+                const max = field.maxLength > 0 ? field.maxLength : 300;
+                counter.textContent = `${field.value.length} / ${max}`;
+                counter.classList.toggle("is-near", field.value.length >= max * 0.9);
+            });
 
             const enquiryModal = document.getElementById("enquiryModal");
             if (enquiryModal) {
@@ -3276,8 +4492,15 @@
                     }
                     return;
                 }
+                const cartPanelEl = document.getElementById("cartPanel");
                 if (enquiryModal && enquiryModal.classList.contains("show")) {
-                    trapEnquiryFocus(e);
+                    trapFocusWithin(enquiryModal.querySelector(".enquiry-modal-box"), e);
+                } else if (removeConfirmModal && removeConfirmModal.classList.contains("show")) {
+                    trapFocusWithin(removeConfirmModal.querySelector(".remove-confirm-box"), e);
+                } else if (addedCartModal && addedCartModal.classList.contains("show")) {
+                    trapFocusWithin(addedCartModal.querySelector(".added-cart-box"), e);
+                } else if (cartPanelEl && !cartPanelEl.classList.contains("hidden")) {
+                    trapFocusWithin(cartPanelEl, e);
                 }
             });
 
@@ -3455,7 +4678,7 @@
                     btn.className = "assistant-chip";
                     btn.style.cssText =
                         "align-self:flex-start;margin-top:-4px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;";
-                    btn.innerHTML = '<i class="fab fa-whatsapp"></i> Ask on WhatsApp';
+                    btn.innerHTML = '<i class="fab fa-whatsapp" aria-hidden="true"></i> Ask on WhatsApp';
                     btn.addEventListener("click", () => {
                         safeOpenNewTab(buildWhatsAppUrl(`Hi Swapnil Chemicals, I have a question: ${trimmed}`));
                     });
@@ -3522,7 +4745,8 @@
                         e.forEach((entry) => {
                             if (entry.isIntersecting) {
                                 entry.target.style.opacity = "1";
-                                entry.target.style.transform = "translateY(0)";
+                                entry.target.style.translate = "0 0";
+                                obs.unobserve(entry.target);
                             }
                         }),
                     {
@@ -3530,10 +4754,106 @@
                     }
                 );
                 cards.forEach((c) => {
+                    // Animate `translate` (not `transform`) so hover lift/tilt transforms still apply.
                     c.style.opacity = "0";
-                    c.style.transform = "translateY(30px)";
-                    c.style.transition = "0.6s";
+                    c.style.translate = "0 30px";
+                    c.style.transition = "opacity 0.6s ease, translate 0.6s ease, transform 0.35s ease, box-shadow 0.35s ease";
                     obs.observe(c);
+                });
+            }
+
+            function prefersReducedMotion() {
+                return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            }
+
+            function hasFinePointer() {
+                return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+            }
+
+            // Decorative foam bubbles rising through the hero; skipped for reduced motion.
+            function initHeroBubbles() {
+                const wrap = document.getElementById("heroBubbles");
+                if (!wrap || prefersReducedMotion()) return;
+                const count = window.innerWidth < 768 ? 10 : 20;
+                const frag = document.createDocumentFragment();
+                for (let i = 0; i < count; i++) {
+                    const bubble = document.createElement("span");
+                    bubble.className = "bubble";
+                    bubble.style.setProperty("--s", `${8 + Math.random() * 38}px`);
+                    bubble.style.setProperty("--x", `${Math.random() * 100}%`);
+                    bubble.style.setProperty("--dur", `${9 + Math.random() * 10}s`);
+                    bubble.style.setProperty("--delay", `${-Math.random() * 18}s`);
+                    bubble.style.setProperty("--drift", `${(Math.random() - 0.5) * 120}px`);
+                    frag.appendChild(bubble);
+                }
+                wrap.appendChild(frag);
+            }
+
+            function initHeaderOnScroll() {
+                const header = document.querySelector("header.nav-blur");
+                if (!header) return;
+                const update = () => header.classList.toggle("scrolled", window.scrollY > 24);
+                window.addEventListener("scroll", update, { passive: true });
+                update();
+            }
+
+            // Delegated on the grid so it keeps working after search re-renders the cards.
+            function initCardTilt() {
+                const grid = document.getElementById("productsGrid");
+                if (!grid || prefersReducedMotion() || !hasFinePointer()) return;
+                const MAX_TILT_DEG = 5;
+                grid.addEventListener("pointermove", (e) => {
+                    const card = e.target.closest(".product-card");
+                    if (!card) return;
+                    const rect = card.getBoundingClientRect();
+                    const px = (e.clientX - rect.left) / rect.width;
+                    const py = (e.clientY - rect.top) / rect.height;
+                    card.style.setProperty("--mx", `${px * 100}%`);
+                    card.style.setProperty("--my", `${py * 100}%`);
+                    card.style.setProperty("--ry", `${(px - 0.5) * MAX_TILT_DEG * 2}deg`);
+                    card.style.setProperty("--rx", `${(0.5 - py) * MAX_TILT_DEG * 2}deg`);
+                    card.classList.add("is-tilting");
+                });
+                grid.addEventListener("pointerout", (e) => {
+                    const card = e.target.closest(".product-card");
+                    if (!card || card.contains(e.relatedTarget)) return;
+                    card.classList.remove("is-tilting");
+                    card.style.setProperty("--rx", "0deg");
+                    card.style.setProperty("--ry", "0deg");
+                });
+            }
+
+            function initMagneticButtons() {
+                if (prefersReducedMotion() || !hasFinePointer()) return;
+                document.querySelectorAll(".magnetic").forEach((el) => {
+                    el.addEventListener("pointermove", (e) => {
+                        const rect = el.getBoundingClientRect();
+                        el.style.setProperty("--tx", `${(e.clientX - rect.left - rect.width / 2) * 0.18}px`);
+                        el.style.setProperty("--ty", `${(e.clientY - rect.top - rect.height / 2) * 0.25}px`);
+                    });
+                    el.addEventListener("pointerleave", () => {
+                        el.style.setProperty("--tx", "0px");
+                        el.style.setProperty("--ty", "0px");
+                    });
+                });
+            }
+
+            const RIPPLE_SELECTOR =
+                ".btn-shine, .add-to-cart-btn, .enquiry-trigger-btn, .enquiry-submit-btn, .added-cart-viewcart-btn";
+
+            function initRipples() {
+                if (prefersReducedMotion()) return;
+                document.addEventListener("pointerdown", (e) => {
+                    const btn = e.target.closest(RIPPLE_SELECTOR);
+                    if (!btn) return;
+                    const rect = btn.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height) * 2;
+                    const ripple = document.createElement("span");
+                    ripple.className = "ripple";
+                    ripple.setAttribute("aria-hidden", "true");
+                    ripple.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size / 2}px;top:${e.clientY - rect.top - size / 2}px`;
+                    btn.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 700);
                 });
             }
 
@@ -3546,6 +4866,104 @@
                 initScrollAnimations();
             }
 
+            // Single delegated listener handles every data-action element, including
+            // ones rendered later via innerHTML (product cards, cart rows, qty buttons).
+            function handleGlobalClick(e) {
+                const target = e.target.closest("[data-action]");
+                if (!target) return;
+                const productId = Number(target.dataset.productId);
+                const delta = Number(target.dataset.delta);
+                switch (target.dataset.action) {
+                    case "toggle-cart":
+                        toggleCart();
+                        break;
+                    case "toggle-assistant":
+                        toggleAssistant();
+                        break;
+                    case "copy":
+                        copyText(target.dataset.copyText, target);
+                        break;
+                    case "open-cart-enquiry":
+                        openCartEnquiry();
+                        break;
+                    case "clear-cart":
+                        clearCart();
+                        break;
+                    case "close-enquiry":
+                        closeEnquiryModal();
+                        break;
+                    case "submit-enquiry":
+                        submitEnquiry();
+                        break;
+                    case "close-added-cart":
+                        closeAddedCartModal(e);
+                        break;
+                    case "added-cart-qty":
+                        changeAddedCartQty(delta);
+                        break;
+                    case "view-cart-from-added":
+                        viewCartFromAddedModal(e);
+                        break;
+                    case "close-remove-confirm":
+                        closeRemoveConfirmModal();
+                        break;
+                    case "confirm-remove":
+                        confirmRemoveFromCart(e);
+                        break;
+                    case "cart-qty":
+                        changeCartQty(target.dataset.key, delta, e);
+                        break;
+                    case "remove-from-cart":
+                        removeFromCart(target.dataset.key, e);
+                        break;
+                    case "submit-cart-enquiry":
+                        submitCartEnquiry();
+                        break;
+                    case "select-qty":
+                        selectQty(target);
+                        break;
+                    case "open-enquiry":
+                        openEnquiryModal(productId);
+                        break;
+                    case "browse-products": {
+                        toggleCart();
+                        const productsSection = document.getElementById("products");
+                        if (productsSection) productsSection.scrollIntoView({ behavior: "smooth" });
+                        break;
+                    }
+                    case "add-to-cart":
+                        addToCart(productId);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            document.addEventListener("click", handleGlobalClick);
+
+            // load/error don't bubble, but the capture phase still sees them on the way
+            // down — this replaces per-image onload/onerror attributes for every
+            // .product-image, including ones rendered after this listener is attached.
+            document.addEventListener(
+                "load",
+                (e) => {
+                    if (e.target.matches && e.target.matches(".product-image")) {
+                        e.target.classList.add("loaded");
+                    }
+                },
+                true
+            );
+            document.addEventListener(
+                "error",
+                (e) => {
+                    if (e.target.matches && e.target.matches(".product-image")) {
+                        e.target.style.display = "none";
+                        const fallback = e.target.nextElementSibling;
+                        if (fallback) fallback.style.opacity = "1";
+                    }
+                },
+                true
+            );
+
             document.addEventListener("DOMContentLoaded", () => {
                 renderProducts();
                 initProductSearch();
@@ -3555,13 +4973,16 @@
                 initScrollProgress();
                 initSmoothScrolling();
                 initCardReveal();
+                initHeroBubbles();
+                initHeaderOnScroll();
+                initCardTilt();
+                initMagneticButtons();
+                initRipples();
                 const yearEl = document.getElementById("copyrightYear");
                 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
                 const saved = localStorage.getItem(APP.CART_STORAGE_KEY);
-                if (saved) {
-                    cart = safeParseJSON(saved, {});
-                    updateCartUI();
-                }
+                if (saved) cart = restoreCart(safeParseJSON(saved, {}));
+                updateCartUI();
             });
         </script>
     </body>
