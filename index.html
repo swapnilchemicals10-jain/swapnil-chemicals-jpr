@@ -2227,6 +2227,19 @@
             }
 
             /* ---------- FAQ ---------- */
+            
+            #faq summary .fa-minus {
+                display: none;
+            }
+
+            #faq details[open] summary .fa-minus {
+                display: inline-block;
+            }
+
+            #faq details[open] summary .fa-plus {
+                display: none;
+            }
+
             #faq details {
                 transition:
                     box-shadow 0.3s ease,
