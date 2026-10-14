@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Home 10-10-26-->
+<!-- Home 14-10-26-->
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -21,7 +21,7 @@
         />
         <meta name="robots" content="index, follow" />
         <meta name="color-scheme" content="light" />
-        <meta name="theme-color" content="#1e293b" />
+        <meta name="theme-color" content="#2a0612" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -47,7 +47,7 @@
 
         <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.gstatic.com https://api.qrserver.com; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self';"
+            content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self';"
         />
         <!-- frame-ancestors is ignored by browsers when set via <meta>; real clickjacking protection needs an X-Frame-Options/CSP response header from the server -->
 
@@ -66,7 +66,7 @@
             onload="this.media='all'"
         />
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&family=Yatra+One&display=swap"
             rel="stylesheet"
             media="print"
             onload="this.media='all'"
@@ -74,7 +74,7 @@
         <noscript>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
             <link
-                href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap"
+                href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&family=Yatra+One&display=swap"
                 rel="stylesheet"
             />
         </noscript>
@@ -704,26 +704,6 @@
                 padding: 32px 16px;
                 color: #94a3b8;
                 font-size: 14px;
-            }
-
-            .gpay-btn {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 8px;
-                width: 100%;
-                padding: 10px 12px;
-                border-radius: 0.875rem;
-                font-weight: 700;
-                background: linear-gradient(135deg, #34a853, #1a8a3c);
-                color: #fff;
-                text-decoration: none;
-                transition: all 0.25s ease;
-            }
-
-            .gpay-btn:hover {
-                background: linear-gradient(135deg, #2d9142, #0f6e2d);
-                transform: translateY(-1px);
             }
 
             /* Native <dialog> modals. The dialog is a transparent full-viewport layer (so a click
@@ -1522,7 +1502,6 @@
                     .add-to-cart-btn,
                     .enquiry-trigger-btn,
                     .enquiry-submit-btn,
-                    .gpay-btn,
                     .cart-icon-btn,
                     .ai-assistant-btn,
                     .assistant-send-btn
@@ -2839,6 +2818,837 @@
                     }
                 }
             }
+
+            /* ================================================================
+               Dussehra theme: dusk sky, saffron & gold, Ravan dahan effigy,
+               Ram's bow with flaming arrows, pennant bunting, marigold toran
+               and Surya motifs. Layered on top of everything above, so
+               deleting this block restores the old look.
+               ================================================================ */
+            :root {
+                --page-bg: #fff7ed;
+                --violet-deep: #3b0a0a;
+                --violet: #c2410c;
+                --violet-bright: #ea580c;
+                --indigo: #b91c1c;
+                --cyan: #fbbf24;
+                --brand-accent: #ea580c;
+                --brand-accent-dark: #c2410c;
+                --brand-cta: #dc2626;
+                --brand-cta-dark: #b91c1c;
+                --dussehra-saffron: #f97316;
+                --dussehra-gold: #fbbf24;
+                --dussehra-vermilion: #dc2626;
+                --dussehra-maroon: #7f1d1d;
+                --font-festive: "Yatra One", var(--font-display);
+                --glow-violet: 0 0 0 1px rgba(234, 88, 12, 0.28), 0 24px 50px -16px rgba(194, 65, 12, 0.45);
+            }
+
+            ::selection {
+                background: var(--dussehra-saffron);
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background: linear-gradient(180deg, #fbbf24, #f97316 50%, #dc2626);
+            }
+
+            html {
+                scrollbar-color: #ea580c #fed7aa;
+            }
+
+            :is(button, a, input, textarea, select, summary):focus-visible {
+                outline-color: #c2410c;
+            }
+
+            body::before {
+                background: radial-gradient(40vw 40vw at 0% 30%, rgba(249, 115, 22, 0.12), transparent 70%),
+                    radial-gradient(35vw 35vw at 100% 60%, rgba(220, 38, 38, 0.08), transparent 70%),
+                    radial-gradient(30vw 30vw at 50% 100%, rgba(251, 191, 36, 0.1), transparent 70%);
+            }
+
+            .text-blue-600 {
+                color: #c2410c;
+            }
+
+            .ring-blue-500\/20 {
+                --tw-ring-color: rgba(249, 115, 22, 0.6);
+            }
+
+            /* ---------- Greeting ribbon ---------- */
+            .dussehra-ribbon {
+                position: relative;
+                z-index: 51;
+                padding: 8px 16px;
+                text-align: center;
+                font-size: 0.85rem;
+                font-weight: 600;
+                color: #fff7ed;
+                background: linear-gradient(90deg, #7f1d1d, #dc2626 25%, #f97316 50%, #dc2626 75%, #7f1d1d);
+                background-size: 200% 100%;
+                animation: gradient-pan 10s linear infinite;
+            }
+
+            .dussehra-ribbon b {
+                font-family: var(--font-festive);
+                font-weight: 400;
+                font-size: 1.05rem;
+                color: #fde68a;
+            }
+
+            /* ---------- Toran (marigold & mango-leaf garland) under the header ---------- */
+            .dussehra-toran {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 100%;
+                height: 30px;
+                pointer-events: none;
+                background:
+                    radial-gradient(circle at 9px 8px, #fde047 0 3px, #f59e0b 3.5px 7px, transparent 7.5px) 0 0 / 36px 16px repeat-x,
+                    radial-gradient(circle at 9px 8px, #fb923c 0 3px, #ea580c 3.5px 7px, transparent 7.5px) 18px 0 / 36px 16px repeat-x,
+                    radial-gradient(ellipse 5px 11px at 36px 20px, #15803d 0 85%, transparent 100%) 0 0 / 72px 30px repeat-x,
+                    radial-gradient(circle at 36px 28px, #dc2626 0 2.5px, transparent 3px) 0 0 / 72px 30px repeat-x;
+                filter: drop-shadow(0 3px 3px rgba(127, 29, 29, 0.25));
+            }
+
+            .nav-blur {
+                border-bottom: 2px solid #f97316;
+                background: rgba(255, 247, 237, 0.97);
+            }
+
+            .nav-blur.scrolled {
+                background: rgba(255, 247, 237, 0.99);
+            }
+
+            /* ---------- Gradient text & headings ---------- */
+            .gradient-text {
+                background: linear-gradient(120deg, #7f1d1d, #dc2626 30%, #ea580c 60%, #d97706);
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+
+            .section-eyebrow {
+                color: #9a3412;
+                background: rgba(249, 115, 22, 0.14);
+                border-color: rgba(234, 88, 12, 0.35);
+            }
+
+            .section-eyebrow::before {
+                content: "🏹";
+                width: auto;
+                height: auto;
+                background: none;
+                box-shadow: none;
+                font-size: 0.95rem;
+                letter-spacing: 0;
+            }
+
+            .section-divider.max-w-xs {
+                background: linear-gradient(90deg, #dc2626, #f97316, #fde047, #f97316, #dc2626);
+            }
+
+            /* ---------- Hero: Dussehra dusk sky ---------- */
+            .hero-gradient {
+                background: radial-gradient(1000px 380px at 50% 115%, rgba(249, 115, 22, 0.6), transparent 65%),
+                    radial-gradient(520px 420px at 88% 100%, rgba(220, 38, 38, 0.5), transparent 70%),
+                    radial-gradient(700px 500px at 5% -10%, rgba(91, 33, 182, 0.4), transparent 60%),
+                    linear-gradient(180deg, #120a2e 0%, #2e1065 28%, #581c3c 55%, #7c2d12 82%, #9a3412 100%);
+            }
+
+            .hero-grid {
+                display: none;
+            }
+
+            .orb-1 {
+                --orb-color: rgba(220, 38, 38, 0.5);
+            }
+
+            .orb-2 {
+                --orb-color: rgba(251, 191, 36, 0.4);
+            }
+
+            .orb-3 {
+                --orb-color: rgba(249, 115, 22, 0.7);
+            }
+
+            /* Rising "bubbles" become fire embers */
+            .bubble {
+                width: calc(var(--s) * 0.25);
+                height: calc(var(--s) * 0.25);
+                border: none;
+                background: radial-gradient(circle, #fff 0 15%, #fde047 35%, #f97316 55%, rgba(220, 38, 38, 0) 72%);
+                box-shadow: 0 0 10px 2px rgba(249, 115, 22, 0.55);
+            }
+
+            .dussehra-sky {
+                position: absolute;
+                inset: 0;
+                z-index: 2;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+            }
+
+            .hero-gradient {
+                cursor: crosshair;
+            }
+
+            .hero-gradient :is(a, button) {
+                cursor: pointer;
+            }
+
+            .dussehra-greeting {
+                display: block;
+                margin-top: 1.25rem;
+                font-family: var(--font-festive);
+                font-size: clamp(1.6rem, 1.1rem + 2.2vw, 2.75rem);
+                line-height: 1.2;
+                background: linear-gradient(90deg, #fde68a, #fbbf24, #f97316, #fbbf24, #fde68a);
+                background-size: 200% 100%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                animation: gradient-pan 6s linear infinite;
+                text-shadow: 0 0 30px rgba(249, 115, 22, 0.35);
+            }
+
+            .dussehra-tagline {
+                margin-top: 0.35rem;
+                font-size: 0.95rem;
+                font-weight: 500;
+                letter-spacing: 0.04em;
+                color: rgba(254, 215, 170, 0.85);
+            }
+
+            .dussehra-tagline span {
+                font-family: var(--font-festive);
+                font-size: 1.05rem;
+                letter-spacing: 0;
+            }
+
+            .hero-shine-text {
+                background: linear-gradient(90deg, #fde68a, #fbbf24 30%, #f97316 60%, #ef4444);
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+
+            .hero-chip {
+                color: #ffedd5;
+                border-color: rgba(249, 115, 22, 0.5);
+                background: rgba(249, 115, 22, 0.14);
+            }
+
+            .hero-chip-dot,
+            .site-footer .footer-chip-dot {
+                background: #f97316;
+            }
+
+            .hero-chip-dot::after,
+            .site-footer .footer-chip-dot::after {
+                border-color: #f97316;
+            }
+
+            .hero-lead {
+                color: rgba(255, 237, 213, 0.92);
+            }
+
+            .hero-trust li {
+                color: #ffedd5;
+                background: rgba(249, 115, 22, 0.12);
+                border-color: rgba(249, 115, 22, 0.35);
+            }
+
+            .hero-trust i {
+                color: #fbbf24;
+            }
+
+            .hero-tap-hint {
+                margin-top: 1rem;
+                font-size: 0.8rem;
+                color: rgba(255, 237, 213, 0.65);
+            }
+
+            /* ---------- Pennant bunting across the sky ---------- */
+            .hero-bunting {
+                position: absolute;
+                top: 34px;
+                left: 0;
+                right: 0;
+                z-index: 3;
+                display: flex;
+                justify-content: space-around;
+                height: 40px;
+                overflow: hidden;
+                pointer-events: none;
+            }
+
+            .hero-bunting::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 2px;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, #fde68a 8%, #fde68a 92%, transparent);
+                opacity: 0.7;
+            }
+
+            .hero-bunting span,
+            .footer-bunting span {
+                flex: 0 0 26px;
+                height: 32px;
+                margin-top: 3px;
+                clip-path: polygon(0 0, 100% 0, 50% 100%);
+                background: #f97316;
+                transform-origin: 50% 0;
+                animation: pennant-sway 3s ease-in-out infinite alternate;
+            }
+
+            :is(.hero-bunting, .footer-bunting) span:nth-child(3n + 2) {
+                background: #fbbf24;
+            }
+
+            :is(.hero-bunting, .footer-bunting) span:nth-child(3n) {
+                background: #dc2626;
+            }
+
+            :is(.hero-bunting, .footer-bunting) span:nth-child(even) {
+                animation-delay: -1.5s;
+            }
+
+            @keyframes pennant-sway {
+                from {
+                    transform: rotate(-6deg);
+                }
+
+                to {
+                    transform: rotate(6deg);
+                }
+            }
+
+            /* ---------- Ravan effigy (Ravan dahan) ---------- */
+            .ravan-wrap {
+                position: absolute;
+                right: 5%;
+                bottom: 58px;
+                z-index: 3;
+                width: min(32vh, 250px);
+                pointer-events: none;
+            }
+
+            .ravan-effigy {
+                display: block;
+                width: 100%;
+                height: auto;
+                transform-origin: 50% 100%;
+                filter: drop-shadow(0 0 22px rgba(249, 115, 22, 0.55));
+                animation: effigy-sway 6s ease-in-out infinite alternate;
+            }
+
+            @keyframes effigy-sway {
+                from {
+                    transform: rotate(-1deg);
+                }
+
+                to {
+                    transform: rotate(1deg);
+                }
+            }
+
+            .effigy-fire {
+                position: absolute;
+                left: 50%;
+                bottom: -8px;
+                width: 130%;
+                height: 42%;
+                translate: -50% 0;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+            }
+
+            .effigy-fire span {
+                flex: 0 0 28px;
+                height: var(--h, 60px);
+                margin: 0 -7px;
+                border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+                background: radial-gradient(ellipse at 50% 85%, #fff 0 10%, #fde047 25%, #f97316 55%, rgba(220, 38, 38, 0) 72%);
+                transform-origin: 50% 100%;
+                mix-blend-mode: screen;
+                animation: flame-lick 0.9s ease-in-out infinite alternate;
+                animation-delay: var(--d, 0s);
+            }
+
+            @keyframes flame-lick {
+                0% {
+                    transform: scale(1, 1) skewX(-3deg);
+                    opacity: 0.9;
+                }
+
+                50% {
+                    transform: scale(0.85, 1.22) skewX(4deg);
+                    opacity: 1;
+                }
+
+                100% {
+                    transform: scale(1.08, 0.9) skewX(-2deg);
+                    opacity: 0.85;
+                }
+            }
+
+            /* ---------- Ram's bow (dhanush) ---------- */
+            .ram-bow {
+                position: absolute;
+                left: 4%;
+                bottom: 70px;
+                z-index: 3;
+                width: min(20vh, 150px);
+                height: auto;
+                pointer-events: none;
+                filter: drop-shadow(0 0 14px rgba(251, 191, 36, 0.45));
+            }
+
+            @media (max-width: 1279px) {
+                .ravan-wrap {
+                    width: 170px;
+                    opacity: 0.55;
+                }
+            }
+
+            @media (max-width: 1023px) {
+                .ram-bow {
+                    display: none;
+                }
+            }
+
+            @media (max-width: 767px) {
+                .ravan-wrap {
+                    display: none;
+                }
+
+                .hero-bunting span:nth-child(n + 13) {
+                    display: none;
+                }
+            }
+
+            .footer-bunting {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                padding-top: 22px;
+                margin-bottom: 18px;
+                border-top: 2px solid rgba(253, 230, 138, 0.5);
+                max-width: 360px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .footer-bunting span {
+                flex-basis: 22px;
+                height: 26px;
+                margin-top: 0;
+            }
+
+            .dussehra-footer-wish {
+                font-family: var(--font-festive);
+                font-size: 1.35rem;
+                color: #fde68a;
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+
+            /* ---------- Surya (sun) motif watermark ---------- */
+            .surya-motif {
+                position: absolute;
+                z-index: 0;
+                width: 340px;
+                height: 340px;
+                border-radius: 50%;
+                pointer-events: none;
+                opacity: 0.16;
+                background: radial-gradient(circle, #fde047 0 13%, #dc2626 13% 16%, #f59e0b 16% 22%, transparent 22.5%),
+                    repeating-conic-gradient(#f97316 0 5deg, transparent 5deg 10deg, #fbbf24 10deg 15deg, transparent 15deg 20deg);
+                mask-image: radial-gradient(circle, #000 0 68%, transparent 70%);
+                -webkit-mask-image: radial-gradient(circle, #000 0 68%, transparent 70%);
+                animation: surya-spin 120s linear infinite;
+            }
+
+            .surya-left {
+                left: -140px;
+                top: 40px;
+            }
+
+            .surya-right {
+                right: -140px;
+                bottom: 20px;
+            }
+
+            @keyframes surya-spin {
+                to {
+                    rotate: 360deg;
+                }
+            }
+
+            #business-details > .container,
+            #faq > .container,
+            #contact > .container {
+                position: relative;
+                z-index: 1;
+            }
+
+            /* ---------- Buttons & cards ---------- */
+            .btn-primary {
+                color: #3b0a0a !important;
+                background: linear-gradient(135deg, #fde68a, #fbbf24 45%, #f59e0b);
+                box-shadow: 0 10px 30px -10px rgba(251, 191, 36, 0.8);
+            }
+
+            .btn-primary:hover {
+                background: linear-gradient(135deg, #fde047, #f59e0b 55%, #d97706);
+                box-shadow: 0 16px 36px -10px rgba(251, 191, 36, 0.9);
+            }
+
+            .btn-secondary,
+            .add-to-cart-btn {
+                background: linear-gradient(135deg, #f97316, #dc2626 60%, #b91c1c);
+                box-shadow: 0 10px 30px -10px rgba(220, 38, 38, 0.6);
+            }
+
+            .enquiry-trigger-btn {
+                background: linear-gradient(135deg, #ea580c, #c2410c);
+                box-shadow: 0 6px 16px -6px rgba(234, 88, 12, 0.6);
+            }
+
+            .enquiry-trigger-btn:hover {
+                background: linear-gradient(135deg, #c2410c, #9a3412);
+            }
+
+            .cart-icon-btn {
+                background: linear-gradient(135deg, #f97316, #dc2626);
+            }
+
+            .bg-blue-600 {
+                background-color: #c2410c;
+            }
+
+            .hover\:bg-blue-700:hover {
+                background-color: #9a3412;
+            }
+
+            .feature-card::before,
+            .glass-card::before,
+            .product-card::before {
+                background: linear-gradient(135deg, rgba(251, 191, 36, 0.9), rgba(220, 38, 38, 0.7) 50%, rgba(249, 115, 22, 0.8));
+            }
+
+            .feature-card,
+            .glass-card,
+            .product-card {
+                border-color: rgba(249, 115, 22, 0.3);
+            }
+
+            .product-spotlight {
+                background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), rgba(249, 115, 22, 0.16), transparent 45%);
+            }
+
+            .product-card .group-hover\:text-blue-600,
+            .group:hover .group-hover\:text-blue-600 {
+                color: #b91c1c;
+            }
+
+            .product-marquee i {
+                color: #f97316;
+            }
+
+            .product-marquee span {
+                background: linear-gradient(90deg, #7f1d1d, #dc2626 25%, #ea580c 50%, #d97706 75%, #7f1d1d);
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+
+            #productSearch:focus {
+                border-color: #ea580c;
+                box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.22);
+            }
+
+            .group[open] .group-open\:from-orange-500 {
+                --tw-gradient-from: #dc2626 var(--tw-gradient-from-position);
+                --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+            }
+
+            .group[open] .group-open\:to-orange-600 {
+                --tw-gradient-to: #f97316 var(--tw-gradient-to-position);
+            }
+
+            /* ---------- Footer ---------- */
+            .site-footer {
+                background: radial-gradient(600px 300px at 90% 0%, rgba(249, 115, 22, 0.22), transparent 60%),
+                    radial-gradient(600px 300px at 0% 100%, rgba(220, 38, 38, 0.3), transparent 60%),
+                    linear-gradient(160deg, #1e0b3a, #4a1030 55%, #7c2d12);
+            }
+
+            .site-footer .footer-brand-name,
+            .site-footer .footer-credentials {
+                background: linear-gradient(90deg, #fde68a, #fbbf24, #f97316, #fde68a);
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+
+            .site-footer .social-icon-link:hover {
+                background: linear-gradient(135deg, #f97316, #dc2626);
+            }
+
+            /* ---------- Add-to-cart ember burst ---------- */
+            .festive-spark {
+                position: fixed;
+                z-index: 10000;
+                width: 7px;
+                height: 7px;
+                margin: -3.5px 0 0 -3.5px;
+                border-radius: 50%;
+                pointer-events: none;
+                background: var(--c, #f97316);
+                box-shadow: 0 0 8px 2px var(--c, #f97316);
+            }
+
+            /* ---------- Vijayadashami countdown pill (filled by JS, hidden while empty) ---------- */
+            .dussehra-countdown {
+                display: inline-block;
+                margin-left: 0.5rem;
+                padding: 1px 10px;
+                border-radius: 999px;
+                font-size: 0.78rem;
+                font-weight: 700;
+                color: #fde68a;
+                background: rgba(253, 230, 138, 0.16);
+                border: 1px solid rgba(253, 230, 138, 0.45);
+                white-space: nowrap;
+            }
+
+            .dussehra-countdown:empty {
+                display: none;
+            }
+
+            /* ---------- Bow-and-arrow ornament on section dividers ---------- */
+            .section-divider.max-w-xs {
+                position: relative;
+                overflow: visible;
+            }
+
+            .section-divider.max-w-xs::after {
+                content: "🏹";
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                translate: -50% -50%;
+                font-size: 1.15rem;
+                line-height: 1;
+                filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.55));
+            }
+
+            /* ---------- Ravan dahan mini-game: 10 hits = 10 heads ---------- */
+            .ravan-heads {
+                position: absolute;
+                left: 50%;
+                top: -30px;
+                translate: -50% 0;
+                display: none;
+                gap: 4px;
+                padding: 4px 8px;
+                border-radius: 999px;
+                background: rgba(28, 10, 10, 0.55);
+                border: 1px solid rgba(251, 191, 36, 0.4);
+            }
+
+            .ravan-wrap.game-on .ravan-heads {
+                display: flex;
+            }
+
+            .ravan-heads i {
+                width: 9px;
+                height: 9px;
+                border-radius: 50%;
+                background: #fbbf24;
+                box-shadow: 0 0 6px #f97316;
+                transition:
+                    background 0.3s ease,
+                    box-shadow 0.3s ease,
+                    transform 0.3s var(--ease-spring);
+            }
+
+            .ravan-heads i.down {
+                background: #44403c;
+                box-shadow: none;
+                transform: scale(0.7);
+            }
+
+            .ravan-wrap.hit {
+                animation: ravan-hit 0.35s ease-out;
+            }
+
+            @keyframes ravan-hit {
+                0% {
+                    filter: brightness(2) saturate(1.4);
+                }
+
+                100% {
+                    filter: none;
+                }
+            }
+
+            .effigy-fire {
+                transform-origin: 50% 100%;
+                transition: transform 0.8s ease;
+            }
+
+            .ravan-wrap.burning .effigy-fire {
+                transform: scale(1.25, 2.8);
+            }
+
+            .ravan-wrap.burning .ravan-effigy {
+                animation: effigy-collapse 2.6s ease-in 0.4s forwards;
+            }
+
+            @keyframes effigy-collapse {
+                0% {
+                    transform: none;
+                    filter: drop-shadow(0 0 22px rgba(249, 115, 22, 0.55));
+                }
+
+                35% {
+                    transform: rotate(-2deg);
+                    filter: brightness(1.7) sepia(0.6) drop-shadow(0 0 40px #f97316);
+                }
+
+                100% {
+                    transform: translateY(28%) scaleY(0.2) rotate(5deg);
+                    filter: brightness(0.4) drop-shadow(0 0 10px #dc2626);
+                    opacity: 0;
+                }
+            }
+
+            .ravan-wrap.rising .ravan-effigy {
+                animation: effigy-rise 1.2s var(--ease-spring) both;
+            }
+
+            @keyframes effigy-rise {
+                from {
+                    transform: translateY(30%) scaleY(0.3);
+                    opacity: 0;
+                }
+            }
+
+            .ravan-victory {
+                position: absolute;
+                left: 50%;
+                top: 18%;
+                z-index: 12;
+                translate: -50% 0;
+                width: max-content;
+                max-width: calc(100% - 32px);
+                padding: 12px 26px;
+                border-radius: 18px;
+                text-align: center;
+                font-family: var(--font-festive);
+                font-size: clamp(1.4rem, 1rem + 2vw, 2.4rem);
+                line-height: 1.25;
+                color: #fde68a;
+                background: rgba(59, 10, 10, 0.94);
+                backdrop-filter: blur(6px);
+                border: 1px solid rgba(251, 191, 36, 0.55);
+                box-shadow: 0 0 40px rgba(249, 115, 22, 0.5);
+                pointer-events: none;
+                opacity: 0;
+                scale: 0.8;
+                transition:
+                    opacity 0.4s ease,
+                    scale 0.5s var(--ease-spring);
+            }
+
+            .ravan-victory.show {
+                opacity: 1;
+                scale: 1;
+            }
+
+            .ravan-victory small {
+                display: block;
+                margin-top: 4px;
+                font-family: "Inter", sans-serif;
+                font-size: 0.85rem;
+                font-weight: 600;
+                color: #fed7aa;
+            }
+
+            .hint-ravan {
+                display: none;
+            }
+
+            @media (min-width: 768px) {
+                .hero-gradient.ravan-game .hint-ravan {
+                    display: inline;
+                }
+            }
+
+            /* ---------- Footer diyas ---------- */
+            .diya-row {
+                display: flex;
+                justify-content: center;
+                gap: clamp(16px, 4vw, 36px);
+                padding-top: 18px;
+                margin-bottom: 0.5rem;
+            }
+
+            .diya {
+                position: relative;
+                width: 38px;
+                height: 16px;
+                border-radius: 0 0 20px 20px / 0 0 16px 16px;
+                background: linear-gradient(180deg, #d97706, #92400e);
+                box-shadow:
+                    inset 0 3px 0 #fbbf24,
+                    0 4px 10px rgba(0, 0, 0, 0.35);
+            }
+
+            .diya::before {
+                content: "";
+                position: absolute;
+                left: 50%;
+                bottom: 100%;
+                width: 10px;
+                height: 18px;
+                margin: 0 0 -3px -5px;
+                border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+                background: radial-gradient(ellipse at 50% 80%, #fff 0 15%, #fde047 35%, #f97316 65%, rgba(220, 38, 38, 0) 75%);
+                transform-origin: 50% 100%;
+                filter: drop-shadow(0 0 6px #f97316);
+                animation: flame-lick 0.8s ease-in-out infinite alternate;
+                animation-delay: var(--d, 0s);
+            }
+
+            /* ---------- Popups: marigold toran strip + leftover blue accents ---------- */
+            .cart-panel-header,
+            .assistant-panel-header,
+            .enquiry-modal-header {
+                border-bottom: 4px solid transparent;
+                border-image: repeating-linear-gradient(90deg, #fde047 0 8px, #f97316 8px 16px, #dc2626 16px 24px, #15803d 24px 30px) 1;
+            }
+
+            .cart-qty-btn:hover,
+            .added-cart-qty-ctrl button:hover {
+                border-color: #ea580c;
+                color: #c2410c;
+            }
+
+            .enquiry-input:focus,
+            .enquiry-textarea:focus,
+            .assistant-input:focus {
+                border-color: #ea580c;
+            }
+
+            .scroll-progress {
+                background: linear-gradient(90deg, #dc2626, #f97316, #fbbf24);
+                box-shadow: 0 0 12px rgba(249, 115, 22, 0.6);
+            }
         </style>
         <script type="application/ld+json">
             {
@@ -2881,7 +3691,7 @@
                         "name": "What payment methods do you accept?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "We accept UPI and Google Pay - scan the QR code or pay to the UPI ID shown in the Contact section. Call us to discuss other payment arrangements."
+                            "text": "Please call us at 9352470085 or 9024598298, or send an enquiry on WhatsApp, to discuss payment for your order."
                         }
                     },
                     {
@@ -2922,48 +3732,24 @@
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
-                "@graph": [
-                    {
-                        "@type": "Product",
-                        "name": "Handcare",
-                        "image": "Handcare.webp",
-                        "description": "Premium dashboard polish for long-lasting shine",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "200", "priceCurrency": "INR", "url": "#products" }
-                    },
-                    {
-                        "@type": "Product",
-                        "name": "Dishwash",
-                        "image": "Dishwash.webp",
-                        "description": "High-gloss tyre polish for enhanced appearance",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "150", "priceCurrency": "INR", "url": "#products" }
-                    },
-                    {
-                        "@type": "Product",
-                        "name": "Detergent",
-                        "image": "Detergent.webp",
-                        "description": "Advanced foaming wash for thorough cleaning",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "70", "priceCurrency": "INR", "url": "#products" }
-                    },
-                    {
-                        "@type": "Product",
-                        "name": "Tiles Cleaner",
-                        "image": "Tiles Cleaner.webp",
-                        "description": "Streak-free glass cleaner for crystal clear visibility",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "70", "priceCurrency": "INR", "url": "#products" }
-                    },
-                    {
-                        "@type": "Product",
-                        "name": "Toilet Cleaner",
-                        "image": "Toilet Cleaner.webp",
-                        "description": "Effective interior cleaner for all surfaces",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "130", "priceCurrency": "INR", "url": "#products" }
-                    }
-                ]
+                "@type": "LocalBusiness",
+                "name": "Swapnil Chemicals",
+                "description": "Manufacturers and marketers of home cleaning products - handcare, dishwash, detergent, tiles cleaner and toilet cleaner.",
+                "image": "SC Logo.webp",
+                "telephone": ["+919352470085", "+919024598298"],
+                "email": "swapnilchemicals10@gmail.com",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Jaipur",
+                    "addressRegion": "Rajasthan",
+                    "addressCountry": "IN"
+                },
+                "areaServed": "IN",
+                "priceRange": "₹70–₹2000",
+                "founder": {
+                    "@type": "Person",
+                    "name": "Gajendra Jain"
+                }
             }
         </script>
     </head>
@@ -2989,6 +3775,12 @@
                 <a href="tel:9024598298" style="color: #991b1b; font-weight: 700">9024598298</a>.
             </div>
         </noscript>
+
+        <div class="dussehra-ribbon" role="note">
+            🏹 <b lang="hi">शुभ विजयादशमी</b> &nbsp;·&nbsp; Happy Dussehra from Swapnil Chemicals — may goodness always
+            win &amp; every ride shine ✨
+            <span class="dussehra-countdown" id="dussehraCountdown"></span>
+        </div>
 
         <header class="sticky top-0 z-50 nav-blur">
             <div class="container mx-auto px-4 py-4">
@@ -3037,6 +3829,7 @@
                     </div>
                 </div>
             </div>
+            <div class="dussehra-toran" aria-hidden="true"></div>
         </header>
 
         <main id="main-content" tabindex="-1">
@@ -3048,6 +3841,8 @@
                 </div>
                 <div class="hero-grid" aria-hidden="true"></div>
                 <div class="hero-bubbles" id="heroBubbles" aria-hidden="true"></div>
+                <canvas class="dussehra-sky" id="dussehraSky" aria-hidden="true"></canvas>
+                <div class="hero-bunting" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
 
                 <div class="container mx-auto px-4 relative z-10 py-16 md:py-24">
                     <div class="max-w-5xl mx-auto text-center hero-content-in">
@@ -3055,6 +3850,10 @@
                             <span class="hero-chip-dot" aria-hidden="true"></span>
                             Jaipur-based manufacturer &bull; Since 2020
                         </span>
+                        <p class="dussehra-greeting"><span lang="hi">शुभ विजयादशमी</span> · Happy Dussehra</p>
+                        <p class="dussehra-tagline">
+                            <span lang="hi">असत्य पर सत्य की विजय</span> &nbsp;·&nbsp; The victory of good over evil
+                        </p>
                         <h2 class="font-bold leading-tight mt-6 mb-6">
                             Premium Home <br /><span class="hero-shine-text">Cleaning Solutions</span>
                         </h2>
@@ -3082,12 +3881,76 @@
                             <li><i class="fas fa-award" aria-hidden="true"></i> MSME &amp; Udyam certified</li>
                             <li><i class="fas fa-truck-fast" aria-hidden="true"></i> Bulk &amp; retail</li>
                         </ul>
+                        <p class="hero-tap-hint" aria-hidden="true">🏹 Tap anywhere in the sky to shoot a flaming arrow<span class="hint-ravan"> · strike Ravan 10 times for Ravan dahan</span></p>
                     </div>
                 </div>
 
                 <a href="#business-details" class="hero-scroll-cue" aria-label="Scroll to business details">
                     <span class="hero-scroll-mouse" aria-hidden="true"><span></span></span>
                 </a>
+                <svg class="ram-bow" id="ramBow" viewBox="0 0 150 200" style="overflow: visible" aria-hidden="true">
+                    <g transform="rotate(-35 75 100)">
+                        <path d="M60 8 Q116 100 60 192" stroke="#fbbf24" stroke-width="7" fill="none" stroke-linecap="round" />
+                        <rect x="83" y="88" width="10" height="24" rx="3" fill="#b45309" />
+                        <path d="M60 8 L34 100 L60 192" stroke="#fde68a" stroke-width="1.5" fill="none" />
+                        <path d="M30 100 H130" stroke="#fde68a" stroke-width="3" stroke-linecap="round" />
+                        <path d="M128 92 L144 100 L128 108 Z" fill="#e5e7eb" />
+                        <path d="M22 100 L14 92 H32 L40 100 L32 108 H14 Z" fill="#f97316" />
+                        <circle cx="142" cy="100" r="6" fill="#f97316" opacity="0.8" />
+                    </g>
+                </svg>
+                <div class="ravan-wrap" aria-hidden="true">
+                    <div class="ravan-heads"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    <svg class="ravan-effigy" id="ravanEffigy" viewBox="0 0 240 330">
+                        <defs>
+                            <linearGradient id="rvTorso" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dc2626" /><stop offset="1" stop-color="#7f1d1d" /></linearGradient>
+                            <linearGradient id="rvSkirt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f59e0b" /><stop offset="1" stop-color="#9a3412" /></linearGradient>
+                        </defs>
+                        <path d="M106 300 L100 330 M134 300 L140 330" stroke="#78350f" stroke-width="4" />
+                        <rect x="98" y="258" width="16" height="46" rx="3" fill="#991b1b" />
+                        <rect x="126" y="258" width="16" height="46" rx="3" fill="#991b1b" />
+                        <path d="M82 176 H158 L186 262 H54 Z" fill="url(#rvSkirt)" />
+                        <path d="M92 186 L74 254 M106 186 L100 254 M120 186 V254 M134 186 L140 254 M148 186 L166 254" stroke="#7f1d1d" stroke-width="3" opacity="0.45" />
+                        <path d="M58 252 H182" stroke="#fde047" stroke-width="4" />
+                        <path d="M94 102 L52 148 L62 156 L100 118 Z" fill="#b91c1c" />
+                        <path d="M146 102 L188 148 L178 156 L140 118 Z" fill="#b91c1c" />
+                        <circle cx="52" cy="154" r="17" fill="#6d28d9" stroke="#fbbf24" stroke-width="3" />
+                        <circle cx="52" cy="154" r="5" fill="#fbbf24" />
+                        <path d="M184 152 L214 86" stroke="#e5e7eb" stroke-width="5" stroke-linecap="round" />
+                        <path d="M176 150 L194 158" stroke="#fbbf24" stroke-width="5" stroke-linecap="round" />
+                        <path d="M92 96 H148 L160 178 H80 Z" fill="url(#rvTorso)" />
+                        <path d="M98 104 Q120 132 142 104" stroke="#fde047" stroke-width="4" fill="none" />
+                        <path d="M102 112 Q120 142 138 112" stroke="#fbbf24" stroke-width="3" fill="none" stroke-dasharray="3 4" />
+                        <rect x="80" y="170" width="80" height="9" fill="#fbbf24" />
+                        <g fill="#fbbf24">
+                            <path d="M23 70 L32 56 L41 70 Z M45 70 L54 56 L63 70 Z M67 70 L76 56 L85 70 Z M89 70 L98 56 L107 70 Z M133 70 L142 56 L151 70 Z M155 70 L164 56 L173 70 Z M177 70 L186 56 L195 70 Z M199 70 L208 56 L217 70 Z" />
+                        </g>
+                        <g fill="#f59e0b" stroke="#7c2d12" stroke-width="2">
+                            <circle cx="32" cy="78" r="11" /><circle cx="54" cy="78" r="11" /><circle cx="76" cy="78" r="11" /><circle cx="98" cy="78" r="11" />
+                            <circle cx="142" cy="78" r="11" /><circle cx="164" cy="78" r="11" /><circle cx="186" cy="78" r="11" /><circle cx="208" cy="78" r="11" />
+                            <circle cx="120" cy="16" r="10" />
+                        </g>
+                        <g fill="#1c1917">
+                            <circle cx="28" cy="76" r="1.6" /><circle cx="36" cy="76" r="1.6" /><circle cx="50" cy="76" r="1.6" /><circle cx="58" cy="76" r="1.6" />
+                            <circle cx="72" cy="76" r="1.6" /><circle cx="80" cy="76" r="1.6" /><circle cx="94" cy="76" r="1.6" /><circle cx="102" cy="76" r="1.6" />
+                            <circle cx="138" cy="76" r="1.6" /><circle cx="146" cy="76" r="1.6" /><circle cx="160" cy="76" r="1.6" /><circle cx="168" cy="76" r="1.6" />
+                            <circle cx="182" cy="76" r="1.6" /><circle cx="190" cy="76" r="1.6" /><circle cx="204" cy="76" r="1.6" /><circle cx="212" cy="76" r="1.6" />
+                            <circle cx="116" cy="14" r="1.5" /><circle cx="124" cy="14" r="1.5" />
+                        </g>
+                        <path d="M100 54 L104 36 L112 48 L120 28 L128 48 L136 36 L140 54 Z" fill="#fde047" stroke="#b45309" stroke-width="2" />
+                        <ellipse cx="120" cy="74" rx="19" ry="22" fill="#fbbf24" stroke="#7c2d12" stroke-width="2" />
+                        <ellipse cx="112" cy="70" rx="4" ry="3" fill="#fff" /><ellipse cx="128" cy="70" rx="4" ry="3" fill="#fff" />
+                        <circle cx="112" cy="70" r="1.8" fill="#1c1917" /><circle cx="128" cy="70" r="1.8" fill="#1c1917" />
+                        <path d="M106 63 L116 66 M134 63 L124 66" stroke="#1c1917" stroke-width="2" stroke-linecap="round" />
+                        <path d="M120 56 V65" stroke="#dc2626" stroke-width="3" stroke-linecap="round" />
+                        <path d="M108 84 Q114 79 120 84 Q126 79 132 84 Q126 89 120 86 Q114 89 108 84 Z" fill="#1c1917" />
+                    </svg>
+                    <div class="effigy-fire"><span style="--h: 46px; --d: -0.1s"></span><span style="--h: 72px; --d: -0.4s"></span><span style="--h: 58px; --d: -0.7s"></span><span style="--h: 90px; --d: -0.2s"></span><span style="--h: 64px; --d: -0.55s"></span><span style="--h: 80px; --d: -0.3s"></span><span style="--h: 50px; --d: -0.8s"></span></div>
+                </div>
+                <div class="ravan-victory" id="ravanVictory" aria-hidden="true">
+                    <span lang="hi">असत्य पर सत्य की विजय!</span>
+                    <small>Ravan dahan complete · Happy Dussehra 🏹</small>
+                </div>
                 <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
                     <path d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,45 L1440,90 L0,90 Z" fill="currentColor" />
                 </svg>
@@ -3106,6 +3969,7 @@
             </div>
 
             <section id="business-details" class="pt-6 pb-0 relative">
+                <div class="surya-motif surya-left" aria-hidden="true"></div>
                 <div class="container mx-auto px-4">
                     <div class="text-center mb-6 mt-8">
                         <span class="section-eyebrow">Who we are</span>
@@ -3249,7 +4113,7 @@
                                 type="search"
                                 id="productSearch"
                                 class="w-full pl-11 pr-12 py-3 rounded-xl border border-gray-200 bg-white focus:border-blue-500 focus:outline-none focus:shadow-[0_0_0_4px_rgba(139,92,246,0.15)] transition-shadow text-sm"
-                                placeholder="Search products (e.g. handcare, dishwash)..."
+                                placeholder="Search products (e.g. tyre polish, micro towel)..."
                                 aria-label="Search products"
                             />
                             <button type="button" id="voiceSearchBtn" class="voice-btn" aria-label="Search by voice">
@@ -3265,6 +4129,7 @@
             </section>
 
             <section id="faq" class="py-8 relative">
+                <div class="surya-motif surya-right" aria-hidden="true"></div>
                 <div class="container mx-auto px-4">
                     <div class="text-center mb-8">
                         <span class="section-eyebrow">Good to know</span>
@@ -3305,8 +4170,9 @@
                                 <i class="fas fa-minus flex-shrink-0 hidden group-open:inline" aria-hidden="true"></i>
                             </summary>
                             <p class="text-gray-600 px-6 py-4">
-                                We accept UPI and Google Pay — scan the QR code or pay to the UPI ID shown in the
-                                Contact section. Call us to discuss other payment arrangements.
+                                Please call us at <a href="tel:9352470085" class="text-blue-600">9352470085</a> or
+                                <a href="tel:9024598298" class="text-blue-600">9024598298</a>, or send an enquiry on
+                                WhatsApp, to discuss payment for your order.
                             </p>
                         </details>
                         <details
@@ -3425,66 +4291,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="glass-card p-8 rounded-2xl">
-                                    <div class="flex items-center space-x-6">
-                                        <div
-                                            class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg border"
-                                        >
-                                            <img
-                                                src="https://www.gstatic.com/instantbuy/svg/dark_gpay.svg"
-                                                width="48"
-                                                alt="Google Pay"
-                                                loading="lazy"
-                                                decoding="async"
-                                            />
-                                        </div>
-                                        <div>
-                                            <h3 class="font-semibold text-xl text-gray-800 mb-2">Google Pay</h3>
-                                            <div class="flex items-center gap-2">
-                                                <a
-                                                    href="upi://pay?pa=boism-9352470085@boi&amp;pn=Swapnil%20Chemicals&amp;cu=INR"
-                                                    class="text-blue-600"
-                                                    >Pay to 9352470085</a
-                                                >
-                                                <button
-                                                    type="button"
-                                                    class="text-gray-400 hover:text-blue-600"
-                                                    data-action="copy"
-                                                    data-copy-text="boism-9352470085@boi"
-                                                    aria-label="Copy UPI ID"
-                                                >
-                                                    <i class="fas fa-copy text-sm" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6 flex flex-col items-center">
-                                        <!-- No "am" param: the UPI app (GPay / PhonePe / Paytm) asks the customer to enter the amount -->
-                                        <a
-                                            href="upi://pay?pa=boism-9352470085@boi&amp;pn=Swapnil%20Chemicals&amp;cu=INR"
-                                            class="bg-white p-3 rounded-xl shadow-md block transition hover:shadow-lg hover:-translate-y-0.5"
-                                            data-action="upi-pay"
-                                            aria-label="Pay Swapnil Chemicals with Google Pay, PhonePe or any UPI app"
-                                        >
-                                            <img
-                                                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&amp;data=upi://pay?pa=boism-9352470085@boi%26pn=Swapnil%20Chemicals%26cu=INR"
-                                                width="75"
-                                                height="75"
-                                                class="rounded-lg"
-                                                alt="UPI QR"
-                                                loading="lazy"
-                                                decoding="async"
-                                            />
-                                        </a>
-                                        <p
-                                            id="upiPayHint"
-                                            class="mt-3 text-sm text-gray-500 text-center"
-                                            aria-live="polite"
-                                        >
-                                            📷 Scan or tap the QR to pay via Google Pay / PhonePe / any UPI app
-                                        </p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -3525,6 +4331,15 @@
                         ></a>
                     </div>
                 </div>
+                <div class="footer-bunting" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                <p class="dussehra-footer-wish">
+                    May this Vijayadashami bring victory, courage &amp; prosperity to you and your family 🏹
+                </p>
+                <div class="diya-row" aria-hidden="true">
+                    <span class="diya"></span><span class="diya" style="--d: -0.3s"></span
+                    ><span class="diya" style="--d: -0.6s"></span><span class="diya" style="--d: -0.15s"></span
+                    ><span class="diya" style="--d: -0.45s"></span>
+                </div>
                 <div class="border-t border-slate-700 mt-8 pt-8 text-center">
                     <p class="text-slate-300">
                         © <span id="copyrightYear">2026</span> Swapnil Chemicals. All rights reserved.
@@ -3557,7 +4372,7 @@
                     <span class="font-semibold text-gray-700">Total:</span>
                     <span class="font-bold text-lg text-gray-800" id="cartTotal">₹0</span>
                 </div>
-                <button id="cartGpayBtn" class="gpay-btn" data-action="open-cart-enquiry">Send Enquiry</button>
+                <button id="cartEnquiryBtn" class="enquiry-submit-btn" data-action="open-cart-enquiry">Send Enquiry</button>
                 <button
                     class="w-full mt-2 text-xs text-gray-400 hover:text-red-500 font-semibold py-1"
                     data-action="clear-cart"
@@ -3867,35 +4682,6 @@
                 }
             }
 
-            // Tapping the QR hands the upi:// link to the phone, which opens Google Pay /
-            // PhonePe / whichever UPI app is installed (or shows an app chooser). The link
-            // carries no amount, so the customer types it in the app. Desktops have no UPI
-            // app, so there we keep the page and ask them to scan the QR with their phone.
-            function openUpiApp(e) {
-                const hint = document.getElementById("upiPayHint");
-                const isMobile =
-                    (navigator.userAgentData && navigator.userAgentData.mobile) ||
-                    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-                if (!isMobile) {
-                    e.preventDefault();
-                    if (hint) hint.textContent = "📱 Please scan this QR with Google Pay / PhonePe on your phone.";
-                    return;
-                }
-                // If no UPI app picks up the link, the page stays visible — tell the customer.
-                let appOpened = false;
-                const onHide = () => {
-                    if (document.hidden) appOpened = true;
-                };
-                document.addEventListener("visibilitychange", onHide);
-                setTimeout(() => {
-                    document.removeEventListener("visibilitychange", onHide);
-                    if (!appOpened && hint) {
-                        hint.textContent =
-                            "No UPI app opened? Install Google Pay / PhonePe, or pay to UPI ID boism-9352470085@boi.";
-                    }
-                }, 2500);
-            }
-
             const products = [
                 {
                     id: 1,
@@ -4125,9 +4911,9 @@
                     }
                 }
 
-                const gpayBtn = document.getElementById("cartGpayBtn");
-                if (gpayBtn) {
-                    gpayBtn.innerHTML = `<i class="fab fa-whatsapp" aria-hidden="true"></i> Send Enquiry &bull; ${formatCurrency(Math.round(grandTotal))}`;
+                const enquiryBtn = document.getElementById("cartEnquiryBtn");
+                if (enquiryBtn) {
+                    enquiryBtn.innerHTML = `<i class="fab fa-whatsapp" aria-hidden="true"></i> Send Enquiry &bull; ${formatCurrency(Math.round(grandTotal))}`;
                 }
             }
 
@@ -4283,6 +5069,7 @@
                 }
                 refreshAddedCartModalTotals();
                 openDialog(modal, ".added-cart-box");
+                festiveSparkBurst(document.getElementById("addedCartProductImg"));
             }
 
             function closeAddedCartModal() {
@@ -4437,15 +5224,28 @@
             // Seller details printed on the invoice - same values shown elsewhere on this page.
             const INVOICE_SELLER = {
                 name: "Swapnil Chemicals",
-                tagline: "Manufacturers of Home Cleaning Products",
-                address: "Jaipur, Rajasthan, India",
+                addressLines: ["24/13, Swarn Path, Mansarover,", "Jaipur, Rajasthan"],
                 phones: "+91 93524 70085, +91 90245 98298",
                 email: "swapnilchemicals10@gmail.com",
                 gstin: "08CIJPS1734A1ZE",
-                upi: "boism-9352470085@boi",
+                pan: "CIJPS1734A", // characters 3-12 of the GSTIN
+                udyam: "UDYAM-RJ-17-0022468",
+                stateName: "Rajasthan",
+                stateCode: "08",
+                jurisdiction: "Jaipur",
+                 bank: {
+                    name: "Bank of India",
+                    accountNo: "664430110000084",
+                    branchIfsc: "Mansarovar Jaipur & BKID0006644",
+            },
+                
             };
 
-            // Indian numbering (lakh / crore) amount in words, e.g. "Rupees One Thousand Two Hundred Only".
+            // The number is time-based and generated in the visitor's browser (not a sequential
+            // series), so the document is titled a proforma rather than a GST tax invoice.
+            const INVOICE_TITLE = "Proforma Invoice";
+
+            // Indian numbering (lakh / crore) amount in words, e.g. "INR One Thousand Two Hundred Only".
             function amountInWords(amount) {
                 const ones = [
                     "",
@@ -4492,103 +5292,7 @@
                 const totalPaise = Math.round(Math.abs(amount) * 100);
                 const rupees = Math.floor(totalPaise / 100);
                 const paise = totalPaise % 100;
-                return `Rupees ${toWords(rupees)}${paise ? ` and ${twoDigits(paise)} Paise` : ""} Only`;
-            }
-
-            // Logo is optional on the invoice - if it can't be fetched the header is drawn without it.
-            // It is drawn at 24 mm, so it is downscaled to INVOICE_LOGO_PX and re-encoded as a JPEG
-            // before embedding; the original file would otherwise be copied into the PDF byte for byte
-            // and push it past the 1 MB limit.
-            const INVOICE_LOGO_PX = 320; // ~340 dpi at 24 mm
-            let invoiceLogoPromise = null;
-            function loadInvoiceLogo() {
-                if (!invoiceLogoPromise) {
-                    invoiceLogoPromise = fetch("SC Logo.webp")
-                        .then((res) => (res.ok ? res.blob() : null))
-                        .then(
-                            (blob) =>
-                                blob &&
-                                new Promise((resolve) => {
-                                    const reader = new FileReader();
-                                    reader.onload = () => resolve(reader.result);
-                                    reader.onerror = () => resolve(null);
-                                    reader.readAsDataURL(blob);
-                                })
-                        )
-                        .then((dataUrl) => dataUrl && shrinkImageToJpeg(dataUrl, INVOICE_LOGO_PX, 0.85))
-                        .catch(() => null);
-                }
-                return invoiceLogoPromise;
-            }
-
-            // Redraws an image (data URL - blob: URLs are blocked by the CSP) onto a white canvas no
-            // larger than maxPx on its longest side and returns it as a compressed JPEG data URL.
-            // Resolves to null if the image can't be decoded, so the invoice is drawn without it
-            // rather than embedding an unknown-size original.
-            function shrinkImageToJpeg(dataUrl, maxPx, quality) {
-                return new Promise((resolve) => {
-                    const img = new Image();
-                    img.onload = () => {
-                        try {
-                            const scale = Math.min(1, maxPx / Math.max(img.naturalWidth, img.naturalHeight));
-                            const canvas = document.createElement("canvas");
-                            canvas.width = Math.max(1, Math.round(img.naturalWidth * scale));
-                            canvas.height = Math.max(1, Math.round(img.naturalHeight * scale));
-                            const ctx = canvas.getContext("2d");
-                            ctx.fillStyle = "#fff";
-                            ctx.fillRect(0, 0, canvas.width, canvas.height);
-                            ctx.imageSmoothingQuality = "high";
-                            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                            resolve(canvas.toDataURL("image/jpeg", quality));
-                        } catch {
-                            resolve(null);
-                        }
-                    };
-                    img.onerror = () => resolve(null);
-                    img.src = dataUrl;
-                });
-            }
-
-            // Google Pay / UPI QR for the invoice - same UPI link as the QR in the Contact section (no amount,
-            // the customer enters it in the app). Loaded as an <img> (allowed by img-src; the service sends
-            // CORS headers) and copied to a canvas so jsPDF gets a PNG. Resolves to a data URL or null.
-            const INVOICE_UPI_QR_SRC =
-                "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
-                encodeURIComponent(`upi://pay?pa=${INVOICE_SELLER.upi}&pn=${INVOICE_SELLER.name}&cu=INR`);
-            let invoiceQrPromise = null;
-            function loadInvoiceQr() {
-                if (!invoiceQrPromise) {
-                    invoiceQrPromise = new Promise((resolve) => {
-                        const img = new Image();
-                        // A slow network must not hold up the PDF; it is drawn without the QR instead.
-                        const timer = setTimeout(() => resolve(null), 8000);
-                        img.crossOrigin = "anonymous";
-                        img.onload = () => {
-                            clearTimeout(timer);
-                            try {
-                                const canvas = document.createElement("canvas");
-                                canvas.width = img.naturalWidth;
-                                canvas.height = img.naturalHeight;
-                                const ctx = canvas.getContext("2d");
-                                ctx.fillStyle = "#fff";
-                                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                                ctx.drawImage(img, 0, 0);
-                                resolve(canvas.toDataURL("image/png"));
-                            } catch {
-                                resolve(null);
-                            }
-                        };
-                        img.onerror = () => {
-                            clearTimeout(timer);
-                            resolve(null);
-                        };
-                        img.src = INVOICE_UPI_QR_SRC;
-                    }).then((data) => {
-                        if (!data) invoiceQrPromise = null; // allow a retry on the next download
-                        return data;
-                    });
-                }
-                return invoiceQrPromise;
+                return `INR ${toWords(rupees)}${paise ? ` and ${twoDigits(paise)} Paise` : ""} Only`;
             }
 
             async function downloadCartPdf(btn) {
@@ -4600,85 +5304,33 @@
                     btn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Preparing PDF...';
                 }
                 try {
-                    const [JsPDF, logo, upiQr] = await Promise.all([
-                        loadJsPdf(),
-                        loadInvoiceLogo(),
-                        loadInvoiceQr(),
-                    ]);
-                    // compress: Flate-compress page streams (the gradient strips and text are otherwise
-                    // stored raw) - keeps the download well under 1 MB.
+                    const JsPDF = await loadJsPdf();
+                    // Plain boxed layout in the style of a Tally tax invoice: black text and ruled cells.
                     const doc = new JsPDF({ unit: "mm", format: "a4", compress: true });
                     const pageW = doc.internal.pageSize.getWidth();
                     const pageH = doc.internal.pageSize.getHeight();
-                    const margin = 15;
-                    const right = pageW - margin;
-                    const contentW = right - margin;
-                    const bottomLimit = pageH - 22; // keep clear of the footer band
-                    // Same palette as the website (violet / indigo / orange / cyan).
-                    const COLOR = {
-                        dark: [30, 27, 75],
-                        text: [30, 41, 59],
-                        violetDeep: [30, 11, 75],
-                        violet: [109, 40, 217],
-                        indigo: [79, 70, 229],
-                        orange: [234, 88, 12],
-                        orangeLight: [249, 115, 22],
-                        pink: [219, 39, 119],
-                        cyan: [34, 211, 238],
-                        lavender: [221, 214, 254],
-                        lavenderText: [196, 181, 253],
-                        pill: [67, 40, 140],
-                        muted: [100, 116, 139],
-                        line: [233, 229, 250],
-                        soft: [250, 248, 255],
-                        zebra: [248, 246, 255],
-                        peach: [255, 247, 237],
-                        peachLine: [254, 215, 170],
-                        white: [255, 255, 255],
-                        watermark: [244, 241, 255],
-                    };
-                    const setColor = (rgb) => doc.setTextColor(...rgb);
-                    const font = (style, size, rgb = COLOR.text) => {
+                    const L = 10;
+                    const R = pageW - 10;
+                    const W = R - L; // 190 mm on A4
+                    const boxTop = 14;
+                    const boxBottom = pageH - 14; // jurisdiction lines sit under the box
+                    const midX = L + 95; // left party blocks | right invoice details grid
+                    const gridMid = midX + (R - midX) / 2;
+                    const pad = 1.6;
+
+                    const font = (style, size) => {
                         doc.setFont("helvetica", style);
                         doc.setFontSize(size);
-                        setColor(rgb);
                     };
-                    const mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
-                    // jsPDF has no gradients, so blend thin vertical strips.
-                    const gradientRect = (x, top, w, h, from, to, steps = 48) => {
-                        const sw = w / steps;
-                        for (let i = 0; i < steps; i++) {
-                            doc.setFillColor(...mix(from, to, i / (steps - 1)));
-                            doc.rect(x + i * sw, top, sw + 0.15, h, "F");
-                        }
-                    };
-                    // Rounded ends in the start/end colours, gradient strip in between.
-                    const gradientRoundedRect = (x, top, w, h, r, from, to) => {
-                        doc.setFillColor(...from);
-                        doc.roundedRect(x, top, r * 2 + 1, h, r, r, "F");
-                        doc.setFillColor(...to);
-                        doc.roundedRect(x + w - r * 2 - 1, top, r * 2 + 1, h, r, r, "F");
-                        gradientRect(x + r, top, w - r * 2, h, from, to, 40);
-                    };
-                    const accentStripe = (top, h) => {
-                        doc.setFillColor(...COLOR.orange);
-                        doc.rect(0, top, pageW * 0.55, h, "F");
-                        doc.setFillColor(...COLOR.violet);
-                        doc.rect(pageW * 0.55, top, pageW * 0.3, h, "F");
-                        doc.setFillColor(...COLOR.cyan);
-                        doc.rect(pageW * 0.85, top, pageW * 0.15, h, "F");
-                    };
-                    const watermark = () => {
-                        font("bold", 54, COLOR.watermark);
-                        const label = "SWAPNIL CHEMICALS";
-                        const angle = 32;
-                        const rad = (angle * Math.PI) / 180;
-                        const w = doc.getTextWidth(label);
-                        doc.text(label, pageW / 2 - (Math.cos(rad) * w) / 2, pageH / 2 + 20 + (Math.sin(rad) * w) / 2, {
-                            angle,
-                        });
-                    };
-                    let y = margin;
+                    const hLine = (x1, x2, yy) => doc.line(x1, yy, x2, yy);
+                    const vLine = (xx, y1, y2) => doc.line(xx, y1, xx, y2);
+                    // First line of `str` that fits in `width` with the current font.
+                    const fit = (str, width) => doc.splitTextToSize(String(str || ""), width)[0] || "";
+                    const round2 = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
+                    const money = (n) => pdfAmountFormatter.format(n);
+                    doc.setTextColor(0, 0, 0);
+                    doc.setDrawColor(0, 0, 0);
+                    doc.setLineWidth(0.25);
 
                     // Customer details are read straight from the enquiry form; nothing here is required.
                     const fieldValue = (id) => document.getElementById(id)?.value.trim() || "";
@@ -4686,309 +5338,297 @@
                     const customer = {
                         workshop: pdfText(fieldValue("cart-enquiry-workshop")),
                         phone: phone ? `${APP.COUNTRY_CODE} ${phone}` : "",
-                        address: pdfText(fieldValue("cart-enquiry-details")),
+                        address: pdfText(fieldValue("cart-enquiry-details").replace(/\s*,?\s*\n\s*/g, ", ")),
                         date: fieldValue("cart-enquiry-date"),
                         slot: pdfText(fieldValue("cart-enquiry-slot")),
                     };
 
                     const now = new Date();
-                    const pad = (n) => String(n).padStart(2, "0");
-                    const invoiceNo = `SC-${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}`;
-                    const invoiceDate = now.toLocaleDateString("en-IN", {
-                        day: "2-digit",
-                        month: "short",
-                        year: "numeric",
+                    const pad2 = (n) => String(n).padStart(2, "0");
+                    const year = now.getFullYear();
+                    const fyStart = now.getMonth() >= 3 ? year : year - 1; // Indian financial year starts in April
+                    const finYear = `${fyStart}-${String(fyStart + 1).slice(2)}`;
+                    const invoiceNo = `SC/${finYear}/${pad2(now.getMonth() + 1)}${pad2(now.getDate())}${pad2(now.getHours())}${pad2(now.getMinutes())}`;
+                    const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                    const invoiceDate = `${pad2(now.getDate())}-${MONTHS[now.getMonth()]}-${String(year).slice(2)}`;
+
+                    // ---- Line items (no tax breakup; amounts are the website prices) ----
+                    const rows = keys.map((key) => {
+                        const { product, qty: packs, selectedQty } = cart[key];
+                        const qty = selectedQty * packs;
+                        return {
+                            name: pdfText(product.name) || "-",
+                            qty,
+                            unit: pdfText(cartUnitLabel(product)),
+                            unitRate: product.price,
+                            amount: round2(product.price * qty),
+                        };
                     });
+                    // The total is exactly what the customer pays for the cart.
+                    const grandTotal = round2(rows.reduce((s, r) => s + r.amount, 0));
+                    const units = new Set(rows.map((r) => r.unit));
+                    const totalQty = units.size === 1 ? `${rows.reduce((s, r) => s + r.qty, 0)} ${[...units][0]}` : "";
 
-                    // Continuation pages get a slim branded header instead of the full one.
-                    const newPage = () => {
-                        doc.addPage();
-                        watermark();
-                        gradientRect(0, 0, pageW, 14, COLOR.violetDeep, COLOR.indigo);
-                        accentStripe(14, 1.2);
-                        font("bold", 11, COLOR.white);
-                        doc.text(INVOICE_SELLER.name, margin, 9);
-                        font("normal", 8.5, COLOR.lavenderText);
-                        doc.text(`Challan No. ${invoiceNo} (continued)`, right, 9, { align: "right" });
-                        y = 24;
+                    // ---- Footer sizes (needed up front to know where the item table must stop) ----
+                    font("bold", 9);
+                    const amountWords = doc.splitTextToSize(amountInWords(grandTotal), W - pad * 2);
+                    const wordsH = 5 + amountWords.length * 4 + 1.2;
+                    const lowerH = 28;
+                    const sigH = 16;
+                    const totalRowH = 7;
+                    const footerH = totalRowH + wordsH + lowerH + sigH;
+                    const lastLimit = boxBottom - footerH; // item table ends here on the last page
+                    const contRowH = 7;
+                    const fullLimit = boxBottom - contRowH; // ... or here on a page that continues
+
+                    const drawTitle = () => {
+                        font("bold", 12);
+                        doc.text(INVOICE_TITLE, pageW / 2, boxTop - 3.5, { align: "center" });
+                        font("italic", 7.5);
+                        doc.text("(ORIGINAL FOR RECIPIENT)", R, boxTop - 3.5, { align: "right" });
                     };
 
-                    // ---- Header band: logo + seller (left), title + invoice meta (right) ----
-                    watermark();
-                    const bandH = 46;
-                    gradientRect(0, 0, pageW, bandH, COLOR.violetDeep, COLOR.indigo);
-                    // Soft decorative rings in the band's top-right corner.
-                    doc.setLineWidth(0.6);
-                    doc.setDrawColor(...mix(COLOR.indigo, COLOR.white, 0.18));
-                    doc.circle(pageW - 6, 2, 22, "S");
-                    doc.setDrawColor(...mix(COLOR.indigo, COLOR.white, 0.1));
-                    doc.circle(pageW - 6, 2, 32, "S");
-                    doc.setLineWidth(0.2);
-                    accentStripe(bandH, 1.6);
-
-                    let textX = margin;
-                    if (logo) {
-                        try {
-                            doc.setFillColor(...COLOR.white);
-                            doc.roundedRect(margin, 9, 28, 28, 3, 3, "F");
-                            doc.addImage(logo, "JPEG", margin + 2, 11, 24, 24, "sc-logo");
-                            textX = margin + 33;
-                        } catch {
-                            textX = margin;
-                        }
-                    }
-                    font("bold", 18, COLOR.white);
-                    doc.text(INVOICE_SELLER.name, textX, 15);
-                    // Tagline in white so it reads clearly on the dark band; contact lines stay lavender.
-                    // Fill + thin white stroke makes the glyphs heavier, so the white reads brighter.
-                    font("bold", 9, COLOR.white);
-                    doc.setDrawColor(...COLOR.white);
-                    doc.setLineWidth(0.15);
-                    doc.text(INVOICE_SELLER.tagline, textX, 20.5, { renderingMode: "fillThenStroke" });
-                    doc.setLineWidth(0.2);
-                    font("normal", 8.5, COLOR.lavenderText);
-                    [`${INVOICE_SELLER.address}  |  ${INVOICE_SELLER.email}`, `Ph: ${INVOICE_SELLER.phones}`].forEach(
-                        (line, i) => doc.text(line, textX, 24.8 + i * 4.3)
-                    );
-                    // GSTIN chip
-                    font("bold", 8, COLOR.white);
-                    const gstLabel = `GSTIN: ${INVOICE_SELLER.gstin}`;
-                    const gstW = doc.getTextWidth(gstLabel) + 8;
-                    doc.setFillColor(...COLOR.orange);
-                    doc.roundedRect(textX, 32, gstW, 6, 3, 3, "F");
-                    doc.text(gstLabel, textX + 4, 36.1);
-
-                    font("bold", 26, COLOR.white);
-                    doc.text("INVOICE", right, 19, { align: "right" });
-                    const pillW = 62;
-                    const drawPill = (top, label, value) => {
-                        doc.setFillColor(...COLOR.pill);
-                        doc.roundedRect(right - pillW, top, pillW, 6.5, 3.25, 3.25, "F");
-                        font("normal", 8, COLOR.lavenderText);
-                        doc.text(label, right - pillW + 4, top + 4.4);
-                        font("bold", 8.5, COLOR.white);
-                        doc.text(value, right - 4, top + 4.4, { align: "right" });
-                    };
-                    drawPill(25, "Challan No.", invoiceNo);
-                    drawPill(33, "Date", invoiceDate);
-
-                    y = bandH + 9;
-
-                    // ---- Bill To / Delivery details cards ----
-                    const gap = 6;
-                    const boxW = (contentW - gap) / 2;
-                    const inset = 6;
-                    font("normal", 9);
-                    const billLines = [
-                        ...(customer.phone ? [`Phone: ${customer.phone}`] : []),
-                        ...(customer.address
-                            ? doc.splitTextToSize(`Address: ${customer.address}`, boxW - inset - 4)
-                            : []),
+                    // ---- Page 1 header: seller / consignee / buyer (left), invoice details grid (right) ----
+                    const lh = 3.6;
+                    const blockW = midX - L - pad * 2;
+                    const sellerLines = [
+                        ["bold", 9, INVOICE_SELLER.name.toUpperCase()],
+                        ...INVOICE_SELLER.addressLines.map((t) => ["normal", 8, t]),
+                        ["normal", 8, `GSTIN/UIN : ${INVOICE_SELLER.gstin}`],
+                        ["normal", 8, `State Name : ${INVOICE_SELLER.stateName}, Code : ${INVOICE_SELLER.stateCode}`],
+                        ["normal", 8, `Contact : ${INVOICE_SELLER.phones}`],
+                        ["normal", 8, `E-Mail : ${INVOICE_SELLER.email}`],
                     ];
-                    const deliveryRows = [
-                        ["Preferred Date", customer.date ? formatDisplayDate(customer.date) : "-"],
-                        ["Time Slot", customer.slot || "-"],
-                        ["Payment", "UPI / Google Pay"],
+                    font("normal", 8);
+                    const addressLines = customer.address ? doc.splitTextToSize(customer.address, blockW).slice(0, 3) : [];
+                    const partyLines = (title) => [
+                        ["normal", 7.5, title],
+                        ["bold", 9, (customer.workshop || "Customer").toUpperCase()],
+                        ...addressLines.map((t) => ["normal", 8, t]),
+                        ...(customer.phone ? [["normal", 8, `Contact : ${customer.phone}`]] : []),
                     ];
-                    const bodyLines = Math.max(billLines.length + 1, deliveryRows.length);
-                    const boxH = 12 + bodyLines * 5 + 3;
-
-                    const drawCard = (x, title, accent) => {
-                        doc.setDrawColor(...COLOR.lavender);
-                        doc.setFillColor(...COLOR.soft);
-                        doc.roundedRect(x, y, boxW, boxH, 2.5, 2.5, "FD");
-                        doc.setFillColor(...accent);
-                        doc.roundedRect(x, y, 2.2, boxH, 1.1, 1.1, "F");
-                        font("bold", 8, accent);
-                        doc.text(title, x + inset, y + 6.5);
+                    const blockH = (lines) => 1.2 + lines.length * lh + 1.4;
+                    const drawBlock = (lines, top) => {
+                        lines.forEach(([style, size, text], i) => {
+                            font(style, size);
+                            doc.text(fit(text, blockW), L + pad, top + 4 + i * lh);
+                        });
+                        return top + blockH(lines);
                     };
-                    drawCard(margin, "BILL TO", COLOR.violet);
-                    font("bold", 10.5, COLOR.dark);
+                    const consigneeLines = partyLines("Consignee (Ship to)");
+                    const buyerLines = partyLines("Buyer (Bill to)");
+
+                    const gridRows = [
+                        [
+                            ["Invoice No.", invoiceNo],
+                            ["Dated", invoiceDate],
+                        ],
+                        [
+                            ["Preferred Delivery Date", customer.date ? formatDisplayDate(customer.date) : ""],
+                            ["Time Slot", customer.slot],
+                        ],
+                        [["Other References", "Online Cart Enquiry"]],
+                    ];
+                    const cellH = 9;
+                    const gridH = gridRows.length * cellH;
+                    const leftH = blockH(sellerLines) + blockH(consigneeLines) + blockH(buyerLines);
+                    const headerH = Math.max(leftH, gridH + 13);
+
+                    drawTitle();
+                    let y = drawBlock(sellerLines, boxTop);
+                    hLine(L, midX, y);
+                    y = drawBlock(consigneeLines, y);
+                    hLine(L, midX, y);
+                    drawBlock(buyerLines, y);
+
+                    const cellW = gridMid - midX - pad * 2;
+                    gridRows.forEach((cells, i) => {
+                        const top = boxTop + i * cellH;
+                        cells.forEach(([label, value], j) => {
+                            const x = (j ? gridMid : midX) + pad;
+                            font("normal", 7.5);
+                            doc.text(label, x, top + 3.2);
+                            font("bold", 8.5);
+                            doc.text(fit(value, cellW), x, top + 7.3);
+                        });
+                        hLine(midX, R, top + cellH);
+                    });
+                    vLine(gridMid, boxTop, boxTop + gridH);
+                    font("normal", 7.5);
+                    doc.text("Terms of Delivery", midX + pad, boxTop + gridH + 3.2);
+                    font("bold", 8.5);
                     doc.text(
-                        doc.splitTextToSize(customer.workshop || "Customer", boxW - inset - 4)[0],
-                        margin + inset,
-                        y + 12.5
+                        doc
+                            .splitTextToSize(`Subject to confirmation by ${INVOICE_SELLER.name} on WhatsApp`, R - midX - pad * 2)
+                            .slice(0, 2),
+                        midX + pad,
+                        boxTop + gridH + 7.3
                     );
-                    font("normal", 9, COLOR.text);
-                    billLines.forEach((line, i) => doc.text(line, margin + inset, y + 17.5 + i * 5));
-
-                    const box2X = margin + boxW + gap;
-                    drawCard(box2X, "DELIVERY DETAILS", COLOR.orange);
-                    deliveryRows.forEach(([label, value], i) => {
-                        font("normal", 9, COLOR.muted);
-                        doc.text(label, box2X + inset, y + 12.5 + i * 5);
-                        font("bold", 9, COLOR.dark);
-                        doc.text(value, box2X + inset + 28, y + 12.5 + i * 5);
-                    });
-                    y += boxH + 9;
+                    vLine(midX, boxTop, boxTop + headerH);
+                    y = boxTop + headerH;
+                    hLine(L, R, y);
 
                     // ---- Item table ----
-                    // Column widths add up to contentW (180mm on A4).
-                    const widths = [12, 80, 24, 32, 32];
-                    const xs = widths.reduce((acc, w, i) => [...acc, acc[i] + w], [margin]);
-                    const cell = { no: xs[0] + 6, name: xs[1] + 2, qty: xs[3] - 3, rate: xs[4] - 3, amount: xs[5] - 3 };
-                    const nameWidth = widths[1] - 4;
-
+                    const cols = [10, 104, 24, 20, 10, 22]; // adds up to W
+                    const cx = cols.reduce((acc, w, i) => [...acc, acc[i] + w], [L]);
+                    const colMid = (i) => (cx[i] + cx[i + 1]) / 2;
+                    const heads = [["Sl", "No."], ["Description of Goods"], ["Quantity"], ["Rate"], ["per"], ["Amount"]];
+                    let tableTop = y;
                     const drawTableHeader = () => {
-                        gradientRoundedRect(margin, y, contentW, 10, 2.5, COLOR.violet, COLOR.indigo);
-                        gradientRect(margin, y + 5, contentW, 5, COLOR.violet, COLOR.indigo, 40); // square bottom corners
-                        font("bold", 9, COLOR.white);
-                        doc.text("#", cell.no, y + 6.5, { align: "center" });
-                        doc.text("ITEM DESCRIPTION", cell.name, y + 6.5);
-                        doc.text("QTY", cell.qty, y + 6.5, { align: "right" });
-                        doc.text("RATE", cell.rate, y + 6.5, { align: "right" });
-                        doc.text("AMOUNT", cell.amount, y + 6.5, { align: "right" });
-                        y += 10;
+                        tableTop = y;
+                        font("normal", 7.5);
+                        heads.forEach((h, i) => {
+                            if (h.length === 1) doc.text(h[0], colMid(i), y + 5, { align: "center" });
+                            else {
+                                doc.text(h[0], colMid(i), y + 3.4, { align: "center" });
+                                doc.text(h[1], colMid(i), y + 6.8, { align: "center" });
+                            }
+                        });
+                        y += 8;
+                        hLine(L, R, y);
+                        y += 1;
+                    };
+                    const drawColumnLines = (from, to) => cx.slice(1, -1).forEach((x) => vLine(x, from, to));
+
+                    // Closes the current page with a "continued" row and starts the next one with a slim header.
+                    const breakPage = () => {
+                        const contY = boxBottom - contRowH;
+                        drawColumnLines(tableTop, contY);
+                        hLine(L, R, contY);
+                        font("italic", 8);
+                        doc.text("continued ...", R - pad, contY + 4.6, { align: "right" });
+                        doc.rect(L, boxTop, W, boxBottom - boxTop);
+                        doc.addPage();
+                        drawTitle();
+                        font("bold", 9);
+                        doc.text(INVOICE_SELLER.name.toUpperCase(), L + pad, boxTop + 5.8);
+                        font("normal", 8);
+                        doc.text(`Invoice No. ${invoiceNo}    Dated ${invoiceDate}    (continued)`, R - pad, boxTop + 5.8, {
+                            align: "right",
+                        });
+                        y = boxTop + 9;
+                        hLine(L, R, y);
+                        drawTableHeader();
                     };
 
                     drawTableHeader();
-                    let grandTotal = 0;
-                    let totalUnits = 0;
-                    keys.forEach((key, i) => {
-                        const { product, qty: packs, selectedQty } = cart[key];
-                        const qty = selectedQty * packs;
-                        const unit = pdfText(cartUnitLabel(product));
-                        const lineTotal = product.price * qty;
-                        grandTotal += lineTotal;
-                        totalUnits += qty;
-
-                        font("bold", 9.5, COLOR.dark);
-                        const nameLines = doc.splitTextToSize(pdfText(product.name) || "-", nameWidth);
-                        const rowH = Math.max(10, nameLines.length * 4.6 + 5.4);
-                        if (y + rowH > bottomLimit) {
-                            newPage();
-                            drawTableHeader();
-                        }
-                        if (i % 2 === 1) {
-                            doc.setFillColor(...COLOR.zebra);
-                            doc.rect(margin, y, contentW, rowH, "F");
-                        }
-                        const baseline = y + 6.3;
-                        // Numbered badge
-                        doc.setFillColor(...COLOR.lavender);
-                        doc.circle(cell.no, baseline - 1.2, 2.8, "F");
-                        font("bold", 7.5, COLOR.violet);
-                        doc.text(String(i + 1), cell.no, baseline - 0.1, { align: "center" });
-
-                        font("bold", 9.5, COLOR.dark);
-                        doc.text(nameLines, cell.name, baseline);
-                        font("normal", 9.5, COLOR.text);
-                        doc.text(`${qty} ${unit}`, cell.qty, baseline, { align: "right" });
-                        font("normal", 9, COLOR.muted);
-                        doc.text(`${pdfAmount(product.price)}/${unit}`, cell.rate, baseline, { align: "right" });
-                        font("bold", 9.5, COLOR.dark);
-                        doc.text(pdfAmount(lineTotal), cell.amount, baseline, { align: "right" });
-
-                        doc.setDrawColor(...COLOR.line);
-                        doc.line(margin, y + rowH, right, y + rowH);
+                    rows.forEach((r, i) => {
+                        font("bold", 8.5);
+                        const nameLines = doc.splitTextToSize(r.name, cols[1] - pad * 2);
+                        const rowH = Math.max(6, nameLines.length * 3.6 + 2.4);
+                        if (y + rowH > fullLimit) breakPage();
+                        const b = y + 4.2;
+                        font("normal", 8.5);
+                        doc.text(String(i + 1), colMid(0), b, { align: "center" });
+                        doc.text(money(r.unitRate), cx[4] - pad, b, { align: "right" });
+                        doc.text(r.unit, colMid(4), b, { align: "center" });
+                        font("bold", 8.5);
+                        doc.text(nameLines, cx[1] + pad, b);
+                        doc.text(`${r.qty} ${r.unit}`, cx[3] - pad, b, { align: "right" });
+                        doc.text(money(r.amount), cx[6] - pad, b, { align: "right" });
                         y += rowH;
                     });
-                    doc.setDrawColor(...COLOR.violet);
-                    doc.setLineWidth(0.6);
-                    doc.line(margin, y, right, y);
-                    doc.setLineWidth(0.2);
+                    // The footer needs more room than a continuing page leaves; move it to a new page if needed.
+                    if (y > lastLimit) breakPage();
 
-                    // ---- Amount in words (left) + totals card (right) ----
-                    const totalsW = 86;
-                    const wordsW = contentW - totalsW - 6;
-                    font("italic", 9);
-                    const wordLines = doc.splitTextToSize(amountInWords(grandTotal), wordsW - 10);
-                    const totalsH = Math.max(30, 15 + wordLines.length * 4.4);
-                    if (y + totalsH + 6 > bottomLimit) newPage();
-                    y += 6;
+                    // ---- Totals and footer, pinned to the bottom of the last page ----
+                    let fy = lastLimit;
+                    drawColumnLines(tableTop, fy + totalRowH);
+                    hLine(L, R, fy);
+                    font("normal", 8.5);
+                    doc.text("Total", cx[2] - pad, fy + 4.8, { align: "right" });
+                    font("bold", 8.5);
+                    doc.text(totalQty, cx[3] - pad, fy + 4.8, { align: "right" });
+                    font("bold", 9.5);
+                    doc.text(`Rs. ${money(grandTotal)}`, cx[6] - pad, fy + 4.8, { align: "right" });
+                    fy += totalRowH;
+                    hLine(L, R, fy);
 
-                    doc.setDrawColor(...COLOR.lavender);
-                    doc.setFillColor(...COLOR.soft);
-                    doc.roundedRect(margin, y, wordsW, totalsH, 2.5, 2.5, "FD");
-                    font("bold", 7.5, COLOR.violet);
-                    doc.text("AMOUNT IN WORDS", margin + 5, y + 7);
-                    font("italic", 9, COLOR.dark);
-                    doc.text(wordLines, margin + 5, y + 12.5);
+                    font("normal", 7.5);
+                    doc.text("Amount Chargeable (in words)", L + pad, fy + 3.5);
+                    font("italic", 7.5);
+                    doc.text("E. & O.E", R - pad, fy + 3.5, { align: "right" });
+                    font("bold", 9);
+                    doc.text(amountWords, L + pad, fy + 7.8);
+                    fy += wordsH;
+                    hLine(L, R, fy);
 
-                    const totalsX = right - totalsW;
-                    font("normal", 9, COLOR.muted);
-                    doc.text("Sub Total", totalsX + 4, y + 5);
-                    doc.text(`Items / Qty`, totalsX + 4, y + 11);
-                    font("bold", 9.5, COLOR.dark);
-                    doc.text(pdfAmount(grandTotal), right - 4, y + 5, { align: "right" });
-                    doc.text(`${keys.length} / ${totalUnits}`, right - 4, y + 11, { align: "right" });
-                    doc.setDrawColor(...COLOR.line);
-                    doc.line(totalsX, y + 14, right, y + 14);
-                    gradientRoundedRect(totalsX, y + totalsH - 12, totalsW, 12, 3, COLOR.orangeLight, COLOR.pink);
-                    font("bold", 11.5, COLOR.white);
-                    doc.text("GRAND TOTAL", totalsX + 5, y + totalsH - 4.6);
-                    doc.text(pdfAmount(grandTotal), right - 5, y + totalsH - 4.6, { align: "right" });
-                    y += totalsH + 9;
-
-                    // ---- Payment details and terms ----
-                    const payH = 32;
-                    const closingH = payH + 26;
-                    if (y + closingH > bottomLimit) newPage();
-                    const payW = 110;
-                    doc.setDrawColor(...COLOR.peachLine);
-                    doc.setFillColor(...COLOR.peach);
-                    doc.roundedRect(margin, y, payW, payH, 2.5, 2.5, "FD");
-                    doc.setFillColor(...COLOR.orange);
-                    doc.roundedRect(margin, y, 2.2, payH, 1.1, 1.1, "F");
-                    font("bold", 8, COLOR.orange);
-                    doc.text("PAYMENT DETAILS", margin + 6, y + 6.5);
+                    // Company details + declaration
+                    const lowTop = fy;
                     [
-                        ["UPI ID", INVOICE_SELLER.upi],
-                        ["Payee", INVOICE_SELLER.name],
-                        ["Accepted", "Google Pay / PhonePe / any UPI app"],
+                        ["Company's GSTIN/UIN", INVOICE_SELLER.gstin],
+                        ["Company's PAN", INVOICE_SELLER.pan],
+                        ["Udyam Reg. No.", INVOICE_SELLER.udyam],
                     ].forEach(([label, value], i) => {
-                        font("normal", 8.5, COLOR.muted);
-                        doc.text(label, margin + 6, y + 11.5 + i * 4.3);
-                        font("bold", 8.5, COLOR.dark);
-                        doc.text(value, margin + 24, y + 11.5 + i * 4.3);
+                        const b = lowTop + 3.8 + i * 3.8;
+                        font("normal", 8);
+                        doc.text(label, L + pad, b);
+                        doc.text(":", L + pad + 31, b);
+                        font("bold", 8);
+                        doc.text(value, L + pad + 33, b);
                     });
-                    // Google Pay scanner on the right of the card; without it the card just shows the UPI ID.
-                    if (upiQr) {
-                        const qrSize = 26;
-                        const qrX = margin + payW - qrSize - 3;
-                        try {
-                            doc.setFillColor(...COLOR.white);
-                            doc.roundedRect(qrX - 1, y + 2, qrSize + 2, qrSize + 2, 1.5, 1.5, "F");
-                            doc.addImage(upiQr, "PNG", qrX, y + 3, qrSize, qrSize, "upi-qr", "FAST");
-                            font("bold", 8.5, COLOR.orange);
-                            doc.text("Scan & pay with Google Pay / any UPI app", margin + 6, y + 27);
-                        } catch {
-                            // A bad image must not block the invoice; the UPI ID above is enough to pay.
-                        }
-                    }
 
-                    font("bold", 9, COLOR.dark);
-                    doc.text(`For ${INVOICE_SELLER.name}`, right, y + 4, { align: "right" });
 
-                    y += payH + 8;
-                    font("bold", 8, COLOR.violet);
-                    doc.text("TERMS & NOTES", margin, y);
-                    font("normal", 8, COLOR.muted);
+                    // custom K 13-10-26
+                    // Bank details, right-hand side of the same block (aligned with the GSTIN/PAN rows)
+const bx = midX + pad;
+font("bold", 8);
+doc.text("Company's Bank Details", bx, lowTop + 3.8);
+[
+    ["Bank Name", INVOICE_SELLER.bank.name],
+    ["A/c No.", INVOICE_SELLER.bank.accountNo],
+    ["Branch & IFS Code", INVOICE_SELLER.bank.branchIfsc],
+].forEach(([label, value], i) => {
+    const b = lowTop + 7.6 + i * 3.8;
+    font("normal", 8);
+    doc.text(label, bx, b);
+    doc.text(":", bx + 29, b);
+    font("bold", 8);
+    doc.text(fit(value, R - bx - 31 - pad), bx + 31, b);
+});
+
+
+
+                    font("normal", 7.5);
+                    doc.text("Declaration", L + pad, lowTop + 17);
                     doc.text(
                         doc.splitTextToSize(
-                            "1. This invoice is generated from the online cart and is not a tax invoice.\n" +
-                                "2. Prices and availability will be confirmed by Swapnil Chemicals on WhatsApp.",
-                            contentW
+                            "We declare that this invoice shows the actual price of the goods described and that all particulars are true and correct.",
+                            blockW
                         ),
-                        margin,
-                        y + 4.5
+                        L + pad,
+                        lowTop + 20.5
                     );
 
-                    // ---- Footer band on every page ----
+                    fy = lowTop + lowerH;
+
+                    // Signature row
+                    hLine(L, R, fy);
+                    vLine(midX, fy, fy + sigH);
+                    font("normal", 7.5);
+                    doc.text("Customer's Seal and Signature", L + pad, fy + 3.5);
+                    font("bold", 8.5);
+                    doc.text(`for ${INVOICE_SELLER.name.toUpperCase()}`, R - pad, fy + 3.8, { align: "right" });
+                    font("normal", 7.5);
+                    doc.text("Authorised Signatory", R - pad, fy + sigH - 2, { align: "right" });
+                    doc.rect(L, boxTop, W, boxBottom - boxTop);
+
+                    // ---- Below the box on every page ----
                     const pageCount = doc.getNumberOfPages();
                     for (let p = 1; p <= pageCount; p++) {
                         doc.setPage(p);
-                        accentStripe(pageH - 12.2, 0.9);
-                        gradientRect(0, pageH - 11.3, pageW, 11.3, COLOR.violetDeep, COLOR.indigo);
-                        font("bold", 8, COLOR.white);
-                        doc.text("Thank you for your business!", margin, pageH - 4.6);
-                        font("normal", 7.5, COLOR.lavenderText);
-                        doc.text("This is a computer-generated document.", pageW / 2, pageH - 4.6, { align: "center" });
-                        font("bold", 8, COLOR.white);
-                        doc.text(`Page ${p} of ${pageCount}`, right, pageH - 4.6, { align: "right" });
+                        font("normal", 8);
+                        doc.text(`SUBJECT TO ${INVOICE_SELLER.jurisdiction.toUpperCase()} JURISDICTION`, pageW / 2, boxBottom + 4.5, {
+                            align: "center",
+                        });
+                        doc.text(`This is a Computer Generated ${INVOICE_TITLE}`, pageW / 2, boxBottom + 8.5, { align: "center" });
+                        if (pageCount > 1) {
+                            font("normal", 7.5);
+                            doc.text(`Page ${p} of ${pageCount}`, R, boxBottom + 8.5, { align: "right" });
+                        }
                     }
 
-                    doc.save(`Swapnil-Chemicals-Invoice-${invoiceNo}.pdf`);
+                    doc.save(`Swapnil-Chemicals-Invoice-${invoiceNo.replace(/\//g, "-")}.pdf`);
                     flyPdfToDownloads(btn);
                 } catch (err) {
                     console.error("Cart PDF generation failed:", err);
@@ -5558,11 +6198,11 @@
                   <input type="tel" id="${p}-phone" class="enquiry-input" maxlength="10" inputmode="numeric" autocomplete="tel-national" placeholder="10-digit mobile number" aria-describedby="${p}-phone-error ${p}-customer-hint">
               </div>
               <p id="${p}-phone-error" class="enquiry-error text-red-500 text-xs mt-1 hidden" role="alert">Enter a valid 10-digit mobile number</p>
-              <p id="${p}-customer-hint" class="text-xs text-gray-500 mt-1" aria-live="polite">Registered with us? Your name fills in automatically.</p>
+              <p id="${p}-customer-hint" class="text-xs text-gray-500 mt-1" aria-live="polite">Registered with us? Your workshop name fills in automatically.</p>
           </div>
           <div class="enquiry-field-wrap mb-4">
               <div class="flex justify-between items-center mb-1">
-                  <label class="block text-sm font-semibold text-gray-700" for="${p}-workshop">Name</label>
+                  <label class="block text-sm font-semibold text-gray-700" for="${p}-workshop">Workshop Name</label>
                   <button type="button" id="${p}-workshop-edit" class="workshop-change-btn hidden">Edit</button>
               </div>
               <input type="text" id="${p}-workshop" class="enquiry-input" maxlength="120" autocomplete="organization" placeholder="Fills in from your WhatsApp number">
@@ -5650,7 +6290,7 @@
                         choiceEl.classList.remove("hidden");
                         hintEl.textContent = "This number has more than one workshop with us - pick yours below.";
                     } else {
-                        hintEl.textContent = "Name filled in from our customer records.";
+                        hintEl.textContent = "Workshop name filled in from our customer records.";
                     }
                 };
 
@@ -5729,7 +6369,7 @@
                 const lines = [];
                 if (customer.workshop) {
                     lines.push(
-                        `🏪 *Name:* ${customer.workshop}${customer.registered ? " ✅ (Khatabook customer)" : ""}`
+                        `🏪 *Workshop:* ${customer.workshop}${customer.registered ? " ✅ (Khatabook customer)" : ""}`
                     );
                 }
                 lines.push(
@@ -6083,7 +6723,7 @@
 
                 if (/\b(pay|payment|upi|gpay|google pay)\b/.test(text)) {
                     return {
-                        html: `You can pay via Google Pay / UPI to <b>9352470085</b>, or scan the QR code in the Contact section. Call us to discuss other payment arrangements.`,
+                        html: `To discuss payment for your order, please call us at <a href="tel:9352470085" class="text-blue-600">9352470085</a> or <a href="tel:9024598298" class="text-blue-600">9024598298</a>, or send an enquiry on WhatsApp.`,
                         isFallback: false,
                     };
                 }
@@ -6321,6 +6961,348 @@
                 initScrollAnimations();
             }
 
+            // ---------- Dussehra flaming arrows ----------
+            // Flaming arrows fly from Ram's bow (or the bottom of the hero on narrow screens) and burst
+            // into embers; some are aimed at the Ravan effigy, which sheds rising embers from its fire.
+            // A tap/click in the hero shoots an arrow at that point.
+            // Runs only while the hero is on screen and the tab is visible; skipped for reduced motion.
+            const DUSSEHRA_COLORS = ["#fbbf24", "#f97316", "#ef4444", "#fde68a", "#fb923c", "#dc2626", "#facc15", "#ffffff"];
+
+            function initDussehraArrows() {
+                const hero = document.getElementById("hero");
+                const canvas = document.getElementById("dussehraSky");
+                if (!hero || !canvas || prefersReducedMotion()) return;
+                const ctx = canvas.getContext("2d");
+                if (!ctx) return;
+                const effigy = document.getElementById("ravanEffigy");
+                const bow = document.getElementById("ramBow");
+
+                const isSmall = window.innerWidth < 768;
+                const MAX_SPARKS = isSmall ? 450 : 1000;
+                const GRAVITY = 0.05;
+                const arrows = [];
+                const sparks = [];
+                let w = 0;
+                let h = 0;
+                let rafId = 0;
+                let last = 0;
+                let nextLaunch = 0;
+                let onScreen = true;
+                // Hero-relative positions of the bow tip and the effigy, refreshed on resize (null when hidden).
+                let bowTip = null;
+                let effigyBox = null;
+
+                // Ravan dahan: each arrow that bursts on the effigy knocks off one of his 10 heads;
+                // the 10th burns him down, then he is rebuilt for another round.
+                const ravanWrap = effigy ? effigy.closest(".ravan-wrap") : null;
+                const headDots = ravanWrap ? Array.from(ravanWrap.querySelectorAll(".ravan-heads i")) : [];
+                const victory = document.getElementById("ravanVictory");
+                const RAVAN_HEADS = headDots.length || 10;
+                let hits = 0;
+                let burning = false;
+                if (ravanWrap) {
+                    ravanWrap.classList.add("game-on");
+                    hero.classList.add("ravan-game");
+                }
+
+                const rand = (min, max) => min + Math.random() * (max - min);
+                const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+                const measure = (el) => {
+                    if (!el) return null;
+                    const r = el.getBoundingClientRect();
+                    if (!r.width) return null;
+                    const heroRect = hero.getBoundingClientRect();
+                    return { x: r.left - heroRect.left, y: r.top - heroRect.top, w: r.width, h: r.height };
+                };
+
+                const resize = () => {
+                    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+                    w = hero.clientWidth;
+                    h = hero.clientHeight;
+                    canvas.width = Math.round(w * dpr);
+                    canvas.height = Math.round(h * dpr);
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                    const b = measure(bow);
+                    bowTip = b ? { x: b.x + b.w * 0.85, y: b.y + b.h * 0.31 } : null;
+                    effigyBox = measure(effigy);
+                };
+
+                const addSpark = (spark) => {
+                    if (sparks.length < MAX_SPARKS) sparks.push(spark);
+                };
+
+                // The arrow peaks exactly at (tx, ty), where it bursts.
+                const shoot = (tx, ty) => {
+                    const x = bowTip ? bowTip.x : Math.min(w - 20, Math.max(20, tx + rand(-120, 120)));
+                    const y = bowTip ? bowTip.y : h;
+                    const vy = -Math.sqrt(2 * GRAVITY * Math.max(60, y - ty));
+                    const frames = -vy / GRAVITY;
+                    arrows.push({ x, y, tx, ty, vx: (tx - x) / frames, vy, color: pick(DUSSEHRA_COLORS) });
+                };
+
+                const shootAtEffigy = () => {
+                    if (!effigyBox) return false;
+                    shoot(effigyBox.x + effigyBox.w * rand(0.35, 0.65), effigyBox.y + effigyBox.h * rand(0.15, 0.4));
+                    return true;
+                };
+
+                const explode = (x, y, baseColor) => {
+                    const type = pick(["peony", "peony", "ring", "willow", "multi"]);
+                    const count = Math.round((isSmall ? 0.6 : 1) * (type === "ring" ? 60 : rand(80, 120)));
+                    const speed = rand(2.6, 4.2);
+                    for (let i = 0; i < count; i++) {
+                        const angle = (Math.PI * 2 * i) / count + rand(-0.05, 0.05);
+                        const sp = type === "ring" ? speed : speed * Math.sqrt(Math.random());
+                        addSpark({
+                            x,
+                            y,
+                            vx: Math.cos(angle) * sp,
+                            vy: Math.sin(angle) * sp,
+                            life: 1,
+                            decay: type === "willow" ? rand(0.006, 0.01) : rand(0.012, 0.02),
+                            drag: type === "willow" ? 0.975 : 0.985,
+                            gravity: type === "willow" ? 0.035 : 0.025,
+                            size: rand(1.2, 2.2),
+                            color: type === "willow" ? "#f97316" : type === "multi" ? pick(DUSSEHRA_COLORS) : baseColor,
+                            twinkle: Math.random() < 0.3,
+                        });
+                    }
+                };
+
+                const hitsEffigy = (x, y) =>
+                    !!effigyBox &&
+                    !burning &&
+                    x >= effigyBox.x &&
+                    x <= effigyBox.x + effigyBox.w &&
+                    y >= effigyBox.y &&
+                    y <= effigyBox.y + effigyBox.h;
+
+                const ravanDahan = () => {
+                    burning = true;
+                    ravanWrap.classList.add("burning");
+                    if (victory) victory.classList.add("show");
+                    const cx = effigyBox.x + effigyBox.w / 2;
+                    const cy = effigyBox.y + effigyBox.h * 0.3;
+                    for (let i = 0; i < 5; i++) {
+                        setTimeout(() => explode(cx + rand(-70, 70), cy + rand(-60, 40), pick(DUSSEHRA_COLORS)), i * 260);
+                    }
+                    setTimeout(() => {
+                        if (victory) victory.classList.remove("show");
+                        ravanWrap.classList.remove("burning");
+                        ravanWrap.classList.add("rising");
+                        hits = 0;
+                        headDots.forEach((d) => d.classList.remove("down"));
+                        setTimeout(() => {
+                            ravanWrap.classList.remove("rising");
+                            burning = false;
+                        }, 1200);
+                    }, 5000);
+                };
+
+                const strikeRavan = () => {
+                    if (!ravanWrap) return;
+                    hits++;
+                    headDots.forEach((d, i) => d.classList.toggle("down", i < hits));
+                    // Restart the flash even when hits land back to back.
+                    ravanWrap.classList.remove("hit");
+                    void ravanWrap.offsetWidth;
+                    ravanWrap.classList.add("hit");
+                    if (hits >= RAVAN_HEADS) ravanDahan();
+                };
+
+                // Embers drifting up from the burning effigy (negative gravity = they float).
+                const embers = () => {
+                    if (!effigyBox) return;
+                    const perFrame = (isSmall ? 1 : 2) * (burning ? 4 : 1);
+                    for (let i = 0; i < perFrame; i++) {
+                        addSpark({
+                            x: effigyBox.x + effigyBox.w * rand(0.2, 0.8),
+                            y: effigyBox.y + effigyBox.h * rand(0.75, 0.95),
+                            vx: rand(-0.6, 0.6),
+                            vy: rand(-2.4, -0.8),
+                            life: 1,
+                            decay: rand(0.008, 0.016),
+                            drag: 0.985,
+                            gravity: -0.012,
+                            size: rand(0.8, 1.8),
+                            color: pick(["#fde047", "#f97316", "#ef4444", "#fbbf24"]),
+                            twinkle: true,
+                        });
+                    }
+                };
+
+                const frame = (now) => {
+                    rafId = requestAnimationFrame(frame);
+                    const dt = Math.min((now - (last || now)) / 16.67, 3);
+                    last = now;
+
+                    if (now >= nextLaunch) {
+                        if (Math.random() < 0.3 && shootAtEffigy()) {
+                            // aimed at Ravan
+                        } else {
+                            const salvo = Math.random() < 0.2 ? 3 : 1;
+                            for (let i = 0; i < salvo; i++) shoot(rand(w * 0.2, w * 0.9), rand(h * 0.1, h * 0.42));
+                        }
+                        nextLaunch = now + rand(800, 1700);
+                    }
+                    embers();
+
+                    // Fade the previous frame instead of clearing it, which leaves light trails.
+                    ctx.globalCompositeOperation = "destination-out";
+                    ctx.globalAlpha = 1;
+                    ctx.fillStyle = `rgba(0,0,0,${Math.min(0.5, 0.2 * dt)})`;
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.globalCompositeOperation = "lighter";
+
+                    for (let i = arrows.length - 1; i >= 0; i--) {
+                        const a = arrows[i];
+                        a.x += a.vx * dt;
+                        a.y += a.vy * dt;
+                        a.vy += GRAVITY * dt;
+                        // Arrow shaft along the direction of flight, with a fiery trail behind it.
+                        const len = Math.hypot(a.vx, a.vy) || 1;
+                        ctx.globalAlpha = 1;
+                        ctx.strokeStyle = "#fde68a";
+                        ctx.lineWidth = 2;
+                        ctx.beginPath();
+                        ctx.moveTo(a.x - (a.vx / len) * 18, a.y - (a.vy / len) * 18);
+                        ctx.lineTo(a.x, a.y);
+                        ctx.stroke();
+                        addSpark({
+                            x: a.x,
+                            y: a.y,
+                            vx: rand(-0.3, 0.3),
+                            vy: rand(-0.2, 0.4),
+                            life: 0.8,
+                            decay: 0.045,
+                            drag: 0.95,
+                            gravity: -0.01,
+                            size: rand(1, 1.8),
+                            color: pick(["#f97316", "#fbbf24", "#ef4444"]),
+                            twinkle: false,
+                        });
+                        if (a.vy >= -GRAVITY * dt) {
+                            explode(a.x, a.y, a.color);
+                            if (hitsEffigy(a.tx, a.ty)) strikeRavan();
+                            arrows.splice(i, 1);
+                        }
+                    }
+
+                    for (let i = sparks.length - 1; i >= 0; i--) {
+                        const s = sparks[i];
+                        const drag = Math.pow(s.drag, dt);
+                        s.vx *= drag;
+                        s.vy = s.vy * drag + s.gravity * dt;
+                        s.x += s.vx * dt;
+                        s.y += s.vy * dt;
+                        s.life -= s.decay * dt;
+                        if (s.life <= 0 || s.y > h || s.y < -20) {
+                            sparks[i] = sparks[sparks.length - 1];
+                            sparks.pop();
+                            continue;
+                        }
+                        if (s.twinkle && Math.random() < 0.35) continue;
+                        ctx.globalAlpha = Math.max(0, s.life);
+                        ctx.fillStyle = s.color;
+                        ctx.beginPath();
+                        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                };
+
+                const start = () => {
+                    if (rafId || !onScreen || document.hidden) return;
+                    last = 0;
+                    rafId = requestAnimationFrame(frame);
+                };
+                const stop = () => {
+                    cancelAnimationFrame(rafId);
+                    rafId = 0;
+                };
+
+                resize();
+                if ("ResizeObserver" in window) new ResizeObserver(resize).observe(hero);
+                else window.addEventListener("resize", resize, { passive: true });
+
+                if ("IntersectionObserver" in window) {
+                    new IntersectionObserver(([entry]) => {
+                        onScreen = entry.isIntersecting;
+                        if (onScreen) start();
+                        else stop();
+                    }).observe(hero);
+                }
+                document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
+
+                hero.addEventListener("pointerdown", (e) => {
+                    if (e.target.closest("a, button")) return;
+                    const rect = hero.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    // Taps on the effigy aim at its upper body: the arrow can't peak below the bow tip,
+                    // so aiming at his legs would burst above Ravan instead of on him.
+                    if (hitsEffigy(x, y)) shootAtEffigy();
+                    else shoot(x, y);
+                });
+
+                // Opening volley so the sky lights up straight away; the last arrow strikes Ravan.
+                [0, 300].forEach((delay, i) => setTimeout(() => shoot(w * (0.35 + i * 0.25), h * rand(0.15, 0.3)), delay));
+                setTimeout(() => shootAtEffigy() || shoot(w * 0.8, h * 0.25), 650);
+                nextLaunch = performance.now() + 1500;
+                start();
+            }
+
+            // Countdown pill in the greeting ribbon. Vijayadashami 2026 falls on 20 October;
+            // update DUSSEHRA_DATE for the next festival. The pill stays hidden after the day.
+            const DUSSEHRA_DATE = { year: 2026, month: 9, day: 20 }; // month is 0-based
+
+            function initDussehraCountdown() {
+                const el = document.getElementById("dussehraCountdown");
+                if (!el) return;
+                const now = new Date();
+                const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+                const festival = Date.UTC(DUSSEHRA_DATE.year, DUSSEHRA_DATE.month, DUSSEHRA_DATE.day);
+                const days = Math.round((festival - today) / 86400000);
+                if (days > 1 && days <= 30) el.textContent = `⏳ ${days} days to Vijayadashami`;
+                else if (days === 1) el.textContent = "⏳ Vijayadashami is tomorrow!";
+                else if (days === 0) el.textContent = "🔥 Today is Vijayadashami!";
+            }
+
+            // Small festive ember burst, e.g. around the product image when it lands in the cart.
+            // Sparks go into the open <dialog> (top layer) when there is one, otherwise <body>.
+            function festiveSparkBurst(anchor) {
+                if (!anchor || prefersReducedMotion() || typeof Element.prototype.animate !== "function") return;
+                const rect = anchor.getBoundingClientRect();
+                if (!rect.width) return;
+                const host = anchor.closest("dialog") || document.body;
+                const cx = rect.left + rect.width / 2;
+                const cy = rect.top + rect.height / 2;
+                const COUNT = 22;
+                for (let i = 0; i < COUNT; i++) {
+                    const spark = document.createElement("span");
+                    spark.className = "festive-spark";
+                    spark.setAttribute("aria-hidden", "true");
+                    spark.style.left = `${cx}px`;
+                    spark.style.top = `${cy}px`;
+                    spark.style.setProperty("--c", DUSSEHRA_COLORS[i % DUSSEHRA_COLORS.length]);
+                    host.appendChild(spark);
+                    const angle = (Math.PI * 2 * i) / COUNT;
+                    const dist = 70 + Math.random() * 60;
+                    const anim = spark.animate(
+                        [
+                            { transform: "translate(0, 0) scale(1)", opacity: 1 },
+                            {
+                                transform: `translate(${Math.cos(angle) * dist}px, ${Math.sin(angle) * dist + 30}px) scale(0.2)`,
+                                opacity: 0,
+                            },
+                        ],
+                        { duration: 800 + Math.random() * 300, easing: "cubic-bezier(0.2, 0.7, 0.3, 1)", fill: "forwards" }
+                    );
+                    anim.onfinish = () => spark.remove();
+                    anim.oncancel = () => spark.remove();
+                }
+            }
+
             // Single delegated listener handles every data-action element, including
             // ones rendered later via innerHTML (product cards, cart rows, qty buttons).
             function handleGlobalClick(e) {
@@ -6337,9 +7319,6 @@
                         break;
                     case "copy":
                         copyText(target.dataset.copyText, target);
-                        break;
-                    case "upi-pay":
-                        openUpiApp(e);
                         break;
                     case "open-cart-enquiry":
                         openCartEnquiry();
@@ -6441,6 +7420,8 @@
                 initCardTilt();
                 initMagneticButtons();
                 initRipples();
+                initDussehraArrows();
+                initDussehraCountdown();
                 const yearEl = document.getElementById("copyrightYear");
                 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
                 cart = restoreCart(storage.get(APP.CART_STORAGE_KEY, {}));
