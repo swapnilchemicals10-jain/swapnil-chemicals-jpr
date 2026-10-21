@@ -1,4 +1,4 @@
-    <?php /*><!-- Keeps this PHP block hidden if the page is ever opened without PHP (file://, static host). */
+<?php /*><!-- Keeps this PHP block hidden if the page is ever opened without PHP (file://, static host). */
 /*
  * Cart PDF -> WhatsApp (Meta WhatsApp Business Cloud API).
  * When a customer downloads the cart PDF, the page POSTs the same PDF here and it is sent
@@ -69,7 +69,8 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
             CURLOPT_POSTFIELDS => $isJson ? json_encode($fields) : $fields,
             CURLOPT_HTTPHEADER => $headers,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_TIMEOUT => 30,
+            CURLOPT_CONNECTTIMEOUT => 5,
+            CURLOPT_TIMEOUT => 15,
         ]);
         $body = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -118,7 +119,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
 }
 /* --><? */ ?>
 <!doctype html>
-<!-- Home 16-10-26-->
+<!-- Home 10-10-26-->
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -175,6 +176,12 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
         <!-- Product images are NOT preloaded: #products sits below the 88vh hero, so high-priority
              preloads only competed with the CSS, fonts and logo needed for the first paint. -->
+        <!-- Deity images ARE preloaded: their <img> tags sit ~200 KB into this page, so
+             without this they were only requested once the parser got that far. Default
+             (low) priority, so they download alongside the HTML without delaying the first paint. -->
+        <link rel="preload" as="image" href="Ganesh Ji 1.webp" type="image/webp" />
+        <link rel="preload" as="image" href="Lakshmi Ji 1.webp" type="image/webp" />
+        <link rel="preload" as="image" href="Saraswati Ji 1.webp" type="image/webp" />
         <!-- Pre-built Tailwind (was the cdn.tailwindcss.com runtime compiler). Rebuild with the Tailwind v3 CLI if new utility classes are added. -->
         <style id="tailwind-css">*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:Inter,system-ui,sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.\!container{width:100%!important}.container{width:100%}@media (min-width:640px){.\!container{max-width:640px!important}.container{max-width:640px}}@media (min-width:768px){.\!container{max-width:768px!important}.container{max-width:768px}}@media (min-width:1024px){.\!container{max-width:1024px!important}.container{max-width:1024px}}@media (min-width:1280px){.\!container{max-width:1280px!important}.container{max-width:1280px}}@media (min-width:1536px){.\!container{max-width:1536px!important}.container{max-width:1536px}}.visible{visibility:visible}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.-right-1{right:-.25rem}.-top-1{top:-.25rem}.bottom-6{bottom:1.5rem}.left-4{left:1rem}.right-6{right:1.5rem}.top-0{top:0}.top-1\/2{top:50%}.isolate{isolation:isolate}.z-10{z-index:10}.z-50{z-index:50}.col-span-full{grid-column:1/-1}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:.25rem}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-1{margin-left:.25rem}.mr-1{margin-right:.25rem}.mr-2{margin-right:.5rem}.mr-3{margin-right:.75rem}.mr-6{margin-right:1.5rem}.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.block{display:block}.flex{display:flex}.table{display:table}.\!grid{display:grid!important}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-12{height:3rem}.h-14{height:3.5rem}.h-16{height:4rem}.h-4{height:1rem}.h-full{height:100%}.min-h-\[88vh\]{min-height:88vh}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-12{width:3rem}.w-14{width:3.5rem}.w-16{width:4rem}.w-4{width:1rem}.w-full{width:100%}.min-w-0{min-width:0}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-5xl{max-width:64rem}.max-w-6xl{max-width:72rem}.max-w-7xl{max-width:80rem}.max-w-xl{max-width:36rem}.max-w-xs{max-width:20rem}.flex-1{flex:1 1 0%}.flex-shrink{flex-shrink:1}.flex-shrink-0{flex-shrink:0}.-translate-y-1\/2{--tw-translate-y:-50%}.-translate-y-1\/2,.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.resize{resize:both}.list-none{list-style-type:none}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-8{gap:2rem}.space-x-2>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.5rem*var(--tw-space-x-reverse));margin-left:calc(.5rem*(1 - var(--tw-space-x-reverse)))}.space-x-4>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem*var(--tw-space-x-reverse));margin-left:calc(1rem*(1 - var(--tw-space-x-reverse)))}.space-x-6>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem*var(--tw-space-x-reverse));margin-left:calc(1.5rem*(1 - var(--tw-space-x-reverse)))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.overflow-hidden,.truncate{overflow:hidden}.truncate{text-overflow:ellipsis;white-space:nowrap}.text-wrap{text-wrap:wrap}.break-all{word-break:break-all}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235/var(--tw-border-opacity,1))}.border-sky-100{--tw-border-opacity:1;border-color:rgb(224 242 254/var(--tw-border-opacity,1))}.border-sky-200{--tw-border-opacity:1;border-color:rgb(186 230 253/var(--tw-border-opacity,1))}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85/var(--tw-border-opacity,1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235/var(--tw-bg-opacity,1))}.bg-green-500{--tw-bg-opacity:1;background-color:rgb(34 197 94/var(--tw-bg-opacity,1))}.bg-sky-50{--tw-bg-opacity:1;background-color:rgb(240 249 255/var(--tw-bg-opacity,1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249/var(--tw-bg-opacity,1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}.from-amber-500{--tw-gradient-from:#f59e0b var(--tw-gradient-from-position);--tw-gradient-to:rgba(245,158,11,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-blue-500{--tw-gradient-from:#3b82f6 var(--tw-gradient-from-position);--tw-gradient-to:rgba(59,130,246,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-green-500{--tw-gradient-from:#22c55e var(--tw-gradient-from-position);--tw-gradient-to:rgba(34,197,94,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-indigo-500{--tw-gradient-from:#6366f1 var(--tw-gradient-from-position);--tw-gradient-to:rgba(99,102,241,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-purple-500{--tw-gradient-from:#a855f7 var(--tw-gradient-from-position);--tw-gradient-to:rgba(168,85,247,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-red-500{--tw-gradient-from:#ef4444 var(--tw-gradient-from-position);--tw-gradient-to:rgba(239,68,68,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-teal-500{--tw-gradient-from:#14b8a6 var(--tw-gradient-from-position);--tw-gradient-to:rgba(20,184,166,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.to-blue-600{--tw-gradient-to:#2563eb var(--tw-gradient-to-position)}.to-green-600{--tw-gradient-to:#16a34a var(--tw-gradient-to-position)}.to-indigo-600{--tw-gradient-to:#4f46e5 var(--tw-gradient-to-position)}.to-purple-600{--tw-gradient-to:#9333ea var(--tw-gradient-to-position)}.to-red-600{--tw-gradient-to:#dc2626 var(--tw-gradient-to-position)}.to-teal-600{--tw-gradient-to:#0d9488 var(--tw-gradient-to-position)}.to-yellow-600{--tw-gradient-to:#ca8a04 var(--tw-gradient-to-position)}.object-contain{-o-object-fit:contain;object-fit:contain}.object-cover{-o-object-fit:cover;object-fit:cover}.p-3{padding:.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-10{padding-left:2.5rem;padding-right:2.5rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-0{padding-bottom:0}.pb-8{padding-bottom:2rem}.pl-11{padding-left:2.75rem}.pr-12{padding-right:3rem}.pt-2{padding-top:.5rem}.pt-3{padding-top:.75rem}.pt-6{padding-top:1.5rem}.pt-8{padding-top:2rem}.text-center{text-align:center}.font-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-wide{letter-spacing:.025em}.text-blue-100{--tw-text-opacity:1;color:rgb(219 234 254/var(--tw-text-opacity,1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175/var(--tw-text-opacity,1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128/var(--tw-text-opacity,1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99/var(--tw-text-opacity,1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81/var(--tw-text-opacity,1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55/var(--tw-text-opacity,1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113/var(--tw-text-opacity,1))}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68/var(--tw-text-opacity,1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.underline{text-decoration-line:underline}.opacity-70{opacity:.7}.opacity-90{opacity:.9}.shadow{--tw-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color)}.shadow,.shadow-lg{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.shadow-md{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color)}.shadow-md,.shadow-sm{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color)}.outline{outline-style:solid}.ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.ring-blue-500\/20{--tw-ring-color:rgba(59,130,246,.2)}.blur{--tw-blur:blur(8px)}.blur,.drop-shadow{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.drop-shadow{--tw-drop-shadow:drop-shadow(0 1px 2px rgba(0,0,0,.1)) drop-shadow(0 1px 1px rgba(0,0,0,.06))}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-filter{-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-shadow{transition-property:box-shadow;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.ease-in-out{transition-timing-function:cubic-bezier(.4,0,.2,1)}.ease-out{transition-timing-function:cubic-bezier(0,0,.2,1)}.last\:border-0:last-child{border-width:0}.hover\:-translate-y-0\.5:hover{--tw-translate-y:-0.125rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216/var(--tw-bg-opacity,1))}.hover\:text-blue-600:hover{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1))}.hover\:text-red-500:hover{--tw-text-opacity:1;color:rgb(239 68 68/var(--tw-text-opacity,1))}.hover\:text-red-600:hover{--tw-text-opacity:1;color:rgb(220 38 38/var(--tw-text-opacity,1))}.hover\:shadow-lg:hover{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.focus\:border-blue-500:focus{--tw-border-opacity:1;border-color:rgb(59 130 246/var(--tw-border-opacity,1))}.focus\:shadow-\[0_0_0_4px_rgba\(139\2c 92\2c 246\2c 0\.15\)\]:focus{--tw-shadow:0 0 0 4px rgba(139,92,246,.15);--tw-shadow-colored:0 0 0 4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.group[open] .group-open\:inline{display:inline}.group[open] .group-open\:hidden{display:none}.group[open] .group-open\:bg-gradient-to-r{background-image:linear-gradient(to right,var(--tw-gradient-stops))}.group[open] .group-open\:from-orange-500{--tw-gradient-from:#f97316 var(--tw-gradient-from-position);--tw-gradient-to:rgba(249,115,22,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.group[open] .group-open\:to-orange-600{--tw-gradient-to:#ea580c var(--tw-gradient-to-position)}.group[open] .group-open\:text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.group:hover .group-hover\:text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1))}@media (min-width:640px){.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:768px){.md\:mb-0{margin-bottom:0}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:flex-row{flex-direction:row}.md\:gap-6{gap:1.5rem}.md\:py-24{padding-top:6rem;padding-bottom:6rem}.md\:text-left{text-align:left}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}}@media (min-width:1024px){.lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}@media (min-width:1280px){.xl\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}}</style>
         <!-- Icon + font stylesheets load without blocking the first paint -->
@@ -588,7 +595,9 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 transition: width 0.1s linear;
             }
 
-            #business-details,
+            /* #business-details is NOT skipped: it sits right under the hero and opens with the deity art,
+               so skipping it made the browser lay out + decode everything in one long frame mid-scroll,
+               and the 900px placeholder height made the page jump when the real height arrived. */
             #faq {
                 content-visibility: auto;
                 contain-intrinsic-size: 1px 900px;
@@ -2939,9 +2948,9 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
             }
 
             /* ================================================================
-               Dussehra theme: dusk sky, saffron & gold, Ravan dahan effigy,
-               Ram's bow with flaming arrows, pennant bunting, marigold toran
-               and Surya motifs. Layered on top of everything above, so
+               Diwali theme: night sky with fireworks, saffron & gold, Lakshmi ji,
+               Ganesh ji & Saraswati ji with aarti, fairy lights, diyas, marigold
+               toran and rangoli motifs. Layered on top of everything above, so
                deleting this block restores the old look.
                ================================================================ */
             :root {
@@ -2955,16 +2964,16 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 --brand-accent-dark: #c2410c;
                 --brand-cta: #dc2626;
                 --brand-cta-dark: #b91c1c;
-                --dussehra-saffron: #f97316;
-                --dussehra-gold: #fbbf24;
-                --dussehra-vermilion: #dc2626;
-                --dussehra-maroon: #7f1d1d;
+                --diwali-saffron: #f97316;
+                --diwali-gold: #fbbf24;
+                --diwali-vermilion: #dc2626;
+                --diwali-maroon: #7f1d1d;
                 --font-festive: "Yatra One", var(--font-display);
                 --glow-violet: 0 0 0 1px rgba(234, 88, 12, 0.28), 0 24px 50px -16px rgba(194, 65, 12, 0.45);
             }
 
             ::selection {
-                background: var(--dussehra-saffron);
+                background: var(--diwali-saffron);
             }
 
             ::-webkit-scrollbar-thumb {
@@ -2994,7 +3003,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
             }
 
             /* ---------- Greeting ribbon ---------- */
-            .dussehra-ribbon {
+            .diwali-ribbon {
                 position: relative;
                 z-index: 51;
                 padding: 8px 16px;
@@ -3007,7 +3016,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 animation: gradient-pan 10s linear infinite;
             }
 
-            .dussehra-ribbon b {
+            .diwali-ribbon b {
                 font-family: var(--font-festive);
                 font-weight: 400;
                 font-size: 1.05rem;
@@ -3015,7 +3024,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
             }
 
             /* ---------- Toran (marigold & mango-leaf garland) under the header ---------- */
-            .dussehra-toran {
+            .diwali-toran {
                 position: absolute;
                 left: 0;
                 right: 0;
@@ -3053,7 +3062,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
             }
 
             .section-eyebrow::before {
-                content: "🏹";
+                content: "🪔";
                 width: auto;
                 height: auto;
                 background: none;
@@ -3066,12 +3075,12 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 background: linear-gradient(90deg, #dc2626, #f97316, #fde047, #f97316, #dc2626);
             }
 
-            /* ---------- Hero: Dussehra dusk sky ---------- */
+            /* ---------- Hero: Diwali night sky ---------- */
             .hero-gradient {
-                background: radial-gradient(1000px 380px at 50% 115%, rgba(249, 115, 22, 0.6), transparent 65%),
-                    radial-gradient(520px 420px at 88% 100%, rgba(220, 38, 38, 0.5), transparent 70%),
-                    radial-gradient(700px 500px at 5% -10%, rgba(91, 33, 182, 0.4), transparent 60%),
-                    linear-gradient(180deg, #120a2e 0%, #2e1065 28%, #581c3c 55%, #7c2d12 82%, #9a3412 100%);
+                background: radial-gradient(1000px 380px at 50% 115%, rgba(251, 191, 36, 0.55), transparent 65%),
+                    radial-gradient(520px 420px at 88% 100%, rgba(236, 72, 153, 0.35), transparent 70%),
+                    radial-gradient(700px 500px at 5% -10%, rgba(91, 33, 182, 0.45), transparent 60%),
+                    linear-gradient(180deg, #0b0820 0%, #1e1145 32%, #3b1255 58%, #6b1d3a 84%, #9a3412 100%);
             }
 
             .hero-grid {
@@ -3099,7 +3108,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 box-shadow: 0 0 10px 2px rgba(249, 115, 22, 0.55);
             }
 
-            .dussehra-sky {
+            .diwali-sky {
                 position: absolute;
                 inset: 0;
                 z-index: 2;
@@ -3116,7 +3125,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 cursor: pointer;
             }
 
-            .dussehra-greeting {
+            .diwali-greeting {
                 display: block;
                 margin-top: 1.25rem;
                 font-family: var(--font-festive);
@@ -3131,7 +3140,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 text-shadow: 0 0 30px rgba(249, 115, 22, 0.35);
             }
 
-            .dussehra-tagline {
+            .diwali-tagline {
                 margin-top: 0.35rem;
                 font-size: 0.95rem;
                 font-weight: 500;
@@ -3139,7 +3148,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 color: rgba(254, 215, 170, 0.85);
             }
 
-            .dussehra-tagline span {
+            .diwali-tagline span {
                 font-family: var(--font-festive);
                 font-size: 1.05rem;
                 letter-spacing: 0;
@@ -3187,7 +3196,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 color: rgba(255, 237, 213, 0.65);
             }
 
-            /* ---------- Pennant bunting across the sky ---------- */
+            /* ---------- Fairy lights strung across the night sky ---------- */
             .hero-bunting {
                 position: absolute;
                 top: 34px;
@@ -3212,90 +3221,135 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 opacity: 0.7;
             }
 
+            /* Fairy lights (ladi) twinkling on the wire */
             .hero-bunting span,
             .footer-bunting span {
-                flex: 0 0 26px;
-                height: 32px;
-                margin-top: 3px;
-                clip-path: polygon(0 0, 100% 0, 50% 100%);
-                background: #f97316;
-                transform-origin: 50% 0;
-                animation: pennant-sway 3s ease-in-out infinite alternate;
+                --bulb: #fbbf24;
+                flex: 0 0 10px;
+                height: 14px;
+                margin-top: 5px;
+                border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+                background: var(--bulb);
+                box-shadow: 0 0 10px 3px var(--bulb);
+                animation: bulb-twinkle 1.6s ease-in-out infinite alternate;
             }
 
-            :is(.hero-bunting, .footer-bunting) span:nth-child(3n + 2) {
-                background: #fbbf24;
+            :is(.hero-bunting, .footer-bunting) span:nth-child(4n + 2) {
+                --bulb: #f472b6;
             }
 
-            :is(.hero-bunting, .footer-bunting) span:nth-child(3n) {
-                background: #dc2626;
+            :is(.hero-bunting, .footer-bunting) span:nth-child(4n + 3) {
+                --bulb: #34d399;
+            }
+
+            :is(.hero-bunting, .footer-bunting) span:nth-child(4n) {
+                --bulb: #60a5fa;
             }
 
             :is(.hero-bunting, .footer-bunting) span:nth-child(even) {
-                animation-delay: -1.5s;
+                animation-delay: -0.8s;
             }
 
-            @keyframes pennant-sway {
+            @keyframes bulb-twinkle {
                 from {
-                    transform: rotate(-6deg);
+                    opacity: 0.35;
+                    box-shadow: 0 0 2px 0 var(--bulb);
                 }
 
                 to {
-                    transform: rotate(6deg);
+                    opacity: 1;
+                    box-shadow: 0 0 12px 4px var(--bulb);
                 }
             }
 
-            /* ---------- Ravan effigy (Ravan dahan) ---------- */
-            .ravan-wrap {
-                position: absolute;
-                right: 5%;
-                bottom: 58px;
-                z-index: 3;
-                width: min(32vh, 250px);
-                pointer-events: none;
+            /* ---------- Lakshmi ji, Ganesh ji & Saraswati ji with aarti (above Business Details) ---------- */
+            .puja-stage {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 1.5rem;
             }
 
-            .ravan-effigy {
+            .puja-art-wrap {
+                position: relative;
+                width: min(560px, 100%);
+                overflow: hidden;
+                padding-top: 8px;
+                /* Keeps the animated aarti/petal layers from forcing the rest of the section onto extra layers. */
+                contain: layout paint;
+                isolation: isolate;
+            }
+
+            .puja-art {
                 display: block;
                 width: 100%;
                 height: auto;
-                transform-origin: 50% 100%;
-                filter: drop-shadow(0 0 22px rgba(249, 115, 22, 0.55));
-                animation: effigy-sway 6s ease-in-out infinite alternate;
+                filter: drop-shadow(0 12px 24px rgba(154, 52, 18, 0.22));
             }
 
-            @keyframes effigy-sway {
-                from {
-                    transform: rotate(-1deg);
-                }
-
-                to {
-                    transform: rotate(1deg);
-                }
+            .pj-shubh {
+                font-family: var(--font-festive);
+                font-size: 20px;
+                fill: #b91c1c;
             }
 
-            .effigy-fire {
+
+            /* Outer box circles the aarti path; the inner box counter-rotates so the thali stays level.
+               These are HTML boxes, not SVG groups: transforms on elements inside an SVG cannot run on the
+               compositor, so the old version repainted on the main thread every frame and hung the page.
+               Percentages map the 360x270 art viewBox (orbit centre 180,170; thali pivot 180,204).
+               The rotating box is only the 128x128 square around the orbit (the thali reaches ~62 units from
+               the centre), not the whole art: a full-size layer made the GPU re-composite the deity art area every frame. */
+            .pj-aarti {
                 position: absolute;
-                left: 50%;
-                bottom: -8px;
-                width: 130%;
-                height: 42%;
-                translate: -50% 0;
-                display: flex;
-                justify-content: center;
-                align-items: flex-end;
+                left: 32.222%;
+                top: 39.259%;
+                width: 35.556%;
+                height: 47.407%;
+                transform-origin: 50% 50%;
+                animation: aarti-circle 4.5s linear infinite;
+                will-change: transform;
             }
 
-            .effigy-fire span {
-                flex: 0 0 28px;
-                height: var(--h, 60px);
-                margin: 0 -7px;
-                border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-                background: radial-gradient(ellipse at 50% 85%, #fff 0 10%, #fde047 25%, #f97316 55%, rgba(220, 38, 38, 0) 72%);
+            .pj-aarti-plate {
+                position: absolute;
+                left: 32.813%;
+                top: 54.688%;
+                width: 34.375%;
+                height: 40.625%;
+                transform-origin: 50% 53.846%;
+                animation: aarti-circle 4.5s linear infinite reverse;
+            }
+
+            .pj-aarti-plate svg {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                overflow: visible;
+            }
+
+            @keyframes aarti-circle {
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .pj-aarti-plate .pj-flame {
+                inset: auto;
+                left: 41.818%;
+                top: 18.269%;
+                width: 16.364%;
+                height: 28.846%;
                 transform-origin: 50% 100%;
-                mix-blend-mode: screen;
-                animation: flame-lick 0.9s ease-in-out infinite alternate;
-                animation-delay: var(--d, 0s);
+                animation: flame-lick 0.45s ease-in-out infinite alternate;
+            }
+
+
+            .puja-diyas {
+                padding-top: 22px;
+                margin-bottom: 0.5rem;
             }
 
             @keyframes flame-lick {
@@ -3315,40 +3369,8 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 }
             }
 
-            /* ---------- Ram's bow (dhanush) ---------- */
-            .ram-bow {
-                position: absolute;
-                left: 4%;
-                bottom: 70px;
-                z-index: 3;
-                width: min(20vh, 150px);
-                height: auto;
-                pointer-events: none;
-                filter: drop-shadow(0 0 14px rgba(251, 191, 36, 0.45));
-            }
-
-            @media (max-width: 1279px) {
-                .ravan-wrap {
-                    width: 180px;
-                    opacity: 0.85;
-                }
-            }
-
-            @media (max-width: 1023px) {
-                .ram-bow {
-                    display: none;
-                }
-            }
-
             @media (max-width: 767px) {
-                .ravan-wrap {
-                    right: 3%;
-                    bottom: 64px;
-                    width: 120px;
-                    opacity: 0.9;
-                }
-
-                .hero-bunting span:nth-child(n + 13) {
+                .hero-bunting span:nth-child(n + 16) {
                     display: none;
                 }
             }
@@ -3356,7 +3378,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
             .footer-bunting {
                 display: flex;
                 justify-content: center;
-                gap: 10px;
+                gap: 14px;
                 padding-top: 22px;
                 margin-bottom: 18px;
                 border-top: 2px solid rgba(253, 230, 138, 0.5);
@@ -3366,12 +3388,10 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
             }
 
             .footer-bunting span {
-                flex-basis: 22px;
-                height: 26px;
                 margin-top: 0;
             }
 
-            .dussehra-footer-wish {
+            .diwali-footer-wish {
                 font-family: var(--font-festive);
                 font-size: 1.35rem;
                 color: #fde68a;
@@ -3379,7 +3399,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 margin-bottom: 1.5rem;
             }
 
-            /* ---------- Surya (sun) motif watermark ---------- */
+            /* ---------- Rangoli motif watermark ---------- */
             .surya-motif {
                 position: absolute;
                 z-index: 0;
@@ -3388,8 +3408,8 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 border-radius: 50%;
                 pointer-events: none;
                 opacity: 0.16;
-                background: radial-gradient(circle, #fde047 0 13%, #dc2626 13% 16%, #f59e0b 16% 22%, transparent 22.5%),
-                    repeating-conic-gradient(#f97316 0 5deg, transparent 5deg 10deg, #fbbf24 10deg 15deg, transparent 15deg 20deg);
+                background: radial-gradient(circle, #fde047 0 13%, #db2777 13% 16%, #f59e0b 16% 22%, transparent 22.5%),
+                    repeating-conic-gradient(#f97316 0 5deg, transparent 5deg 10deg, #ec4899 10deg 15deg, transparent 15deg 20deg);
                 mask-image: radial-gradient(circle, #000 0 68%, transparent 70%);
                 -webkit-mask-image: radial-gradient(circle, #000 0 68%, transparent 70%);
                 animation: surya-spin 120s linear infinite;
@@ -3533,8 +3553,8 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 box-shadow: 0 0 8px 2px var(--c, #f97316);
             }
 
-            /* ---------- Vijayadashami countdown pill (filled by JS, hidden while empty) ---------- */
-            .dussehra-countdown {
+            /* ---------- Diwali countdown pill (filled by JS, hidden while empty) ---------- */
+            .diwali-countdown {
                 display: inline-block;
                 margin-left: 0.5rem;
                 padding: 1px 10px;
@@ -3547,18 +3567,18 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 white-space: nowrap;
             }
 
-            .dussehra-countdown:empty {
+            .diwali-countdown:empty {
                 display: none;
             }
 
-            /* ---------- Bow-and-arrow ornament on section dividers ---------- */
+            /* ---------- Diya ornament on section dividers ---------- */
             .section-divider.max-w-xs {
                 position: relative;
                 overflow: visible;
             }
 
             .section-divider.max-w-xs::after {
-                content: "🏹";
+                content: "🪔";
                 position: absolute;
                 left: 50%;
                 top: 50%;
@@ -3568,102 +3588,44 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.55));
             }
 
-            /* ---------- Ravan dahan mini-game: 10 hits = 10 heads ---------- */
-            .ravan-heads {
+            /* ---------- Click anywhere: marigold petal shower on the deities ---------- */
+            .pj-petal {
                 position: absolute;
-                left: 50%;
-                top: -30px;
-                translate: -50% 0;
-                display: none;
-                gap: 4px;
-                padding: 4px 8px;
-                border-radius: 999px;
-                background: rgba(28, 10, 10, 0.55);
-                border: 1px solid rgba(251, 191, 36, 0.4);
-            }
-
-            .ravan-wrap.game-on .ravan-heads {
-                display: flex;
-            }
-
-            .ravan-heads i {
+                top: -14px;
+                z-index: 2;
                 width: 9px;
-                height: 9px;
-                border-radius: 50%;
-                background: #fbbf24;
-                box-shadow: 0 0 6px #f97316;
-                transition:
-                    background 0.3s ease,
-                    box-shadow 0.3s ease,
-                    transform 0.3s var(--ease-spring);
+                height: 12px;
+                border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+                background: var(--c, #f59e0b);
+                box-shadow: inset -2px -2px 0 rgba(0, 0, 0, 0.12);
+                pointer-events: none;
+                animation: petal-fall 2.4s ease-in forwards;
             }
 
-            .ravan-heads i.down {
-                background: #44403c;
-                box-shadow: none;
-                transform: scale(0.7);
-            }
-
-            .ravan-wrap.hit {
-                animation: ravan-hit 0.35s ease-out;
-            }
-
-            @keyframes ravan-hit {
+            @keyframes petal-fall {
                 0% {
-                    filter: brightness(2) saturate(1.4);
+                    transform: translate(0, 0) rotate(0deg);
+                    opacity: 0;
+                }
+
+                10% {
+                    opacity: 1;
+                }
+
+                85% {
+                    opacity: 1;
                 }
 
                 100% {
-                    filter: none;
-                }
-            }
-
-            .effigy-fire {
-                transform-origin: 50% 100%;
-                transition: transform 0.8s ease;
-            }
-
-            .ravan-wrap.burning .effigy-fire {
-                transform: scale(1.25, 2.8);
-            }
-
-            .ravan-wrap.burning .ravan-effigy {
-                animation: effigy-collapse 2.6s ease-in 0.4s forwards;
-            }
-
-            @keyframes effigy-collapse {
-                0% {
-                    transform: none;
-                    filter: drop-shadow(0 0 22px rgba(249, 115, 22, 0.55));
-                }
-
-                35% {
-                    transform: rotate(-2deg);
-                    filter: brightness(1.7) sepia(0.6) drop-shadow(0 0 40px #f97316);
-                }
-
-                100% {
-                    transform: translateY(28%) scaleY(0.2) rotate(5deg);
-                    filter: brightness(0.4) drop-shadow(0 0 10px #dc2626);
+                    transform: translate(var(--drift, 0px), 300px) rotate(var(--spin, 360deg));
                     opacity: 0;
                 }
             }
 
-            .ravan-wrap.rising .ravan-effigy {
-                animation: effigy-rise 1.2s var(--ease-spring) both;
-            }
-
-            @keyframes effigy-rise {
-                from {
-                    transform: translateY(30%) scaleY(0.3);
-                    opacity: 0;
-                }
-            }
-
-            .ravan-victory {
+            .puja-blessing {
                 position: absolute;
                 left: 50%;
-                top: 18%;
+                top: 30%;
                 z-index: 12;
                 translate: -50% 0;
                 width: max-content;
@@ -3687,12 +3649,12 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                     scale 0.5s var(--ease-spring);
             }
 
-            .ravan-victory.show {
+            .puja-blessing.show {
                 opacity: 1;
                 scale: 1;
             }
 
-            .ravan-victory small {
+            .puja-blessing small {
                 display: block;
                 margin-top: 4px;
                 font-family: "Inter", sans-serif;
@@ -3701,106 +3663,9 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 color: #fed7aa;
             }
 
-            .hint-ravan {
+            .hint-puja {
                 display: none;
             }
-
-            /* ---------- Ravan placed above the Business Details heading ---------- */
-            .ravan-stage {
-                position: relative;
-                display: flex;
-                justify-content: center;
-                padding-top: 40px; /* room for the 10-head counter pill */
-                margin-bottom: 1.5rem;
-            }
-
-            #business-details .ravan-wrap {
-                position: relative;
-                right: auto;
-                bottom: auto;
-                width: min(240px, 62vw);
-                opacity: 1;
-            }
-
-            #business-details .ravan-wrap .effigy-fire {
-                bottom: -4px;
-            }
-
-            #business-details .ravan-victory {
-                top: 35%;
-            }
-
-            /* ---------- One head burns per click ---------- */
-            .rv-head {
-                transform-box: fill-box;
-                transform-origin: 50% 100%;
-                transition:
-                    opacity 1.2s ease 0.35s,
-                    translate 1.2s ease 0.35s,
-                    scale 1.2s ease 0.35s;
-            }
-
-            .rv-head :is(circle, ellipse, path) {
-                transition:
-                    fill 0.6s ease,
-                    stroke 0.6s ease;
-            }
-
-            .rv-head.burnt {
-                opacity: 0.35;
-                translate: 0 6px;
-                scale: 0.8;
-            }
-
-            .rv-head.burnt :is(circle, ellipse, path) {
-                fill: #292524;
-                stroke: #0c0a09;
-            }
-
-            .head-flame {
-                position: absolute;
-                z-index: 2;
-                width: 15%;
-                aspect-ratio: 0.7;
-                translate: -50% -80%;
-                transform-origin: 50% 100%;
-                pointer-events: none;
-                animation: head-flame-life 2.4s ease-out forwards;
-            }
-
-            .head-flame::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-                background: radial-gradient(ellipse at 50% 85%, #fff 0 10%, #fde047 25%, #f97316 55%, rgba(220, 38, 38, 0) 72%);
-                transform-origin: 50% 100%;
-                mix-blend-mode: screen;
-                animation: flame-lick 0.45s ease-in-out infinite alternate;
-            }
-
-            @keyframes head-flame-life {
-                0% {
-                    scale: 0.2;
-                    opacity: 0;
-                }
-
-                15% {
-                    scale: 1.35;
-                    opacity: 1;
-                }
-
-                70% {
-                    scale: 1;
-                    opacity: 1;
-                }
-
-                100% {
-                    scale: 0.3;
-                    opacity: 0;
-                }
-            }
-
             /* ---------- Right-side quick links (All Products / Contact Us) ---------- */
             /* .quick-links {
                 position: fixed;
@@ -3881,7 +3746,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
             }
 
             @media (min-width: 768px) {
-                .hero-gradient.ravan-game .hint-ravan {
+                .hero-gradient.puja-on .hint-puja {
                     display: inline;
                 }
             }
@@ -3947,13 +3812,13 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 box-shadow: 0 0 12px rgba(249, 115, 22, 0.6);
             }
 
-            /* ---------- Ten days to Vijayadashami ---------- */
-            .dussehra-days {
+            /* ---------- Five days of Diwali ---------- */
+            .diwali-days {
                 position: relative;
                 padding: 2.5rem 0 1.5rem;
             }
 
-            .dussehra-days-title {
+            .diwali-days-title {
                 font-family: var(--font-festive);
                 font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.4rem);
                 text-align: center;
@@ -3962,14 +3827,14 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 margin-bottom: 0.25rem;
             }
 
-            .dussehra-days-sub {
+            .diwali-days-sub {
                 text-align: center;
                 color: #78350f;
                 font-size: 0.95rem;
                 margin-bottom: 1.5rem;
             }
 
-            .dussehra-days-list {
+            .diwali-days-list {
                 display: grid;
                 grid-template-columns: repeat(5, minmax(0, 1fr));
                 gap: 14px;
@@ -3977,7 +3842,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 margin: 0 auto;
             }
 
-            .dussehra-day {
+            .diwali-day {
                 position: relative;
                 padding: 18px 14px 16px;
                 border-radius: 18px;
@@ -3990,7 +3855,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                     box-shadow 0.3s var(--ease-standard);
             }
 
-            .dussehra-day::before {
+            .diwali-day::before {
                 content: "";
                 position: absolute;
                 inset: 5px;
@@ -3999,19 +3864,19 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 pointer-events: none;
             }
 
-            .dussehra-day:hover {
+            .diwali-day:hover {
                 transform: translateY(-4px);
                 box-shadow: 0 16px 30px -12px rgba(220, 38, 38, 0.45);
             }
 
-            .dussehra-day.is-main {
-                background: linear-gradient(160deg, var(--dussehra-maroon), var(--dussehra-vermilion));
-                border-color: var(--dussehra-gold);
+            .diwali-day.is-main {
+                background: linear-gradient(160deg, var(--diwali-maroon), var(--diwali-vermilion));
+                border-color: var(--diwali-gold);
                 color: #fff7ed;
                 box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.3), 0 16px 34px -12px rgba(220, 38, 38, 0.7);
             }
 
-            .dussehra-day-icon {
+            .diwali-day-icon {
                 display: block;
                 font-size: 2rem;
                 line-height: 1;
@@ -4019,7 +3884,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.6));
             }
 
-            .dussehra-day-num {
+            .diwali-day-num {
                 display: inline-block;
                 font-size: 0.65rem;
                 font-weight: 700;
@@ -4028,54 +3893,202 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 color: #c2410c;
             }
 
-            .dussehra-day.is-main .dussehra-day-num {
+            .diwali-day.is-main .diwali-day-num {
                 color: #fde68a;
             }
 
-            .dussehra-day h3 {
+            .diwali-day h3 {
                 font-family: var(--font-festive);
                 font-size: 1.15rem;
                 margin: 2px 0 4px;
                 color: #991b1b;
             }
 
-            .dussehra-day.is-main h3 {
+            .diwali-day.is-main h3 {
                 color: #fde68a;
             }
 
-            .dussehra-day p {
+            .diwali-day p {
                 font-size: 0.8rem;
                 line-height: 1.45;
                 color: #57534e;
             }
 
-            .dussehra-day.is-main p {
+            .diwali-day.is-main p {
                 color: #ffedd5;
             }
 
             @media (max-width: 1023px) {
-                .dussehra-days-list {
+                .diwali-days-list {
                     grid-template-columns: repeat(3, minmax(0, 1fr));
                 }
             }
 
             @media (max-width: 639px) {
-                .dussehra-days-title [lang="hi"] {
+                .diwali-days-title [lang="hi"] {
                     display: block;
                 }
 
-                .dussehra-days-sep {
+                .diwali-days-sep {
                     display: none;
                 }
 
-                .dussehra-days-list {
+                .diwali-days-list {
                     grid-template-columns: repeat(2, minmax(0, 1fr));
                 }
 
-                .dussehra-day.is-main {
+                .diwali-day.is-main {
                     grid-column: 1 / -1;
                     order: -1;
                 }
+            }
+
+            /* ================================================================
+               Performance: Diwali layer. Same look, far less per-frame paint.
+               ================================================================ */
+            /* Panning a background repaints the element every frame, and the ribbon is always on screen. */
+            .diwali-ribbon,
+            .diwali-greeting {
+                animation: none;
+            }
+
+            /* Fairy lights twinkle with opacity only (compositor); animating box-shadow repainted every bulb each frame. */
+            :is(.hero-bunting, .footer-bunting) span {
+                box-shadow: 0 0 10px 3px var(--bulb);
+            }
+
+            @keyframes bulb-twinkle {
+                from {
+                    opacity: 0.35;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+
+            /* The aarti animates inside this SVG, so a filter on it was re-rendered with the deity images every frame. */
+            .puja-art {
+                filter: none;
+            }
+
+            /* Near-opaque already; the blur was composited even while the blessing was hidden. */
+            .puja-blessing {
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+
+            /* Fairy lights: animating box-shadow repainted all ~40 bulbs every frame. Keep the glow
+               static and twinkle with opacity only, which runs on the compositor. */
+            .hero-bunting span,
+            .footer-bunting span {
+                box-shadow: 0 0 10px 3px var(--bulb);
+                animation-name: bulb-twinkle-cheap;
+            }
+
+            @keyframes bulb-twinkle-cheap {
+                from {
+                    opacity: 0.35;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+
+            /* Full-width ribbon above the header and the hero greeting panned their gradients every frame
+               (a full repaint each time, and the ribbon never scrolls out of the paused zone). Same colours, static. */
+            .diwali-ribbon,
+            .diwali-greeting {
+                animation: none;
+            }
+
+            .diwali-greeting {
+                text-shadow: none;
+            }
+
+            /* Footer diya flames: a drop-shadow filter on an animated element is re-rendered every frame. */
+            .diya::before {
+                filter: none;
+                will-change: transform, opacity;
+            }
+
+            .surya-motif {
+                will-change: transform;
+            }
+
+            /* Aarti overlay sits exactly on top of .puja-art (same 360x270 box, same 8px wrap padding).
+               Only its HTML children move, so the deity art underneath is never repainted. */
+            .puja-aarti-layer {
+                position: absolute;
+                left: 0;
+                top: 8px;
+                z-index: 1;
+                width: 100%;
+                aspect-ratio: 360 / 270;
+                pointer-events: none;
+            }
+
+            .puja-aarti-path {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            /* Deity paintings sit on the same 360x270 box as .puja-art (same 8px wrap padding), under the aarti.
+               The arched top is a border-radius (half the width / arch radius as % of height) instead of an SVG clip-path. */
+            .puja-deity-layer {
+                position: absolute;
+                left: 0;
+                top: 8px;
+                z-index: 1;
+                width: 100%;
+                aspect-ratio: 360 / 270;
+                pointer-events: none;
+                /* Static paintings get their own layer, rastered once, so scrolling and the aarti
+                   moving over them never re-decode or re-scale the images. */
+                will-change: transform;
+            }
+
+            .pj-deity-img {
+                position: absolute;
+                display: block;
+                max-width: none;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .pj-img-lakshmi,
+            .pj-img-saraswati {
+                top: 28.889%;
+                width: 25.556%;
+                height: 57.037%;
+                border-radius: 50% 50% 0 0 / 29.87% 29.87% 0 0;
+            }
+
+            .pj-img-lakshmi {
+                left: 6.667%;
+            }
+
+            .pj-img-saraswati {
+                left: 67.778%;
+            }
+
+            .pj-img-ganesh {
+                left: 35%;
+                top: 20.741%;
+                width: 30%;
+                height: 65.185%;
+                border-radius: 50% 50% 0 0 / 30.682% 30.682% 0 0;
+            }
+
+            .puja-deity-frame {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                overflow: visible;
             }
         </style>
         <script type="application/ld+json">
@@ -4157,53 +4170,6 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 ]
             }
         </script>
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@graph": [
-                    {
-                        "@type": "Product",
-                        "name": "Handcare",
-                        "image": "Handcare.webp",
-                        "description": "Premium hand cleaner for effective cleaning and care",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "200", "priceCurrency": "INR", "url": "#products" }
-                    },
-                    {
-                        "@type": "Product",
-                        "name": "Dishwash",
-                        "image": "Dishwash.webp",
-                        "description": "Powerful dishwash for effective grease and stain removal",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "150", "priceCurrency": "INR", "url": "#products" }
-                    },
-                    {
-                        "@type": "Product",
-                        "name": "Detergent",
-                        "image": "Detergent.webp",
-                        "description": "Effective detergent for deep cleaning and fresh clothes",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "70", "priceCurrency": "INR", "url": "#products" }
-                    },
-                    {
-                        "@type": "Product",
-                        "name": "Tiles Cleaner",
-                        "image": "Tiles Cleaner.webp",
-                        "description": "Powerful tile cleaner for removing dirt and stains",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "70", "priceCurrency": "INR", "url": "#products" }
-                    },
-                    {
-                        "@type": "Product",
-                        "name": "Toilet Cleaner",
-                        "image": "Toilet Cleaner.webp",
-                        "description": "Powerful tile cleaner for removing dirt and stains",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "130", "priceCurrency": "INR", "url": "#products" }
-                    }
-                ]
-            }
-        </script>
     </head>
 
     <body class="min-h-screen text-gray-800">
@@ -4228,10 +4194,10 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
             </div>
         </noscript>
 
-        <div class="dussehra-ribbon" role="note">
-            🏹 <b lang="hi">शुभ विजयादशमी</b> &nbsp;·&nbsp; Happy Dussehra from Swapnil Chemicals — may goodness always
-            win &amp; every ride shine ✨
-            <span class="dussehra-countdown" id="dussehraCountdown"></span>
+        <div class="diwali-ribbon" role="note">
+            🪔 <b lang="hi">शुभ दीपावली</b> &nbsp;·&nbsp; Happy Diwali from Swapnil Chemicals — may Maa Lakshmi fill your
+            home with light &amp; every ride shine ✨
+            <span class="diwali-countdown" id="diwaliCountdown"></span>
         </div>
 
         <header class="sticky top-0 z-50 nav-blur">
@@ -4281,7 +4247,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                     </div>
                 </div>
             </div>
-            <div class="dussehra-toran" aria-hidden="true"></div>
+            <div class="diwali-toran" aria-hidden="true"></div>
         </header>
 
         <main id="main-content" tabindex="-1">
@@ -4293,7 +4259,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 </div>
                 <div class="hero-grid" aria-hidden="true"></div>
                 <div class="hero-bubbles" id="heroBubbles" aria-hidden="true"></div>
-                <canvas class="dussehra-sky" id="dussehraSky" aria-hidden="true"></canvas>
+                <canvas class="diwali-sky" id="diwaliSky" aria-hidden="true"></canvas>
                 <div class="hero-bunting" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
 
                 <div class="container mx-auto px-4 relative z-10 py-16 md:py-24">
@@ -4302,9 +4268,9 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                             <span class="hero-chip-dot" aria-hidden="true"></span>
                             Jaipur-based manufacturer &bull; Since 2020
                         </span>
-                        <p class="dussehra-greeting"><span lang="hi">शुभ विजयादशमी</span> · Happy Dussehra</p>
-                        <p class="dussehra-tagline">
-                            <span lang="hi">असत्य पर सत्य की विजय</span> &nbsp;·&nbsp; The victory of good over evil
+                        <p class="diwali-greeting"><span lang="hi">शुभ दीपावली</span> · Happy Diwali</p>
+                        <p class="diwali-tagline">
+                            <span lang="hi">तमसो मा ज्योतिर्गमय</span> &nbsp;·&nbsp; From darkness, lead us to light
                         </p>
                         <h2 class="font-bold leading-tight mt-6 mb-6">
                             Premium Home <br /><span class="hero-shine-text">Cleaning Solutions</span>
@@ -4333,24 +4299,13 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                             <li><i class="fas fa-award" aria-hidden="true"></i> MSME &amp; Udyam certified</li>
                             <li><i class="fas fa-truck-fast" aria-hidden="true"></i> Bulk &amp; retail</li>
                         </ul>
-                        <p class="hero-tap-hint" aria-hidden="true">🏹 Tap anywhere in the sky to shoot a flaming arrow<span class="hint-ravan"> · every click burns one of Ravan's 10 heads (see him below)</span></p>
+                        <p class="hero-tap-hint" aria-hidden="true">🎆 Tap anywhere in the sky to light up a firework<span class="hint-puja"> · every click showers flowers on Lakshmi ji, Ganesh ji &amp; Saraswati ji (see below)</span></p>
                     </div>
                 </div>
 
                 <a href="#business-details" class="hero-scroll-cue" aria-label="Scroll to business details">
                     <span class="hero-scroll-mouse" aria-hidden="true"><span></span></span>
                 </a>
-                <svg class="ram-bow" id="ramBow" viewBox="0 0 150 200" style="overflow: visible" aria-hidden="true">
-                    <g transform="rotate(-35 75 100)">
-                        <path d="M60 8 Q116 100 60 192" stroke="#fbbf24" stroke-width="7" fill="none" stroke-linecap="round" />
-                        <rect x="83" y="88" width="10" height="24" rx="3" fill="#b45309" />
-                        <path d="M60 8 L34 100 L60 192" stroke="#fde68a" stroke-width="1.5" fill="none" />
-                        <path d="M30 100 H130" stroke="#fde68a" stroke-width="3" stroke-linecap="round" />
-                        <path d="M128 92 L144 100 L128 108 Z" fill="#e5e7eb" />
-                        <path d="M22 100 L14 92 H32 L40 100 L32 108 H14 Z" fill="#f97316" />
-                        <circle cx="142" cy="100" r="6" fill="#f97316" opacity="0.8" />
-                    </g>
-                </svg>
                 <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
                     <path d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,45 L1440,90 L0,90 Z" fill="currentColor" />
                 </svg>
@@ -4371,63 +4326,6 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
             <section id="business-details" class="pt-6 pb-0 relative">
                 <div class="surya-motif surya-left" aria-hidden="true"></div>
                 <div class="container mx-auto px-4">
-                    <div class="text-center mb-6 mt-8">
-                        <!-- Ravan effigy: a click anywhere on the page burns one of his 10 heads (see initRavanHeads) -->
-                        <div class="ravan-stage">
-                            <div class="ravan-wrap" aria-hidden="true">
-                                <div class="ravan-heads"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                                <svg class="ravan-effigy" id="ravanEffigy" viewBox="0 0 240 330">
-                                    <defs>
-                                        <linearGradient id="rvTorso" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dc2626" /><stop offset="1" stop-color="#7f1d1d" /></linearGradient>
-                                        <linearGradient id="rvSkirt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f59e0b" /><stop offset="1" stop-color="#9a3412" /></linearGradient>
-                                    </defs>
-                                    <path d="M106 300 L100 330 M134 300 L140 330" stroke="#78350f" stroke-width="4" />
-                                    <rect x="98" y="258" width="16" height="46" rx="3" fill="#991b1b" />
-                                    <rect x="126" y="258" width="16" height="46" rx="3" fill="#991b1b" />
-                                    <path d="M82 176 H158 L186 262 H54 Z" fill="url(#rvSkirt)" />
-                                    <path d="M92 186 L74 254 M106 186 L100 254 M120 186 V254 M134 186 L140 254 M148 186 L166 254" stroke="#7f1d1d" stroke-width="3" opacity="0.45" />
-                                    <path d="M58 252 H182" stroke="#fde047" stroke-width="4" />
-                                    <path d="M94 102 L52 148 L62 156 L100 118 Z" fill="#b91c1c" />
-                                    <path d="M146 102 L188 148 L178 156 L140 118 Z" fill="#b91c1c" />
-                                    <circle cx="52" cy="154" r="17" fill="#6d28d9" stroke="#fbbf24" stroke-width="3" />
-                                    <circle cx="52" cy="154" r="5" fill="#fbbf24" />
-                                    <path d="M184 152 L214 86" stroke="#e5e7eb" stroke-width="5" stroke-linecap="round" />
-                                    <path d="M176 150 L194 158" stroke="#fbbf24" stroke-width="5" stroke-linecap="round" />
-                                    <path d="M92 96 H148 L160 178 H80 Z" fill="url(#rvTorso)" />
-                                    <path d="M98 104 Q120 132 142 104" stroke="#fde047" stroke-width="4" fill="none" />
-                                    <path d="M102 112 Q120 142 138 112" stroke="#fbbf24" stroke-width="3" fill="none" stroke-dasharray="3 4" />
-                                    <rect x="80" y="170" width="80" height="9" fill="#fbbf24" />
-                                    <!-- 10 heads, one <g> each, in burn order (outer heads first, the main head last) -->
-                                    <g class="rv-head" data-x="32" data-y="78"><path d="M23 70 L32 56 L41 70 Z" fill="#fbbf24" /><circle cx="32" cy="78" r="11" fill="#f59e0b" stroke="#7c2d12" stroke-width="2" /><circle cx="28" cy="76" r="1.6" fill="#1c1917" /><circle cx="36" cy="76" r="1.6" fill="#1c1917" /></g>
-                                    <g class="rv-head" data-x="208" data-y="78"><path d="M199 70 L208 56 L217 70 Z" fill="#fbbf24" /><circle cx="208" cy="78" r="11" fill="#f59e0b" stroke="#7c2d12" stroke-width="2" /><circle cx="204" cy="76" r="1.6" fill="#1c1917" /><circle cx="212" cy="76" r="1.6" fill="#1c1917" /></g>
-                                    <g class="rv-head" data-x="54" data-y="78"><path d="M45 70 L54 56 L63 70 Z" fill="#fbbf24" /><circle cx="54" cy="78" r="11" fill="#f59e0b" stroke="#7c2d12" stroke-width="2" /><circle cx="50" cy="76" r="1.6" fill="#1c1917" /><circle cx="58" cy="76" r="1.6" fill="#1c1917" /></g>
-                                    <g class="rv-head" data-x="186" data-y="78"><path d="M177 70 L186 56 L195 70 Z" fill="#fbbf24" /><circle cx="186" cy="78" r="11" fill="#f59e0b" stroke="#7c2d12" stroke-width="2" /><circle cx="182" cy="76" r="1.6" fill="#1c1917" /><circle cx="190" cy="76" r="1.6" fill="#1c1917" /></g>
-                                    <g class="rv-head" data-x="76" data-y="78"><path d="M67 70 L76 56 L85 70 Z" fill="#fbbf24" /><circle cx="76" cy="78" r="11" fill="#f59e0b" stroke="#7c2d12" stroke-width="2" /><circle cx="72" cy="76" r="1.6" fill="#1c1917" /><circle cx="80" cy="76" r="1.6" fill="#1c1917" /></g>
-                                    <g class="rv-head" data-x="164" data-y="78"><path d="M155 70 L164 56 L173 70 Z" fill="#fbbf24" /><circle cx="164" cy="78" r="11" fill="#f59e0b" stroke="#7c2d12" stroke-width="2" /><circle cx="160" cy="76" r="1.6" fill="#1c1917" /><circle cx="168" cy="76" r="1.6" fill="#1c1917" /></g>
-                                    <g class="rv-head" data-x="98" data-y="78"><path d="M89 70 L98 56 L107 70 Z" fill="#fbbf24" /><circle cx="98" cy="78" r="11" fill="#f59e0b" stroke="#7c2d12" stroke-width="2" /><circle cx="94" cy="76" r="1.6" fill="#1c1917" /><circle cx="102" cy="76" r="1.6" fill="#1c1917" /></g>
-                                    <g class="rv-head" data-x="142" data-y="78"><path d="M133 70 L142 56 L151 70 Z" fill="#fbbf24" /><circle cx="142" cy="78" r="11" fill="#f59e0b" stroke="#7c2d12" stroke-width="2" /><circle cx="138" cy="76" r="1.6" fill="#1c1917" /><circle cx="146" cy="76" r="1.6" fill="#1c1917" /></g>
-                                    <g class="rv-head" data-x="120" data-y="16"><circle cx="120" cy="16" r="10" fill="#f59e0b" stroke="#7c2d12" stroke-width="2" /><circle cx="116" cy="14" r="1.5" fill="#1c1917" /><circle cx="124" cy="14" r="1.5" fill="#1c1917" /></g>
-                                    <g class="rv-head rv-head-main" data-x="120" data-y="72">
-                                        <path d="M100 54 L104 36 L112 48 L120 28 L128 48 L136 36 L140 54 Z" fill="#fde047" stroke="#b45309" stroke-width="2" />
-                                        <ellipse cx="120" cy="74" rx="19" ry="22" fill="#fbbf24" stroke="#7c2d12" stroke-width="2" />
-                                        <ellipse cx="112" cy="70" rx="4" ry="3" fill="#fff" /><ellipse cx="128" cy="70" rx="4" ry="3" fill="#fff" />
-                                        <circle cx="112" cy="70" r="1.8" fill="#1c1917" /><circle cx="128" cy="70" r="1.8" fill="#1c1917" />
-                                        <path d="M106 63 L116 66 M134 63 L124 66" stroke="#1c1917" stroke-width="2" stroke-linecap="round" fill="none" />
-                                        <path d="M120 56 V65" stroke="#dc2626" stroke-width="3" stroke-linecap="round" fill="none" />
-                                        <path d="M108 84 Q114 79 120 84 Q126 79 132 84 Q126 89 120 86 Q114 89 108 84 Z" fill="#1c1917" />
-                                    </g>
-                                </svg>
-                                <div class="effigy-fire"><span style="--h: 46px; --d: -0.1s"></span><span style="--h: 72px; --d: -0.4s"></span><span style="--h: 58px; --d: -0.7s"></span><span style="--h: 90px; --d: -0.2s"></span><span style="--h: 64px; --d: -0.55s"></span><span style="--h: 80px; --d: -0.3s"></span><span style="--h: 50px; --d: -0.8s"></span></div>
-                            </div>
-                            <div class="ravan-victory" id="ravanVictory" aria-hidden="true">
-                                <span lang="hi">असत्य पर सत्य की विजय!</span>
-                                <small>Ravan dahan complete · Happy Dussehra 🏹</small>
-                            </div>
-                        </div>
-                        <span class="section-eyebrow">Who we are</span>
-                        <h2 class="text-4xl font-bold gradient-text mb-4">Business Details</h2>
-                        <div class="section-divider max-w-xs mx-auto"></div>
-                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                         <div class="feature-card p-8 rounded-2xl">
                             <div class="flex items-center mb-6">
@@ -4544,47 +4442,48 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                 </div>
             </section>
 
-            <section class="dussehra-days" id="dussehra-days" aria-labelledby="dussehraDaysTitle">
+            <section class="diwali-days" id="diwali-days" aria-labelledby="diwaliDaysTitle">
                 <div class="container mx-auto px-4">
                     <div class="text-center">
-                        <span class="section-eyebrow">Navratri to Vijayadashami</span>
-                        <h2 class="dussehra-days-title" id="dussehraDaysTitle">
-                            <span lang="hi">नौ रातें, एक विजय</span><span class="dussehra-days-sep"> · </span>Ten Days of Dussehra
+                        <span class="section-eyebrow">Dhanteras to Bhai Dooj</span>
+                        <h2 class="diwali-days-title" id="diwaliDaysTitle">
+                            <span lang="hi">पाँच दिन, अनगिनत दीये</span><span class="diwali-days-sep"> · </span>Five Days of Diwali
                         </h2>
-                        <p class="dussehra-days-sub">
-                            On Ayudha Puja, vehicles are washed and decorated for blessings. Give yours a festive shine.
+                        <p class="diwali-days-sub">
+                            New vehicles come home on Dhanteras, and every car is washed and decorated before Lakshmi
+                            Puja. Give yours a festive shine.
                         </p>
                     </div>
-                    <ol class="dussehra-days-list">
-                        <li class="dussehra-day">
-                            <span class="dussehra-day-icon" aria-hidden="true">🪔</span>
-                            <span class="dussehra-day-num">Day 1</span>
-                            <h3>Ghatasthapana</h3>
-                            <p>Navratri begins as the kalash is installed and Maa Durga is welcomed home.</p>
+                    <ol class="diwali-days-list">
+                        <li class="diwali-day">
+                            <span class="diwali-day-icon" aria-hidden="true">🏺</span>
+                            <span class="diwali-day-num">Day 1</span>
+                            <h3>Dhanteras</h3>
+                            <p>An auspicious day to buy gold, new utensils and new vehicles.</p>
                         </li>
-                        <li class="dussehra-day">
-                            <span class="dussehra-day-icon" aria-hidden="true">💃</span>
-                            <span class="dussehra-day-num">Nights 1–9</span>
-                            <h3>Garba &amp; Dandiya</h3>
-                            <p>Nine nights of devotion, fasting and dance to the nine forms of the Goddess.</p>
+                        <li class="diwali-day">
+                            <span class="diwali-day-icon" aria-hidden="true">🧹</span>
+                            <span class="diwali-day-num">Day 2</span>
+                            <h3>Chhoti Diwali</h3>
+                            <p>Homes are cleaned and decorated, and the first diyas are lit at the door.</p>
                         </li>
-                        <li class="dussehra-day">
-                            <span class="dussehra-day-icon" aria-hidden="true">🔱</span>
-                            <span class="dussehra-day-num">Day 8</span>
-                            <h3>Durga Ashtami</h3>
-                            <p>Kanya puja, where young girls are honoured as forms of Maa Durga.</p>
+                        <li class="diwali-day is-main">
+                            <span class="diwali-day-icon" aria-hidden="true">🪔</span>
+                            <span class="diwali-day-num">Day 3</span>
+                            <h3>Lakshmi Puja</h3>
+                            <p>Aarti to Lakshmi ji, Ganesh ji &amp; Saraswati ji for prosperity, wisdom and knowledge.</p>
                         </li>
-                        <li class="dussehra-day">
-                            <span class="dussehra-day-icon" aria-hidden="true">🚗</span>
-                            <span class="dussehra-day-num">Day 9</span>
-                            <h3>Ayudha Puja</h3>
-                            <p>Tools, machines and vehicles are cleaned, decorated and worshipped.</p>
+                        <li class="diwali-day">
+                            <span class="diwali-day-icon" aria-hidden="true">⛰️</span>
+                            <span class="diwali-day-num">Day 4</span>
+                            <h3>Govardhan Puja</h3>
+                            <p>Annakut offerings honour Shri Krishna lifting the Govardhan hill.</p>
                         </li>
-                        <li class="dussehra-day is-main">
-                            <span class="dussehra-day-icon" aria-hidden="true">🏹</span>
-                            <span class="dussehra-day-num">Day 10</span>
-                            <h3>Vijayadashami</h3>
-                            <p>Ravan effigies burn to mark Lord Ram's victory of good over evil.</p>
+                        <li class="diwali-day">
+                            <span class="diwali-day-icon" aria-hidden="true">🎁</span>
+                            <span class="diwali-day-num">Day 5</span>
+                            <h3>Bhai Dooj</h3>
+                            <p>Sisters pray for their brothers' long life and happiness.</p>
                         </li>
                     </ol>
                 </div>
@@ -4796,7 +4695,7 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
             </section>
         </main>
 
-        <!-- Slides in from the right on the first click anywhere on the page (see initRavanHeads) -->
+        <!-- Slides in from the right on the first click anywhere on the page (see initPujaPetals) -->
         <!-- <nav class="quick-links" id="quickLinks" aria-label="Quick links">
             <button type="button" class="quick-links-close" aria-label="Hide quick links">
                 <i class="fas fa-times" aria-hidden="true"></i>
@@ -4843,8 +4742,8 @@ if (($_GET['action'] ?? '') === 'send-cart-pdf') {
                     </div>
                 </div>
                 <div class="footer-bunting" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-                <p class="dussehra-footer-wish">
-                    May this Vijayadashami bring victory, courage &amp; prosperity to you and your family 🏹
+                <p class="diwali-footer-wish">
+                    May this Diwali fill your home with light, prosperity &amp; happiness 🪔
                 </p>
                 <div class="diya-row" aria-hidden="true">
                     <span class="diya"></span><span class="diya" style="--d: -0.3s"></span
@@ -7400,7 +7299,9 @@ doc.text("Company's Bank Details", bx, lowTop + 3.8);
             // Infinite decorative animations keep the GPU busy even when off-screen; pause them there.
             function initOffscreenAnimationPause() {
                 if (!("IntersectionObserver" in window)) return;
-                const targets = document.querySelectorAll(".hero-gradient, .product-marquee, .site-footer");
+                const targets = document.querySelectorAll(
+                    ".hero-gradient, .product-marquee, .site-footer, .puja-stage, .puja-diyas, .diwali-days, .surya-motif"
+                );
                 const obs = new IntersectionObserver((entries) =>
                     entries.forEach((entry) => entry.target.classList.toggle("anim-paused", !entry.isIntersecting))
                 );
@@ -7487,73 +7388,47 @@ doc.text("Company's Bank Details", bx, lowTop + 3.8);
                 initScrollAnimations();
             }
 
-            // ---------- Ravan dahan: every click burns one of his 10 heads ----------
-            // A click anywhere on the page sets the next head on fire (outer heads first, the main head
-            // last); the 10th burns the whole effigy down, then he is rebuilt for another round.
-            // The first click also slides in the All Products / Contact Us links on the right.
-            // ravanFx is shared with initDussehraArrows, which adds canvas fire when motion is allowed.
-            const ravanFx = { burning: false, burst: null, dahan: null };
+            // ---------- Diwali puja: every click showers marigold petals on Lakshmi ji, Ganesh ji & Saraswati ji ----------
+            // Every 7th click shows a Diwali blessing. The first click also slides in the All Products /
+            // Contact Us links on the right (when that markup is present).
+            const PETAL_COLORS = ["#f59e0b", "#fbbf24", "#f97316", "#ea580c", "#dc2626", "#fde047", "#f472b6"];
+            const MAX_PETALS = 90;
 
-            function initRavanHeads() {
+            function initPujaPetals() {
                 const hero = document.getElementById("hero");
-                const effigy = document.getElementById("ravanEffigy");
-                const wrap = effigy ? effigy.closest(".ravan-wrap") : null;
-                const heads = effigy ? Array.from(effigy.querySelectorAll(".rv-head")) : [];
-                const dots = wrap ? Array.from(wrap.querySelectorAll(".ravan-heads i")) : [];
-                const victory = document.getElementById("ravanVictory");
+                const wrap = document.querySelector(".puja-art-wrap");
+                const blessing = document.getElementById("pujaBlessing");
                 const quickLinks = document.getElementById("quickLinks");
-                let burnt = 0;
+                let clicks = 0;
+                let blessingTimer = 0;
                 let linksDismissed = false;
 
-                if (wrap && heads.length) {
-                    wrap.classList.add("game-on");
-                    if (hero) hero.classList.add("ravan-game");
-                }
+                if (wrap && hero) hero.classList.add("puja-on");
 
-                // Flame over the head, placed from its viewBox centre (data-x / data-y).
-                const VIEW_W = 240;
-                const VIEW_H = 330;
-                const lightHead = (head) => {
-                    if (prefersReducedMotion()) return;
-                    const flame = document.createElement("span");
-                    flame.className = "head-flame";
-                    flame.style.left = `${(Number(head.dataset.x) / VIEW_W) * 100}%`;
-                    flame.style.top = `${(Number(head.dataset.y) / VIEW_H) * 100}%`;
-                    flame.addEventListener("animationend", (e) => e.target === flame && flame.remove());
-                    wrap.appendChild(flame);
-                };
-
-                const dahan = () => {
-                    wrap.classList.add("burning");
-                    if (victory) victory.classList.add("show");
-                    if (ravanFx.dahan) ravanFx.dahan();
-                    setTimeout(() => {
-                        if (victory) victory.classList.remove("show");
-                        wrap.classList.remove("burning");
-                        wrap.classList.add("rising");
-                        burnt = 0;
-                        heads.forEach((h) => h.classList.remove("burnt"));
-                        dots.forEach((d) => d.classList.remove("down"));
-                        setTimeout(() => {
-                            wrap.classList.remove("rising");
-                            ravanFx.burning = false;
-                        }, 1200);
-                    }, 5000);
-                };
-
-                const burnNextHead = () => {
-                    if (!wrap || !heads.length || ravanFx.burning) return;
-                    const head = heads[burnt];
-                    burnt++;
-                    head.classList.add("burnt");
-                    dots.forEach((d, i) => d.classList.toggle("down", i < burnt));
-                    lightHead(head);
-                    if (ravanFx.burst) ravanFx.burst(head);
-                    if (burnt >= heads.length) {
-                        // Block further clicks until he has burned down and risen again.
-                        ravanFx.burning = true;
-                        setTimeout(dahan, 900);
+                const shower = () => {
+                    if (!wrap || prefersReducedMotion()) return;
+                    // Off screen the puja's animations are paused, so petals would never finish and be removed.
+                    if (wrap.closest(".anim-paused")) return;
+                    if (wrap.querySelectorAll(".pj-petal").length > MAX_PETALS) return;
+                    for (let i = 0; i < 14; i++) {
+                        const petal = document.createElement("span");
+                        petal.className = "pj-petal";
+                        petal.style.left = `${5 + Math.random() * 90}%`;
+                        petal.style.setProperty("--c", PETAL_COLORS[i % PETAL_COLORS.length]);
+                        petal.style.setProperty("--drift", `${Math.round(Math.random() * 60 - 30)}px`);
+                        petal.style.setProperty("--spin", `${Math.round(Math.random() * 540 - 270)}deg`);
+                        petal.style.animationDuration = `${(1.8 + Math.random() * 1.4).toFixed(2)}s`;
+                        petal.style.animationDelay = `${(Math.random() * 0.35).toFixed(2)}s`;
+                        petal.addEventListener("animationend", () => petal.remove());
+                        wrap.appendChild(petal);
                     }
+                };
+
+                const bless = () => {
+                    if (!blessing) return;
+                    blessing.classList.add("show");
+                    clearTimeout(blessingTimer);
+                    blessingTimer = setTimeout(() => blessing.classList.remove("show"), 4000);
                 };
 
                 const showQuickLinks = () => {
@@ -7561,42 +7436,54 @@ doc.text("Company's Bank Details", bx, lowTop + 3.8);
                 };
 
                 if (quickLinks) {
-                    quickLinks.querySelector(".quick-links-close").addEventListener("click", () => {
-                        linksDismissed = true;
-                        quickLinks.classList.remove("show");
-                    });
+                    const close = quickLinks.querySelector(".quick-links-close");
+                    if (close) {
+                        close.addEventListener("click", () => {
+                            linksDismissed = true;
+                            quickLinks.classList.remove("show");
+                        });
+                    }
                 }
 
                 document.addEventListener("click", (e) => {
                     if (quickLinks && quickLinks.contains(e.target)) return;
                     showQuickLinks();
-                    burnNextHead();
+                    shower();
+                    clicks++;
+                    if (clicks % 7 === 0) bless();
                 });
             }
 
-            // ---------- Dussehra flaming arrows ----------
-            // Flaming arrows fly from Ram's bow (or the bottom of the hero on narrow screens) and burst
-            // into embers; some are aimed at the Ravan effigy, which sheds rising embers from its fire.
-            // A tap/click in the hero shoots an arrow at that point.
+            // ---------- Diwali fireworks ----------
+            // Rockets rise from the bottom of the hero and burst into colourful sparks.
+            // A tap/click in the hero launches a rocket that bursts at that point.
             // Runs only while the hero is on screen and the tab is visible; skipped for reduced motion.
-            const DUSSEHRA_COLORS = ["#fbbf24", "#f97316", "#ef4444", "#fde68a", "#fb923c", "#dc2626", "#facc15", "#ffffff"];
+            const DIWALI_COLORS = ["#fbbf24", "#f97316", "#ef4444", "#fde68a", "#f472b6", "#a78bfa", "#34d399", "#60a5fa", "#ffffff"];
 
-            function initDussehraArrows() {
+            function initDiwaliFireworks() {
                 const hero = document.getElementById("hero");
-                const canvas = document.getElementById("dussehraSky");
+                const canvas = document.getElementById("diwaliSky");
                 if (!hero || !canvas || prefersReducedMotion()) return;
                 const ctx = canvas.getContext("2d");
                 if (!ctx) return;
-                // The effigy now sits above Business Details, outside the hero canvas, so the canvas
-                // only targets it (arrows, embers, dahan fireworks) when it is inside the hero.
-                const ravanEl = document.getElementById("ravanEffigy");
-                const effigy = ravanEl && hero.contains(ravanEl) ? ravanEl : null;
-                const bow = document.getElementById("ramBow");
 
                 const isSmall = window.innerWidth < 768;
-                const MAX_SPARKS = isSmall ? 450 : 1000;
+                // Low-end devices / data saver: no automatic salvos, only the opening volley and taps,
+                // so the canvas loop goes idle instead of running for as long as the hero is visible.
+                const lowPower =
+                    (navigator.hardwareConcurrency || 8) <= 4 ||
+                    (navigator.deviceMemory || 8) <= 4 ||
+                    Boolean(navigator.connection && navigator.connection.saveData);
+                const autoLaunch = !lowPower;
+                const MAX_SPARKS = lowPower ? 120 : isSmall ? 160 : 300;
+                // Sparks are tiny glowing dots, so a lower backing resolution looks the same once the CSS
+                // scales the canvas up, and cuts the full-canvas fade fill to a quarter of the pixels.
+                const RENDER_SCALE = isSmall ? 0.75 : 0.5;
+                // ~30fps everywhere: each frame fades the whole hero-sized canvas, and at 60fps that fill
+                // competed with scrolling on laptops too. Motion is computed from dt, so speed is unchanged.
+                const MIN_FRAME_MS = 32;
                 const GRAVITY = 0.05;
-                const arrows = [];
+                const rockets = [];
                 const sparks = [];
                 let w = 0;
                 let h = 0;
@@ -7604,56 +7491,36 @@ doc.text("Company's Bank Details", bx, lowTop + 3.8);
                 let last = 0;
                 let nextLaunch = 0;
                 let onScreen = true;
-                // Hero-relative positions of the bow tip and the effigy, refreshed on resize (null when hidden).
-                let bowTip = null;
-                let effigyBox = null;
-
+                let ready = false;
 
                 const rand = (min, max) => min + Math.random() * (max - min);
                 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-                const measure = (el) => {
-                    if (!el) return null;
-                    const r = el.getBoundingClientRect();
-                    if (!r.width) return null;
-                    const heroRect = hero.getBoundingClientRect();
-                    return { x: r.left - heroRect.left, y: r.top - heroRect.top, w: r.width, h: r.height };
-                };
-
                 const resize = () => {
-                    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+                    const dpr = RENDER_SCALE;
                     w = hero.clientWidth;
                     h = hero.clientHeight;
                     canvas.width = Math.round(w * dpr);
                     canvas.height = Math.round(h * dpr);
                     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-                    const b = measure(bow);
-                    bowTip = b ? { x: b.x + b.w * 0.85, y: b.y + b.h * 0.31 } : null;
-                    effigyBox = measure(effigy);
                 };
 
                 const addSpark = (spark) => {
                     if (sparks.length < MAX_SPARKS) sparks.push(spark);
                 };
 
-                // The arrow peaks exactly at (tx, ty), where it bursts.
-                const shoot = (tx, ty) => {
-                    const x = bowTip ? bowTip.x : Math.min(w - 20, Math.max(20, tx + rand(-120, 120)));
-                    const y = bowTip ? bowTip.y : h;
+                // The rocket peaks exactly at (tx, ty), where it bursts.
+                const launch = (tx, ty) => {
+                    const x = Math.min(w - 20, Math.max(20, tx + rand(-120, 120)));
+                    const y = h;
                     const vy = -Math.sqrt(2 * GRAVITY * Math.max(60, y - ty));
                     const frames = -vy / GRAVITY;
-                    arrows.push({ x, y, tx, ty, vx: (tx - x) / frames, vy, color: pick(DUSSEHRA_COLORS) });
-                };
-
-                const shootAtEffigy = () => {
-                    if (!effigyBox) return false;
-                    shoot(effigyBox.x + effigyBox.w * rand(0.35, 0.65), effigyBox.y + effigyBox.h * rand(0.15, 0.4));
-                    return true;
+                    rockets.push({ x, y, vx: (tx - x) / frames, vy, color: pick(DIWALI_COLORS) });
                 };
 
                 const explode = (x, y, baseColor) => {
                     const type = pick(["peony", "peony", "ring", "willow", "multi"]);
-                    const count = Math.round((isSmall ? 0.6 : 1) * (type === "ring" ? 60 : rand(80, 120)));
+                    const count = Math.round((isSmall ? 0.5 : 0.7) * (type === "ring" ? 60 : rand(80, 120)));
                     const speed = rand(2.6, 4.2);
                     for (let i = 0; i < count; i++) {
                         const angle = (Math.PI * 2 * i) / count + rand(-0.05, 0.05);
@@ -7668,70 +7535,23 @@ doc.text("Company's Bank Details", bx, lowTop + 3.8);
                             drag: type === "willow" ? 0.975 : 0.985,
                             gravity: type === "willow" ? 0.035 : 0.025,
                             size: rand(1.2, 2.2),
-                            color: type === "willow" ? "#f97316" : type === "multi" ? pick(DUSSEHRA_COLORS) : baseColor,
+                            color: type === "willow" ? "#fbbf24" : type === "multi" ? pick(DIWALI_COLORS) : baseColor,
                             twinkle: Math.random() < 0.3,
-                        });
-                    }
-                };
-
-                const hitsEffigy = (x, y) =>
-                    !!effigyBox &&
-                    !ravanFx.burning &&
-                    x >= effigyBox.x &&
-                    x <= effigyBox.x + effigyBox.w &&
-                    y >= effigyBox.y &&
-                    y <= effigyBox.y + effigyBox.h;
-
-                // Hooks for initRavanHeads: fire on a burning head, fireworks for Ravan dahan.
-                ravanFx.burst = (head) => {
-                    const r = onScreen && effigy && measure(head);
-                    if (r) explode(r.x + r.w / 2, r.y + r.h / 2, pick(["#f97316", "#fbbf24", "#ef4444"]));
-                };
-                ravanFx.dahan = () => {
-                    if (!effigyBox) return;
-                    const cx = effigyBox.x + effigyBox.w / 2;
-                    const cy = effigyBox.y + effigyBox.h * 0.3;
-                    for (let i = 0; i < 5; i++) {
-                        setTimeout(() => explode(cx + rand(-70, 70), cy + rand(-60, 40), pick(DUSSEHRA_COLORS)), i * 260);
-                    }
-                };
-
-                // Embers drifting up from the burning effigy (negative gravity = they float).
-                const embers = () => {
-                    if (!effigyBox) return;
-                    const perFrame = (isSmall ? 1 : 2) * (ravanFx.burning ? 4 : 1);
-                    for (let i = 0; i < perFrame; i++) {
-                        addSpark({
-                            x: effigyBox.x + effigyBox.w * rand(0.2, 0.8),
-                            y: effigyBox.y + effigyBox.h * rand(0.75, 0.95),
-                            vx: rand(-0.6, 0.6),
-                            vy: rand(-2.4, -0.8),
-                            life: 1,
-                            decay: rand(0.008, 0.016),
-                            drag: 0.985,
-                            gravity: -0.012,
-                            size: rand(0.8, 1.8),
-                            color: pick(["#fde047", "#f97316", "#ef4444", "#fbbf24"]),
-                            twinkle: true,
                         });
                     }
                 };
 
                 const frame = (now) => {
                     rafId = requestAnimationFrame(frame);
+                    if (last && now - last < MIN_FRAME_MS) return;
                     const dt = Math.min((now - (last || now)) / 16.67, 3);
                     last = now;
 
-                    if (now >= nextLaunch) {
-                        if (Math.random() < 0.3 && shootAtEffigy()) {
-                            // aimed at Ravan
-                        } else {
-                            const salvo = Math.random() < 0.2 ? 3 : 1;
-                            for (let i = 0; i < salvo; i++) shoot(rand(w * 0.2, w * 0.9), rand(h * 0.1, h * 0.42));
-                        }
+                    if (autoLaunch && now >= nextLaunch) {
+                        const salvo = Math.random() < 0.2 ? 3 : 1;
+                        for (let i = 0; i < salvo; i++) launch(rand(w * 0.1, w * 0.9), rand(h * 0.1, h * 0.42));
                         nextLaunch = now + rand(800, 1700);
                     }
-                    embers();
 
                     // Fade the previous frame instead of clearing it, which leaves light trails.
                     ctx.globalCompositeOperation = "destination-out";
@@ -7740,23 +7560,23 @@ doc.text("Company's Bank Details", bx, lowTop + 3.8);
                     ctx.fillRect(0, 0, w, h);
                     ctx.globalCompositeOperation = "lighter";
 
-                    for (let i = arrows.length - 1; i >= 0; i--) {
-                        const a = arrows[i];
-                        a.x += a.vx * dt;
-                        a.y += a.vy * dt;
-                        a.vy += GRAVITY * dt;
-                        // Arrow shaft along the direction of flight, with a fiery trail behind it.
-                        const len = Math.hypot(a.vx, a.vy) || 1;
+                    for (let i = rockets.length - 1; i >= 0; i--) {
+                        const r = rockets[i];
+                        r.x += r.vx * dt;
+                        r.y += r.vy * dt;
+                        r.vy += GRAVITY * dt;
+                        // Bright rocket head with a short sparkling tail.
+                        const len = Math.hypot(r.vx, r.vy) || 1;
                         ctx.globalAlpha = 1;
                         ctx.strokeStyle = "#fde68a";
                         ctx.lineWidth = 2;
                         ctx.beginPath();
-                        ctx.moveTo(a.x - (a.vx / len) * 18, a.y - (a.vy / len) * 18);
-                        ctx.lineTo(a.x, a.y);
+                        ctx.moveTo(r.x - (r.vx / len) * 10, r.y - (r.vy / len) * 10);
+                        ctx.lineTo(r.x, r.y);
                         ctx.stroke();
                         addSpark({
-                            x: a.x,
-                            y: a.y,
+                            x: r.x,
+                            y: r.y,
                             vx: rand(-0.3, 0.3),
                             vy: rand(-0.2, 0.4),
                             life: 0.8,
@@ -7764,12 +7584,12 @@ doc.text("Company's Bank Details", bx, lowTop + 3.8);
                             drag: 0.95,
                             gravity: -0.01,
                             size: rand(1, 1.8),
-                            color: pick(["#f97316", "#fbbf24", "#ef4444"]),
+                            color: pick(["#f97316", "#fbbf24", "#fde68a"]),
                             twinkle: false,
                         });
-                        if (a.vy >= -GRAVITY * dt) {
-                            explode(a.x, a.y, a.color);
-                            arrows.splice(i, 1);
+                        if (r.vy >= -GRAVITY * dt) {
+                            explode(r.x, r.y, r.color);
+                            rockets.splice(i, 1);
                         }
                     }
 
@@ -7787,22 +7607,32 @@ doc.text("Company's Bank Details", bx, lowTop + 3.8);
                             continue;
                         }
                         if (s.twinkle && Math.random() < 0.35) continue;
+                        // A square looks the same as a circle at this size and skips building a path per spark.
                         ctx.globalAlpha = Math.max(0, s.life);
                         ctx.fillStyle = s.color;
-                        ctx.beginPath();
-                        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-                        ctx.fill();
+                        ctx.fillRect(s.x - s.size, s.y - s.size, s.size * 2, s.size * 2);
+                    }
+
+                    // Nothing left in the sky and nothing scheduled: stop until the next tap.
+                    if (!autoLaunch && !rockets.length && !sparks.length) {
+                        ctx.clearRect(0, 0, w, h);
+                        stop();
                     }
                 };
 
                 const start = () => {
-                    if (rafId || !onScreen || document.hidden) return;
+                    if (rafId || !ready || !onScreen || document.hidden) return;
                     last = 0;
                     rafId = requestAnimationFrame(frame);
                 };
                 const stop = () => {
                     cancelAnimationFrame(rafId);
                     rafId = 0;
+                };
+                // Launch and make sure the loop is running (it may have gone idle on low-power devices).
+                const fire = (tx, ty) => {
+                    launch(tx, ty);
+                    start();
                 };
 
                 resize();
@@ -7821,35 +7651,36 @@ doc.text("Company's Bank Details", bx, lowTop + 3.8);
                 hero.addEventListener("pointerdown", (e) => {
                     if (e.target.closest("a, button")) return;
                     const rect = hero.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    // Taps on the effigy aim at its upper body: the arrow can't peak below the bow tip,
-                    // so aiming at his legs would burst above Ravan instead of on him.
-                    if (hitsEffigy(x, y)) shootAtEffigy();
-                    else shoot(x, y);
+                    fire(e.clientX - rect.left, e.clientY - rect.top);
                 });
 
-                // Opening volley so the sky lights up straight away; the last arrow strikes Ravan.
-                [0, 300].forEach((delay, i) => setTimeout(() => shoot(w * (0.35 + i * 0.25), h * rand(0.15, 0.3)), delay));
-                setTimeout(() => shootAtEffigy() || shoot(w * 0.8, h * 0.25), 650);
-                nextLaunch = performance.now() + 1500;
-                start();
+                // Start only after the page has loaded, so the canvas doesn't compete with images and
+                // fonts for the main thread during the first paint. Then an opening volley lights the sky.
+                const begin = () => {
+                    ready = true;
+                    resize();
+                    [0, 300, 650].forEach((delay, i) => setTimeout(() => fire(w * (0.3 + i * 0.2), h * rand(0.15, 0.3)), delay));
+                    nextLaunch = performance.now() + 1500;
+                    start();
+                };
+                if (document.readyState === "complete") begin();
+                else window.addEventListener("load", begin, { once: true });
             }
 
-            // Countdown pill in the greeting ribbon. Vijayadashami 2026 falls on 20 October;
-            // update DUSSEHRA_DATE for the next festival. The pill stays hidden after the day.
-            const DUSSEHRA_DATE = { year: 2026, month: 9, day: 20 }; // month is 0-based
+            // Countdown pill in the greeting ribbon. Diwali (Lakshmi Puja) 2026 falls on 8 November;
+            // update DIWALI_DATE for the next festival. The pill stays hidden after the day.
+            const DIWALI_DATE = { year: 2026, month: 10, day: 8 }; // month is 0-based
 
-            function initDussehraCountdown() {
-                const el = document.getElementById("dussehraCountdown");
+            function initDiwaliCountdown() {
+                const el = document.getElementById("diwaliCountdown");
                 if (!el) return;
                 const now = new Date();
                 const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
-                const festival = Date.UTC(DUSSEHRA_DATE.year, DUSSEHRA_DATE.month, DUSSEHRA_DATE.day);
+                const festival = Date.UTC(DIWALI_DATE.year, DIWALI_DATE.month, DIWALI_DATE.day);
                 const days = Math.round((festival - today) / 86400000);
-                if (days > 1 && days <= 30) el.textContent = `⏳ ${days} days to Vijayadashami`;
-                else if (days === 1) el.textContent = "⏳ Vijayadashami is tomorrow!";
-                else if (days === 0) el.textContent = "🔥 Today is Vijayadashami!";
+                if (days > 1 && days <= 30) el.textContent = `⏳ ${days} days to Diwali`;
+                else if (days === 1) el.textContent = "⏳ Diwali is tomorrow!";
+                else if (days === 0) el.textContent = "🪔 Today is Diwali!";
             }
 
             // Small festive ember burst, e.g. around the product image when it lands in the cart.
@@ -7868,7 +7699,7 @@ doc.text("Company's Bank Details", bx, lowTop + 3.8);
                     spark.setAttribute("aria-hidden", "true");
                     spark.style.left = `${cx}px`;
                     spark.style.top = `${cy}px`;
-                    spark.style.setProperty("--c", DUSSEHRA_COLORS[i % DUSSEHRA_COLORS.length]);
+                    spark.style.setProperty("--c", DIWALI_COLORS[i % DIWALI_COLORS.length]);
                     host.appendChild(spark);
                     const angle = (Math.PI * 2 * i) / COUNT;
                     const dist = 70 + Math.random() * 60;
@@ -8004,9 +7835,9 @@ doc.text("Company's Bank Details", bx, lowTop + 3.8);
                 initCardTilt();
                 initMagneticButtons();
                 initRipples();
-                initRavanHeads();
-                initDussehraArrows();
-                initDussehraCountdown();
+                initPujaPetals();
+                initDiwaliFireworks();
+                initDiwaliCountdown();
                 const yearEl = document.getElementById("copyrightYear");
                 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
                 cart = restoreCart(storage.get(APP.CART_STORAGE_KEY, {}));
