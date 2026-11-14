@@ -5397,13 +5397,13 @@
                     hideChoices();
                     if (results === null) {
                         hintEl.textContent =
-                            "Couldn't check our customer records right now - please type your workshop name below.";
+                            "Couldn't check our customer records right now - please type your name below.";
                         return;
                     }
                     const names = results.map((r) => r.name).filter(Boolean);
                     if (!names.length) {
                         if (workshopEl.dataset.source === "khatabook") setWorkshop("", false);
-                        hintEl.textContent = "This number isn't in our records - please type your workshop name below.";
+                        hintEl.textContent = "This number isn't in our records - please type your name below.";
                         return;
                     }
                     setWorkshop(names[0], true);
