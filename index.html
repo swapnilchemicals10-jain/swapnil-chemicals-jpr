@@ -47,7 +47,7 @@
 
         <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.gstatic.com https://api.qrserver.com; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self';"
+            content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self';"
         />
         <!-- frame-ancestors is ignored by browsers when set via <meta>; real clickjacking protection needs an X-Frame-Options/CSP response header from the server -->
 
@@ -706,7 +706,7 @@
                 font-size: 14px;
             }
 
-            .gpay-btn {
+            .cart-action-btn {
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -721,7 +721,7 @@
                 transition: all 0.25s ease;
             }
 
-            .gpay-btn:hover {
+            .cart-action-btn:hover {
                 background: linear-gradient(135deg, #2d9142, #0f6e2d);
                 transform: translateY(-1px);
             }
@@ -1522,7 +1522,7 @@
                     .add-to-cart-btn,
                     .enquiry-trigger-btn,
                     .enquiry-submit-btn,
-                    .gpay-btn,
+                    .cart-action-btn,
                     .cart-icon-btn,
                     .ai-assistant-btn,
                     .assistant-send-btn
@@ -2227,6 +2227,19 @@
             }
 
             /* ---------- FAQ ---------- */
+            
+            #faq summary .fa-minus {
+                display: none;
+            }
+
+            #faq details[open] summary .fa-minus {
+                display: inline-block;
+            }
+
+            #faq details[open] summary .fa-plus {
+                display: none;
+            }
+
             #faq details {
                 transition:
                     box-shadow 0.3s ease,
@@ -2868,7 +2881,7 @@
                         "name": "What payment methods do you accept?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "We accept UPI and Google Pay - scan the QR code or pay to the UPI ID shown in the Contact section. Call us to discuss other payment arrangements."
+                            "text": "Please call us on 9352470085 or 9024598298 to discuss payment options for your order."
                         }
                     },
                     {
@@ -2909,46 +2922,55 @@
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
-                "@graph": [
+                "@type": "FAQPage",
+                "mainEntity": [
                     {
-                        "@type": "Product",
-                        "name": "Handcare",
-                        "image": "Handcare.webp",
-                        "description": "Premium dashboard polish for long-lasting shine",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "200", "priceCurrency": "INR", "url": "#products" }
+                        "@type": "Question",
+                        "name": "Do you supply bulk or only retail orders?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Swapnil Chemicals supplies both bulk and retail quantities. For wholesale pricing, call 9352470085 or 9024598298, or use the Enquiry button on any product."
+                        }
                     },
                     {
-                        "@type": "Product",
-                        "name": "Dishwash",
-                        "image": "Dishwash.webp",
-                        "description": "High-gloss tyre polish for enhanced appearance",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "150", "priceCurrency": "INR", "url": "#products" }
+                        "@type": "Question",
+                        "name": "What payment methods do you accept?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "We accept UPI and Google Pay - scan the QR code or pay to the UPI ID shown in the Contact section. Call us to discuss other payment arrangements."
+                        }
                     },
                     {
-                        "@type": "Product",
-                        "name": "Detergent",
-                        "image": "Detergent.webp",
-                        "description": "Advanced foaming wash for thorough cleaning",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "70", "priceCurrency": "INR", "url": "#products" }
+                        "@type": "Question",
+                        "name": "Is Swapnil Chemicals a registered business?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. We are GST registered (08CIJPS1734A1ZE), MSME certified (MSME/2020/6194), and Udyam registered (UDYAM-RJ-17-0022468)."
+                        }
                     },
                     {
-                        "@type": "Product",
-                        "name": "Tiles Cleaner",
-                        "image": "Tiles Cleaner.webp",
-                        "description": "Streak-free glass cleaner for crystal clear visibility",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "70", "priceCurrency": "INR", "url": "#products" }
+                        "@type": "Question",
+                        "name": "How do I place an order?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Pick a product, choose a quantity, and tap Add to Cart or Enquiry. Your request is sent directly to us on WhatsApp - no account or login needed."
+                        }
                     },
                     {
-                        "@type": "Product",
-                        "name": "Toilet Cleaner",
-                        "image": "Toilet Cleaner.webp",
-                        "description": "Effective interior cleaner for all surfaces",
-                        "brand": { "@type": "Brand", "name": "Swapnil Chemicals" },
-                        "offers": { "@type": "Offer", "price": "130", "priceCurrency": "INR", "url": "#products" }
+                        "@type": "Question",
+                        "name": "Where is Swapnil Chemicals based?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "We are based in Jaipur, Rajasthan, and support both bulk and retail customers."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do you offer custom quantities or packaging?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "For requirements outside the listed options, contact us directly by phone or WhatsApp and we will get back to you."
+                        }
                     }
                 ]
             }
@@ -3236,7 +3258,7 @@
                                 type="search"
                                 id="productSearch"
                                 class="w-full pl-11 pr-12 py-3 rounded-xl border border-gray-200 bg-white focus:border-blue-500 focus:outline-none focus:shadow-[0_0_0_4px_rgba(139,92,246,0.15)] transition-shadow text-sm"
-                                placeholder="Search products (e.g. handcare, dishwash)..."
+                                placeholder="Search products (e.g. tyre polish, micro towel)..."
                                 aria-label="Search products"
                             />
                             <button type="button" id="voiceSearchBtn" class="voice-btn" aria-label="Search by voice">
@@ -3292,8 +3314,7 @@
                                 <i class="fas fa-minus flex-shrink-0 hidden group-open:inline" aria-hidden="true"></i>
                             </summary>
                             <p class="text-gray-600 px-6 py-4">
-                                We accept UPI and Google Pay — scan the QR code or pay to the UPI ID shown in the
-                                Contact section. Call us to discuss other payment arrangements.
+                                Please call us on 9352470085 or 9024598298 to discuss payment options for your order.
                             </p>
                         </details>
                         <details
@@ -3412,66 +3433,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="glass-card p-8 rounded-2xl">
-                                    <div class="flex items-center space-x-6">
-                                        <div
-                                            class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg border"
-                                        >
-                                            <img
-                                                src="https://www.gstatic.com/instantbuy/svg/dark_gpay.svg"
-                                                width="48"
-                                                alt="Google Pay"
-                                                loading="lazy"
-                                                decoding="async"
-                                            />
-                                        </div>
-                                        <div>
-                                            <h3 class="font-semibold text-xl text-gray-800 mb-2">Google Pay</h3>
-                                            <div class="flex items-center gap-2">
-                                                <a
-                                                    href="upi://pay?pa=boism-9352470085@boi&amp;pn=Swapnil%20Chemicals&amp;cu=INR"
-                                                    class="text-blue-600"
-                                                    >Pay to 9352470085</a
-                                                >
-                                                <button
-                                                    type="button"
-                                                    class="text-gray-400 hover:text-blue-600"
-                                                    data-action="copy"
-                                                    data-copy-text="boism-9352470085@boi"
-                                                    aria-label="Copy UPI ID"
-                                                >
-                                                    <i class="fas fa-copy text-sm" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6 flex flex-col items-center">
-                                        <!-- No "am" param: the UPI app (GPay / PhonePe / Paytm) asks the customer to enter the amount -->
-                                        <a
-                                            href="upi://pay?pa=boism-9352470085@boi&amp;pn=Swapnil%20Chemicals&amp;cu=INR"
-                                            class="bg-white p-3 rounded-xl shadow-md block transition hover:shadow-lg hover:-translate-y-0.5"
-                                            data-action="upi-pay"
-                                            aria-label="Pay Swapnil Chemicals with Google Pay, PhonePe or any UPI app"
-                                        >
-                                            <img
-                                                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&amp;data=upi://pay?pa=boism-9352470085@boi%26pn=Swapnil%20Chemicals%26cu=INR"
-                                                width="75"
-                                                height="75"
-                                                class="rounded-lg"
-                                                alt="UPI QR"
-                                                loading="lazy"
-                                                decoding="async"
-                                            />
-                                        </a>
-                                        <p
-                                            id="upiPayHint"
-                                            class="mt-3 text-sm text-gray-500 text-center"
-                                            aria-live="polite"
-                                        >
-                                            📷 Scan or tap the QR to pay via Google Pay / PhonePe / any UPI app
-                                        </p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -3544,7 +3505,7 @@
                     <span class="font-semibold text-gray-700">Total:</span>
                     <span class="font-bold text-lg text-gray-800" id="cartTotal">₹0</span>
                 </div>
-                <button id="cartGpayBtn" class="gpay-btn" data-action="open-cart-enquiry">Send Enquiry</button>
+                <button id="cartEnquiryBtn" class="cart-action-btn" data-action="open-cart-enquiry">Send Enquiry</button>
                 <button
                     class="w-full mt-2 text-xs text-gray-400 hover:text-red-500 font-semibold py-1"
                     data-action="clear-cart"
@@ -3668,6 +3629,7 @@
                 </div>
             </div>
         </dialog>
+
 
         <dialog id="addedCartModal" class="sc-modal" aria-labelledby="addedCartProductName">
             <div class="added-cart-box" tabindex="-1">
@@ -3854,34 +3816,6 @@
                 }
             }
 
-            // Tapping the QR hands the upi:// link to the phone, which opens Google Pay /
-            // PhonePe / whichever UPI app is installed (or shows an app chooser). The link
-            // carries no amount, so the customer types it in the app. Desktops have no UPI
-            // app, so there we keep the page and ask them to scan the QR with their phone.
-            function openUpiApp(e) {
-                const hint = document.getElementById("upiPayHint");
-                const isMobile =
-                    (navigator.userAgentData && navigator.userAgentData.mobile) ||
-                    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-                if (!isMobile) {
-                    e.preventDefault();
-                    if (hint) hint.textContent = "📱 Please scan this QR with Google Pay / PhonePe on your phone.";
-                    return;
-                }
-                // If no UPI app picks up the link, the page stays visible — tell the customer.
-                let appOpened = false;
-                const onHide = () => {
-                    if (document.hidden) appOpened = true;
-                };
-                document.addEventListener("visibilitychange", onHide);
-                setTimeout(() => {
-                    document.removeEventListener("visibilitychange", onHide);
-                    if (!appOpened && hint) {
-                        hint.textContent =
-                            "No UPI app opened? Install Google Pay / PhonePe, or pay to UPI ID boism-9352470085@boi.";
-                    }
-                }, 2500);
-            }
 
             const products = [
                 {
@@ -4112,9 +4046,9 @@
                     }
                 }
 
-                const gpayBtn = document.getElementById("cartGpayBtn");
-                if (gpayBtn) {
-                    gpayBtn.innerHTML = `<i class="fab fa-whatsapp" aria-hidden="true"></i> Send Enquiry &bull; ${formatCurrency(Math.round(grandTotal))}`;
+                const enquiryBtn = document.getElementById("cartEnquiryBtn");
+                if (enquiryBtn) {
+                    enquiryBtn.innerHTML = `<i class="fab fa-whatsapp" aria-hidden="true"></i> Send Enquiry &bull; ${formatCurrency(Math.round(grandTotal))}`;
                 }
             }
 
@@ -4424,15 +4358,22 @@
             // Seller details printed on the invoice - same values shown elsewhere on this page.
             const INVOICE_SELLER = {
                 name: "Swapnil Chemicals",
-                tagline: "Manufacturers of Home Cleaning Products",
-                address: "Jaipur, Rajasthan, India",
+                addressLines: ["24/13, Swarn Path, Mansarover,", "Jaipur, Rajasthan"],
                 phones: "+91 93524 70085, +91 90245 98298",
                 email: "swapnilchemicals10@gmail.com",
                 gstin: "08CIJPS1734A1ZE",
-                upi: "boism-9352470085@boi",
+                pan: "CIJPS1734A", // characters 3-12 of the GSTIN
+                udyam: "UDYAM-RJ-17-0022468",
+                stateName: "Rajasthan",
+                stateCode: "08",
+                jurisdiction: "Jaipur",
             };
 
-            // Indian numbering (lakh / crore) amount in words, e.g. "Rupees One Thousand Two Hundred Only".
+            // The number is time-based and generated in the visitor's browser (not a sequential
+            // series), so the document is titled a proforma rather than a GST tax invoice.
+            const INVOICE_TITLE = "Proforma Invoice";
+
+            // Indian numbering (lakh / crore) amount in words, e.g. "INR One Thousand Two Hundred Only".
             function amountInWords(amount) {
                 const ones = [
                     "",
@@ -4479,104 +4420,9 @@
                 const totalPaise = Math.round(Math.abs(amount) * 100);
                 const rupees = Math.floor(totalPaise / 100);
                 const paise = totalPaise % 100;
-                return `Rupees ${toWords(rupees)}${paise ? ` and ${twoDigits(paise)} Paise` : ""} Only`;
+                return `INR ${toWords(rupees)}${paise ? ` and ${twoDigits(paise)} Paise` : ""} Only`;
             }
 
-            // Logo is optional on the invoice - if it can't be fetched the header is drawn without it.
-            // It is drawn at 24 mm, so it is downscaled to INVOICE_LOGO_PX and re-encoded as a JPEG
-            // before embedding; the original file would otherwise be copied into the PDF byte for byte
-            // and push it past the 1 MB limit.
-            const INVOICE_LOGO_PX = 320; // ~340 dpi at 24 mm
-            let invoiceLogoPromise = null;
-            function loadInvoiceLogo() {
-                if (!invoiceLogoPromise) {
-                    invoiceLogoPromise = fetch("SC Logo.webp")
-                        .then((res) => (res.ok ? res.blob() : null))
-                        .then(
-                            (blob) =>
-                                blob &&
-                                new Promise((resolve) => {
-                                    const reader = new FileReader();
-                                    reader.onload = () => resolve(reader.result);
-                                    reader.onerror = () => resolve(null);
-                                    reader.readAsDataURL(blob);
-                                })
-                        )
-                        .then((dataUrl) => dataUrl && shrinkImageToJpeg(dataUrl, INVOICE_LOGO_PX, 0.85))
-                        .catch(() => null);
-                }
-                return invoiceLogoPromise;
-            }
-
-            // Redraws an image (data URL - blob: URLs are blocked by the CSP) onto a white canvas no
-            // larger than maxPx on its longest side and returns it as a compressed JPEG data URL.
-            // Resolves to null if the image can't be decoded, so the invoice is drawn without it
-            // rather than embedding an unknown-size original.
-            function shrinkImageToJpeg(dataUrl, maxPx, quality) {
-                return new Promise((resolve) => {
-                    const img = new Image();
-                    img.onload = () => {
-                        try {
-                            const scale = Math.min(1, maxPx / Math.max(img.naturalWidth, img.naturalHeight));
-                            const canvas = document.createElement("canvas");
-                            canvas.width = Math.max(1, Math.round(img.naturalWidth * scale));
-                            canvas.height = Math.max(1, Math.round(img.naturalHeight * scale));
-                            const ctx = canvas.getContext("2d");
-                            ctx.fillStyle = "#fff";
-                            ctx.fillRect(0, 0, canvas.width, canvas.height);
-                            ctx.imageSmoothingQuality = "high";
-                            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                            resolve(canvas.toDataURL("image/jpeg", quality));
-                        } catch {
-                            resolve(null);
-                        }
-                    };
-                    img.onerror = () => resolve(null);
-                    img.src = dataUrl;
-                });
-            }
-
-            // Google Pay / UPI QR for the invoice - same UPI link as the QR in the Contact section (no amount,
-            // the customer enters it in the app). Loaded as an <img> (allowed by img-src; the service sends
-            // CORS headers) and copied to a canvas so jsPDF gets a PNG. Resolves to a data URL or null.
-            const INVOICE_UPI_QR_SRC =
-                "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
-                encodeURIComponent(`upi://pay?pa=${INVOICE_SELLER.upi}&pn=${INVOICE_SELLER.name}&cu=INR`);
-            let invoiceQrPromise = null;
-            function loadInvoiceQr() {
-                if (!invoiceQrPromise) {
-                    invoiceQrPromise = new Promise((resolve) => {
-                        const img = new Image();
-                        // A slow network must not hold up the PDF; it is drawn without the QR instead.
-                        const timer = setTimeout(() => resolve(null), 8000);
-                        img.crossOrigin = "anonymous";
-                        img.onload = () => {
-                            clearTimeout(timer);
-                            try {
-                                const canvas = document.createElement("canvas");
-                                canvas.width = img.naturalWidth;
-                                canvas.height = img.naturalHeight;
-                                const ctx = canvas.getContext("2d");
-                                ctx.fillStyle = "#fff";
-                                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                                ctx.drawImage(img, 0, 0);
-                                resolve(canvas.toDataURL("image/png"));
-                            } catch {
-                                resolve(null);
-                            }
-                        };
-                        img.onerror = () => {
-                            clearTimeout(timer);
-                            resolve(null);
-                        };
-                        img.src = INVOICE_UPI_QR_SRC;
-                    }).then((data) => {
-                        if (!data) invoiceQrPromise = null; // allow a retry on the next download
-                        return data;
-                    });
-                }
-                return invoiceQrPromise;
-            }
 
             async function downloadCartPdf(btn) {
                 const keys = Object.keys(cart);
@@ -4587,85 +4433,33 @@
                     btn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Preparing PDF...';
                 }
                 try {
-                    const [JsPDF, logo, upiQr] = await Promise.all([
-                        loadJsPdf(),
-                        loadInvoiceLogo(),
-                        loadInvoiceQr(),
-                    ]);
-                    // compress: Flate-compress page streams (the gradient strips and text are otherwise
-                    // stored raw) - keeps the download well under 1 MB.
+                    const JsPDF = await loadJsPdf();
+                    // Plain boxed layout in the style of a Tally tax invoice: black text and ruled cells.
                     const doc = new JsPDF({ unit: "mm", format: "a4", compress: true });
                     const pageW = doc.internal.pageSize.getWidth();
                     const pageH = doc.internal.pageSize.getHeight();
-                    const margin = 15;
-                    const right = pageW - margin;
-                    const contentW = right - margin;
-                    const bottomLimit = pageH - 22; // keep clear of the footer band
-                    // Same palette as the website (violet / indigo / orange / cyan).
-                    const COLOR = {
-                        dark: [30, 27, 75],
-                        text: [30, 41, 59],
-                        violetDeep: [30, 11, 75],
-                        violet: [109, 40, 217],
-                        indigo: [79, 70, 229],
-                        orange: [234, 88, 12],
-                        orangeLight: [249, 115, 22],
-                        pink: [219, 39, 119],
-                        cyan: [34, 211, 238],
-                        lavender: [221, 214, 254],
-                        lavenderText: [196, 181, 253],
-                        pill: [67, 40, 140],
-                        muted: [100, 116, 139],
-                        line: [233, 229, 250],
-                        soft: [250, 248, 255],
-                        zebra: [248, 246, 255],
-                        peach: [255, 247, 237],
-                        peachLine: [254, 215, 170],
-                        white: [255, 255, 255],
-                        watermark: [244, 241, 255],
-                    };
-                    const setColor = (rgb) => doc.setTextColor(...rgb);
-                    const font = (style, size, rgb = COLOR.text) => {
+                    const L = 10;
+                    const R = pageW - 10;
+                    const W = R - L; // 190 mm on A4
+                    const boxTop = 14;
+                    const boxBottom = pageH - 14; // jurisdiction lines sit under the box
+                    const midX = L + 95; // left party blocks | right invoice details grid
+                    const gridMid = midX + (R - midX) / 2;
+                    const pad = 1.6;
+
+                    const font = (style, size) => {
                         doc.setFont("helvetica", style);
                         doc.setFontSize(size);
-                        setColor(rgb);
                     };
-                    const mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
-                    // jsPDF has no gradients, so blend thin vertical strips.
-                    const gradientRect = (x, top, w, h, from, to, steps = 48) => {
-                        const sw = w / steps;
-                        for (let i = 0; i < steps; i++) {
-                            doc.setFillColor(...mix(from, to, i / (steps - 1)));
-                            doc.rect(x + i * sw, top, sw + 0.15, h, "F");
-                        }
-                    };
-                    // Rounded ends in the start/end colours, gradient strip in between.
-                    const gradientRoundedRect = (x, top, w, h, r, from, to) => {
-                        doc.setFillColor(...from);
-                        doc.roundedRect(x, top, r * 2 + 1, h, r, r, "F");
-                        doc.setFillColor(...to);
-                        doc.roundedRect(x + w - r * 2 - 1, top, r * 2 + 1, h, r, r, "F");
-                        gradientRect(x + r, top, w - r * 2, h, from, to, 40);
-                    };
-                    const accentStripe = (top, h) => {
-                        doc.setFillColor(...COLOR.orange);
-                        doc.rect(0, top, pageW * 0.55, h, "F");
-                        doc.setFillColor(...COLOR.violet);
-                        doc.rect(pageW * 0.55, top, pageW * 0.3, h, "F");
-                        doc.setFillColor(...COLOR.cyan);
-                        doc.rect(pageW * 0.85, top, pageW * 0.15, h, "F");
-                    };
-                    const watermark = () => {
-                        font("bold", 54, COLOR.watermark);
-                        const label = "SWAPNIL CHEMICALS";
-                        const angle = 32;
-                        const rad = (angle * Math.PI) / 180;
-                        const w = doc.getTextWidth(label);
-                        doc.text(label, pageW / 2 - (Math.cos(rad) * w) / 2, pageH / 2 + 20 + (Math.sin(rad) * w) / 2, {
-                            angle,
-                        });
-                    };
-                    let y = margin;
+                    const hLine = (x1, x2, yy) => doc.line(x1, yy, x2, yy);
+                    const vLine = (xx, y1, y2) => doc.line(xx, y1, xx, y2);
+                    // First line of `str` that fits in `width` with the current font.
+                    const fit = (str, width) => doc.splitTextToSize(String(str || ""), width)[0] || "";
+                    const round2 = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
+                    const money = (n) => pdfAmountFormatter.format(n);
+                    doc.setTextColor(0, 0, 0);
+                    doc.setDrawColor(0, 0, 0);
+                    doc.setLineWidth(0.25);
 
                     // Customer details are read straight from the enquiry form; nothing here is required.
                     const fieldValue = (id) => document.getElementById(id)?.value.trim() || "";
@@ -4673,309 +4467,290 @@
                     const customer = {
                         workshop: pdfText(fieldValue("cart-enquiry-workshop")),
                         phone: phone ? `${APP.COUNTRY_CODE} ${phone}` : "",
-                        address: pdfText(fieldValue("cart-enquiry-details")),
+                        address: pdfText(fieldValue("cart-enquiry-details").replace(/\s*,?\s*\n\s*/g, ", ")),
                         date: fieldValue("cart-enquiry-date"),
                         slot: pdfText(fieldValue("cart-enquiry-slot")),
                     };
 
                     const now = new Date();
-                    const pad = (n) => String(n).padStart(2, "0");
-                    const invoiceNo = `SC-${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}`;
-                    const invoiceDate = now.toLocaleDateString("en-IN", {
-                        day: "2-digit",
-                        month: "short",
-                        year: "numeric",
+                    const pad2 = (n) => String(n).padStart(2, "0");
+                    const year = now.getFullYear();
+                    const fyStart = now.getMonth() >= 3 ? year : year - 1; // Indian financial year starts in April
+                    const finYear = `${fyStart}-${String(fyStart + 1).slice(2)}`;
+                    const invoiceNo = `SC/${finYear}/${pad2(now.getMonth() + 1)}${pad2(now.getDate())}${pad2(now.getHours())}${pad2(now.getMinutes())}`;
+                    const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                    const invoiceDate = `${pad2(now.getDate())}-${MONTHS[now.getMonth()]}-${String(year).slice(2)}`;
+
+                    // ---- Line items (no tax breakup; amounts are the website prices) ----
+                    const rows = keys.map((key) => {
+                        const { product, qty: packs, selectedQty } = cart[key];
+                        const qty = selectedQty * packs;
+                        return {
+                            name: pdfText(product.name) || "-",
+                            qty,
+                            unit: pdfText(cartUnitLabel(product)),
+                            unitRate: product.price,
+                            amount: round2(product.price * qty),
+                        };
                     });
+                    // The total is exactly what the customer pays for the cart.
+                    const grandTotal = round2(rows.reduce((s, r) => s + r.amount, 0));
+                    const units = new Set(rows.map((r) => r.unit));
+                    const totalQty = units.size === 1 ? `${rows.reduce((s, r) => s + r.qty, 0)} ${[...units][0]}` : "";
 
-                    // Continuation pages get a slim branded header instead of the full one.
-                    const newPage = () => {
-                        doc.addPage();
-                        watermark();
-                        gradientRect(0, 0, pageW, 14, COLOR.violetDeep, COLOR.indigo);
-                        accentStripe(14, 1.2);
-                        font("bold", 11, COLOR.white);
-                        doc.text(INVOICE_SELLER.name, margin, 9);
-                        font("normal", 8.5, COLOR.lavenderText);
-                        doc.text(`Challan No. ${invoiceNo} (continued)`, right, 9, { align: "right" });
-                        y = 24;
+                    // ---- Footer sizes (needed up front to know where the item table must stop) ----
+                    font("bold", 9);
+                    const amountWords = doc.splitTextToSize(amountInWords(grandTotal), W - pad * 2);
+                    const wordsH = 5 + amountWords.length * 4 + 1.2;
+                    const lowerH = 28;
+                    const sigH = 16;
+                    const totalRowH = 7;
+                    const footerH = totalRowH + wordsH + lowerH + sigH;
+                    const lastLimit = boxBottom - footerH; // item table ends here on the last page
+                    const contRowH = 7;
+                    const fullLimit = boxBottom - contRowH; // ... or here on a page that continues
+
+                    const drawTitle = () => {
+                        font("bold", 12);
+                        doc.text(INVOICE_TITLE, pageW / 2, boxTop - 3.5, { align: "center" });
+                        font("italic", 7.5);
+                        doc.text("(ORIGINAL FOR RECIPIENT)", R, boxTop - 3.5, { align: "right" });
                     };
 
-                    // ---- Header band: logo + seller (left), title + invoice meta (right) ----
-                    watermark();
-                    const bandH = 46;
-                    gradientRect(0, 0, pageW, bandH, COLOR.violetDeep, COLOR.indigo);
-                    // Soft decorative rings in the band's top-right corner.
-                    doc.setLineWidth(0.6);
-                    doc.setDrawColor(...mix(COLOR.indigo, COLOR.white, 0.18));
-                    doc.circle(pageW - 6, 2, 22, "S");
-                    doc.setDrawColor(...mix(COLOR.indigo, COLOR.white, 0.1));
-                    doc.circle(pageW - 6, 2, 32, "S");
-                    doc.setLineWidth(0.2);
-                    accentStripe(bandH, 1.6);
-
-                    let textX = margin;
-                    if (logo) {
-                        try {
-                            doc.setFillColor(...COLOR.white);
-                            doc.roundedRect(margin, 9, 28, 28, 3, 3, "F");
-                            doc.addImage(logo, "JPEG", margin + 2, 11, 24, 24, "sc-logo");
-                            textX = margin + 33;
-                        } catch {
-                            textX = margin;
-                        }
-                    }
-                    font("bold", 18, COLOR.white);
-                    doc.text(INVOICE_SELLER.name, textX, 15);
-                    // Tagline in white so it reads clearly on the dark band; contact lines stay lavender.
-                    // Fill + thin white stroke makes the glyphs heavier, so the white reads brighter.
-                    font("bold", 9, COLOR.white);
-                    doc.setDrawColor(...COLOR.white);
-                    doc.setLineWidth(0.15);
-                    doc.text(INVOICE_SELLER.tagline, textX, 20.5, { renderingMode: "fillThenStroke" });
-                    doc.setLineWidth(0.2);
-                    font("normal", 8.5, COLOR.lavenderText);
-                    [`${INVOICE_SELLER.address}  |  ${INVOICE_SELLER.email}`, `Ph: ${INVOICE_SELLER.phones}`].forEach(
-                        (line, i) => doc.text(line, textX, 24.8 + i * 4.3)
-                    );
-                    // GSTIN chip
-                    font("bold", 8, COLOR.white);
-                    const gstLabel = `GSTIN: ${INVOICE_SELLER.gstin}`;
-                    const gstW = doc.getTextWidth(gstLabel) + 8;
-                    doc.setFillColor(...COLOR.orange);
-                    doc.roundedRect(textX, 32, gstW, 6, 3, 3, "F");
-                    doc.text(gstLabel, textX + 4, 36.1);
-
-                    font("bold", 26, COLOR.white);
-                    doc.text("INVOICE", right, 19, { align: "right" });
-                    const pillW = 62;
-                    const drawPill = (top, label, value) => {
-                        doc.setFillColor(...COLOR.pill);
-                        doc.roundedRect(right - pillW, top, pillW, 6.5, 3.25, 3.25, "F");
-                        font("normal", 8, COLOR.lavenderText);
-                        doc.text(label, right - pillW + 4, top + 4.4);
-                        font("bold", 8.5, COLOR.white);
-                        doc.text(value, right - 4, top + 4.4, { align: "right" });
-                    };
-                    drawPill(25, "Challan No.", invoiceNo);
-                    drawPill(33, "Date", invoiceDate);
-
-                    y = bandH + 9;
-
-                    // ---- Bill To / Delivery details cards ----
-                    const gap = 6;
-                    const boxW = (contentW - gap) / 2;
-                    const inset = 6;
-                    font("normal", 9);
-                    const billLines = [
-                        ...(customer.phone ? [`Phone: ${customer.phone}`] : []),
-                        ...(customer.address
-                            ? doc.splitTextToSize(`Address: ${customer.address}`, boxW - inset - 4)
-                            : []),
+                    // ---- Page 1 header: seller / consignee / buyer (left), invoice details grid (right) ----
+                    const lh = 3.6;
+                    const blockW = midX - L - pad * 2;
+                    const sellerLines = [
+                        ["bold", 9, INVOICE_SELLER.name.toUpperCase()],
+                        ...INVOICE_SELLER.addressLines.map((t) => ["normal", 8, t]),
+                        ["normal", 8, `GSTIN/UIN : ${INVOICE_SELLER.gstin}`],
+                        ["normal", 8, `State Name : ${INVOICE_SELLER.stateName}, Code : ${INVOICE_SELLER.stateCode}`],
+                        ["normal", 8, `Contact : ${INVOICE_SELLER.phones}`],
+                        ["normal", 8, `E-Mail : ${INVOICE_SELLER.email}`],
                     ];
-                    const deliveryRows = [
-                        ["Preferred Date", customer.date ? formatDisplayDate(customer.date) : "-"],
-                        ["Time Slot", customer.slot || "-"],
-                        ["Payment", "UPI / Google Pay"],
+                    font("normal", 8);
+                    const addressLines = customer.address ? doc.splitTextToSize(customer.address, blockW).slice(0, 3) : [];
+                    const partyLines = (title) => [
+                        ["normal", 7.5, title],
+                        ["bold", 9, (customer.workshop || "Customer").toUpperCase()],
+                        ...addressLines.map((t) => ["normal", 8, t]),
+                        ...(customer.phone ? [["normal", 8, `Contact : ${customer.phone}`]] : []),
                     ];
-                    const bodyLines = Math.max(billLines.length + 1, deliveryRows.length);
-                    const boxH = 12 + bodyLines * 5 + 3;
-
-                    const drawCard = (x, title, accent) => {
-                        doc.setDrawColor(...COLOR.lavender);
-                        doc.setFillColor(...COLOR.soft);
-                        doc.roundedRect(x, y, boxW, boxH, 2.5, 2.5, "FD");
-                        doc.setFillColor(...accent);
-                        doc.roundedRect(x, y, 2.2, boxH, 1.1, 1.1, "F");
-                        font("bold", 8, accent);
-                        doc.text(title, x + inset, y + 6.5);
+                    const blockH = (lines) => 1.2 + lines.length * lh + 1.4;
+                    const drawBlock = (lines, top) => {
+                        lines.forEach(([style, size, text], i) => {
+                            font(style, size);
+                            doc.text(fit(text, blockW), L + pad, top + 4 + i * lh);
+                        });
+                        return top + blockH(lines);
                     };
-                    drawCard(margin, "BILL TO", COLOR.violet);
-                    font("bold", 10.5, COLOR.dark);
+                    const consigneeLines = partyLines("Consignee (Ship to)");
+                    const buyerLines = partyLines("Buyer (Bill to)");
+
+                    const gridRows = [
+                        [
+                            ["Invoice No.", invoiceNo],
+                            ["Dated", invoiceDate],
+                        ],
+                        [
+                            ["Delivery Note", ""],
+                            ["Mode/Terms of Payment", ""],
+                        ],
+                        [
+                            ["Reference No. & Date", ""],
+                            ["Other References", "Online Cart Enquiry"],
+                        ],
+                        [
+                            ["Buyer's Order No.", ""],
+                            ["Dated", ""],
+                        ],
+                        [
+                            ["Preferred Delivery Date", customer.date ? formatDisplayDate(customer.date) : ""],
+                            ["Time Slot", customer.slot],
+                        ],
+                        [
+                            ["Dispatched through", ""],
+                            ["Destination", ""],
+                        ],
+                    ];
+                    const cellH = 9;
+                    const gridH = gridRows.length * cellH;
+                    const leftH = blockH(sellerLines) + blockH(consigneeLines) + blockH(buyerLines);
+                    const headerH = Math.max(leftH, gridH + 13);
+
+                    drawTitle();
+                    let y = drawBlock(sellerLines, boxTop);
+                    hLine(L, midX, y);
+                    y = drawBlock(consigneeLines, y);
+                    hLine(L, midX, y);
+                    drawBlock(buyerLines, y);
+
+                    const cellW = gridMid - midX - pad * 2;
+                    gridRows.forEach((cells, i) => {
+                        const top = boxTop + i * cellH;
+                        cells.forEach(([label, value], j) => {
+                            const x = (j ? gridMid : midX) + pad;
+                            font("normal", 7.5);
+                            doc.text(label, x, top + 3.2);
+                            font("bold", 8.5);
+                            doc.text(fit(value, cellW), x, top + 7.3);
+                        });
+                        hLine(midX, R, top + cellH);
+                    });
+                    vLine(gridMid, boxTop, boxTop + gridH);
+                    font("normal", 7.5);
+                    doc.text("Terms of Delivery", midX + pad, boxTop + gridH + 3.2);
+                    font("bold", 8.5);
                     doc.text(
-                        doc.splitTextToSize(customer.workshop || "Customer", boxW - inset - 4)[0],
-                        margin + inset,
-                        y + 12.5
+                        doc
+                            .splitTextToSize(`Subject to confirmation by ${INVOICE_SELLER.name} on WhatsApp`, R - midX - pad * 2)
+                            .slice(0, 2),
+                        midX + pad,
+                        boxTop + gridH + 7.3
                     );
-                    font("normal", 9, COLOR.text);
-                    billLines.forEach((line, i) => doc.text(line, margin + inset, y + 17.5 + i * 5));
-
-                    const box2X = margin + boxW + gap;
-                    drawCard(box2X, "DELIVERY DETAILS", COLOR.orange);
-                    deliveryRows.forEach(([label, value], i) => {
-                        font("normal", 9, COLOR.muted);
-                        doc.text(label, box2X + inset, y + 12.5 + i * 5);
-                        font("bold", 9, COLOR.dark);
-                        doc.text(value, box2X + inset + 28, y + 12.5 + i * 5);
-                    });
-                    y += boxH + 9;
+                    vLine(midX, boxTop, boxTop + headerH);
+                    y = boxTop + headerH;
+                    hLine(L, R, y);
 
                     // ---- Item table ----
-                    // Column widths add up to contentW (180mm on A4).
-                    const widths = [12, 80, 24, 32, 32];
-                    const xs = widths.reduce((acc, w, i) => [...acc, acc[i] + w], [margin]);
-                    const cell = { no: xs[0] + 6, name: xs[1] + 2, qty: xs[3] - 3, rate: xs[4] - 3, amount: xs[5] - 3 };
-                    const nameWidth = widths[1] - 4;
-
+                    const cols = [10, 104, 24, 20, 10, 22]; // adds up to W
+                    const cx = cols.reduce((acc, w, i) => [...acc, acc[i] + w], [L]);
+                    const colMid = (i) => (cx[i] + cx[i + 1]) / 2;
+                    const heads = [["Sl", "No."], ["Description of Goods"], ["Quantity"], ["Rate"], ["per"], ["Amount"]];
+                    let tableTop = y;
                     const drawTableHeader = () => {
-                        gradientRoundedRect(margin, y, contentW, 10, 2.5, COLOR.violet, COLOR.indigo);
-                        gradientRect(margin, y + 5, contentW, 5, COLOR.violet, COLOR.indigo, 40); // square bottom corners
-                        font("bold", 9, COLOR.white);
-                        doc.text("#", cell.no, y + 6.5, { align: "center" });
-                        doc.text("ITEM DESCRIPTION", cell.name, y + 6.5);
-                        doc.text("QTY", cell.qty, y + 6.5, { align: "right" });
-                        doc.text("RATE", cell.rate, y + 6.5, { align: "right" });
-                        doc.text("AMOUNT", cell.amount, y + 6.5, { align: "right" });
-                        y += 10;
+                        tableTop = y;
+                        font("normal", 7.5);
+                        heads.forEach((h, i) => {
+                            if (h.length === 1) doc.text(h[0], colMid(i), y + 5, { align: "center" });
+                            else {
+                                doc.text(h[0], colMid(i), y + 3.4, { align: "center" });
+                                doc.text(h[1], colMid(i), y + 6.8, { align: "center" });
+                            }
+                        });
+                        y += 8;
+                        hLine(L, R, y);
+                        y += 1;
+                    };
+                    const drawColumnLines = (from, to) => cx.slice(1, -1).forEach((x) => vLine(x, from, to));
+
+                    // Closes the current page with a "continued" row and starts the next one with a slim header.
+                    const breakPage = () => {
+                        const contY = boxBottom - contRowH;
+                        drawColumnLines(tableTop, contY);
+                        hLine(L, R, contY);
+                        font("italic", 8);
+                        doc.text("continued ...", R - pad, contY + 4.6, { align: "right" });
+                        doc.rect(L, boxTop, W, boxBottom - boxTop);
+                        doc.addPage();
+                        drawTitle();
+                        font("bold", 9);
+                        doc.text(INVOICE_SELLER.name.toUpperCase(), L + pad, boxTop + 5.8);
+                        font("normal", 8);
+                        doc.text(`Invoice No. ${invoiceNo}    Dated ${invoiceDate}    (continued)`, R - pad, boxTop + 5.8, {
+                            align: "right",
+                        });
+                        y = boxTop + 9;
+                        hLine(L, R, y);
+                        drawTableHeader();
                     };
 
                     drawTableHeader();
-                    let grandTotal = 0;
-                    let totalUnits = 0;
-                    keys.forEach((key, i) => {
-                        const { product, qty: packs, selectedQty } = cart[key];
-                        const qty = selectedQty * packs;
-                        const unit = pdfText(cartUnitLabel(product));
-                        const lineTotal = product.price * qty;
-                        grandTotal += lineTotal;
-                        totalUnits += qty;
-
-                        font("bold", 9.5, COLOR.dark);
-                        const nameLines = doc.splitTextToSize(pdfText(product.name) || "-", nameWidth);
-                        const rowH = Math.max(10, nameLines.length * 4.6 + 5.4);
-                        if (y + rowH > bottomLimit) {
-                            newPage();
-                            drawTableHeader();
-                        }
-                        if (i % 2 === 1) {
-                            doc.setFillColor(...COLOR.zebra);
-                            doc.rect(margin, y, contentW, rowH, "F");
-                        }
-                        const baseline = y + 6.3;
-                        // Numbered badge
-                        doc.setFillColor(...COLOR.lavender);
-                        doc.circle(cell.no, baseline - 1.2, 2.8, "F");
-                        font("bold", 7.5, COLOR.violet);
-                        doc.text(String(i + 1), cell.no, baseline - 0.1, { align: "center" });
-
-                        font("bold", 9.5, COLOR.dark);
-                        doc.text(nameLines, cell.name, baseline);
-                        font("normal", 9.5, COLOR.text);
-                        doc.text(`${qty} ${unit}`, cell.qty, baseline, { align: "right" });
-                        font("normal", 9, COLOR.muted);
-                        doc.text(`${pdfAmount(product.price)}/${unit}`, cell.rate, baseline, { align: "right" });
-                        font("bold", 9.5, COLOR.dark);
-                        doc.text(pdfAmount(lineTotal), cell.amount, baseline, { align: "right" });
-
-                        doc.setDrawColor(...COLOR.line);
-                        doc.line(margin, y + rowH, right, y + rowH);
+                    rows.forEach((r, i) => {
+                        font("bold", 8.5);
+                        const nameLines = doc.splitTextToSize(r.name, cols[1] - pad * 2);
+                        const rowH = Math.max(6, nameLines.length * 3.6 + 2.4);
+                        if (y + rowH > fullLimit) breakPage();
+                        const b = y + 4.2;
+                        font("normal", 8.5);
+                        doc.text(String(i + 1), colMid(0), b, { align: "center" });
+                        doc.text(money(r.unitRate), cx[4] - pad, b, { align: "right" });
+                        doc.text(r.unit, colMid(4), b, { align: "center" });
+                        font("bold", 8.5);
+                        doc.text(nameLines, cx[1] + pad, b);
+                        doc.text(`${r.qty} ${r.unit}`, cx[3] - pad, b, { align: "right" });
+                        doc.text(money(r.amount), cx[6] - pad, b, { align: "right" });
                         y += rowH;
                     });
-                    doc.setDrawColor(...COLOR.violet);
-                    doc.setLineWidth(0.6);
-                    doc.line(margin, y, right, y);
-                    doc.setLineWidth(0.2);
+                    // The footer needs more room than a continuing page leaves; move it to a new page if needed.
+                    if (y > lastLimit) breakPage();
 
-                    // ---- Amount in words (left) + totals card (right) ----
-                    const totalsW = 86;
-                    const wordsW = contentW - totalsW - 6;
-                    font("italic", 9);
-                    const wordLines = doc.splitTextToSize(amountInWords(grandTotal), wordsW - 10);
-                    const totalsH = Math.max(30, 15 + wordLines.length * 4.4);
-                    if (y + totalsH + 6 > bottomLimit) newPage();
-                    y += 6;
+                    // ---- Totals and footer, pinned to the bottom of the last page ----
+                    let fy = lastLimit;
+                    drawColumnLines(tableTop, fy + totalRowH);
+                    hLine(L, R, fy);
+                    font("normal", 8.5);
+                    doc.text("Total", cx[2] - pad, fy + 4.8, { align: "right" });
+                    font("bold", 8.5);
+                    doc.text(totalQty, cx[3] - pad, fy + 4.8, { align: "right" });
+                    font("bold", 9.5);
+                    doc.text(`Rs. ${money(grandTotal)}`, cx[6] - pad, fy + 4.8, { align: "right" });
+                    fy += totalRowH;
+                    hLine(L, R, fy);
 
-                    doc.setDrawColor(...COLOR.lavender);
-                    doc.setFillColor(...COLOR.soft);
-                    doc.roundedRect(margin, y, wordsW, totalsH, 2.5, 2.5, "FD");
-                    font("bold", 7.5, COLOR.violet);
-                    doc.text("AMOUNT IN WORDS", margin + 5, y + 7);
-                    font("italic", 9, COLOR.dark);
-                    doc.text(wordLines, margin + 5, y + 12.5);
+                    font("normal", 7.5);
+                    doc.text("Amount Chargeable (in words)", L + pad, fy + 3.5);
+                    font("italic", 7.5);
+                    doc.text("E. & O.E", R - pad, fy + 3.5, { align: "right" });
+                    font("bold", 9);
+                    doc.text(amountWords, L + pad, fy + 7.8);
+                    fy += wordsH;
+                    hLine(L, R, fy);
 
-                    const totalsX = right - totalsW;
-                    font("normal", 9, COLOR.muted);
-                    doc.text("Sub Total", totalsX + 4, y + 5);
-                    doc.text(`Items / Qty`, totalsX + 4, y + 11);
-                    font("bold", 9.5, COLOR.dark);
-                    doc.text(pdfAmount(grandTotal), right - 4, y + 5, { align: "right" });
-                    doc.text(`${keys.length} / ${totalUnits}`, right - 4, y + 11, { align: "right" });
-                    doc.setDrawColor(...COLOR.line);
-                    doc.line(totalsX, y + 14, right, y + 14);
-                    gradientRoundedRect(totalsX, y + totalsH - 12, totalsW, 12, 3, COLOR.orangeLight, COLOR.pink);
-                    font("bold", 11.5, COLOR.white);
-                    doc.text("GRAND TOTAL", totalsX + 5, y + totalsH - 4.6);
-                    doc.text(pdfAmount(grandTotal), right - 5, y + totalsH - 4.6, { align: "right" });
-                    y += totalsH + 9;
-
-                    // ---- Payment details and terms ----
-                    const payH = 32;
-                    const closingH = payH + 26;
-                    if (y + closingH > bottomLimit) newPage();
-                    const payW = 110;
-                    doc.setDrawColor(...COLOR.peachLine);
-                    doc.setFillColor(...COLOR.peach);
-                    doc.roundedRect(margin, y, payW, payH, 2.5, 2.5, "FD");
-                    doc.setFillColor(...COLOR.orange);
-                    doc.roundedRect(margin, y, 2.2, payH, 1.1, 1.1, "F");
-                    font("bold", 8, COLOR.orange);
-                    doc.text("PAYMENT DETAILS", margin + 6, y + 6.5);
+                    // Company details + declaration (left)
+                    const lowTop = fy;
                     [
-                        ["UPI ID", INVOICE_SELLER.upi],
-                        ["Payee", INVOICE_SELLER.name],
-                        ["Accepted", "Google Pay / PhonePe / any UPI app"],
+                        ["Company's GSTIN/UIN", INVOICE_SELLER.gstin],
+                        ["Company's PAN", INVOICE_SELLER.pan],
+                        ["Udyam Reg. No.", INVOICE_SELLER.udyam],
                     ].forEach(([label, value], i) => {
-                        font("normal", 8.5, COLOR.muted);
-                        doc.text(label, margin + 6, y + 11.5 + i * 4.3);
-                        font("bold", 8.5, COLOR.dark);
-                        doc.text(value, margin + 24, y + 11.5 + i * 4.3);
+                        const b = lowTop + 3.8 + i * 3.8;
+                        font("normal", 8);
+                        doc.text(label, L + pad, b);
+                        doc.text(":", L + pad + 31, b);
+                        font("bold", 8);
+                        doc.text(value, L + pad + 33, b);
                     });
-                    // Google Pay scanner on the right of the card; without it the card just shows the UPI ID.
-                    if (upiQr) {
-                        const qrSize = 26;
-                        const qrX = margin + payW - qrSize - 3;
-                        try {
-                            doc.setFillColor(...COLOR.white);
-                            doc.roundedRect(qrX - 1, y + 2, qrSize + 2, qrSize + 2, 1.5, 1.5, "F");
-                            doc.addImage(upiQr, "PNG", qrX, y + 3, qrSize, qrSize, "upi-qr", "FAST");
-                            font("bold", 8.5, COLOR.orange);
-                            doc.text("Scan & pay with Google Pay / any UPI app", margin + 6, y + 27);
-                        } catch {
-                            // A bad image must not block the invoice; the UPI ID above is enough to pay.
-                        }
-                    }
-
-                    font("bold", 9, COLOR.dark);
-                    doc.text(`For ${INVOICE_SELLER.name}`, right, y + 4, { align: "right" });
-
-                    y += payH + 8;
-                    font("bold", 8, COLOR.violet);
-                    doc.text("TERMS & NOTES", margin, y);
-                    font("normal", 8, COLOR.muted);
+                    font("normal", 7.5);
+                    doc.text("Declaration", L + pad, lowTop + 17);
                     doc.text(
                         doc.splitTextToSize(
-                            "1. This invoice is generated from the online cart and is not a tax invoice.\n" +
-                                "2. Prices and availability will be confirmed by Swapnil Chemicals on WhatsApp.",
-                            contentW
+                            "We declare that this invoice shows the actual price of the goods described and that all particulars are true and correct.",
+                            blockW
                         ),
-                        margin,
-                        y + 4.5
+                        L + pad,
+                        lowTop + 20.5
                     );
 
-                    // ---- Footer band on every page ----
+                    fy = lowTop + lowerH;
+
+                    // Signature row
+                    hLine(L, R, fy);
+                    vLine(midX, fy, fy + sigH);
+                    font("normal", 7.5);
+                    doc.text("Customer's Seal and Signature", L + pad, fy + 3.5);
+                    font("bold", 8.5);
+                    doc.text(`for ${INVOICE_SELLER.name.toUpperCase()}`, R - pad, fy + 3.8, { align: "right" });
+                    font("normal", 7.5);
+                    doc.text("Authorised Signatory", R - pad, fy + sigH - 2, { align: "right" });
+                    doc.rect(L, boxTop, W, boxBottom - boxTop);
+
+                    // ---- Below the box on every page ----
                     const pageCount = doc.getNumberOfPages();
                     for (let p = 1; p <= pageCount; p++) {
                         doc.setPage(p);
-                        accentStripe(pageH - 12.2, 0.9);
-                        gradientRect(0, pageH - 11.3, pageW, 11.3, COLOR.violetDeep, COLOR.indigo);
-                        font("bold", 8, COLOR.white);
-                        doc.text("Thank you for your business!", margin, pageH - 4.6);
-                        font("normal", 7.5, COLOR.lavenderText);
-                        doc.text("This is a computer-generated document.", pageW / 2, pageH - 4.6, { align: "center" });
-                        font("bold", 8, COLOR.white);
-                        doc.text(`Page ${p} of ${pageCount}`, right, pageH - 4.6, { align: "right" });
+                        font("normal", 8);
+                        doc.text(`SUBJECT TO ${INVOICE_SELLER.jurisdiction.toUpperCase()} JURISDICTION`, pageW / 2, boxBottom + 4.5, {
+                            align: "center",
+                        });
+                        doc.text(`This is a Computer Generated ${INVOICE_TITLE}`, pageW / 2, boxBottom + 8.5, { align: "center" });
+                        if (pageCount > 1) {
+                            font("normal", 7.5);
+                            doc.text(`Page ${p} of ${pageCount}`, R, boxBottom + 8.5, { align: "right" });
+                        }
                     }
 
-                    doc.save(`Swapnil-Chemicals-Invoice-${invoiceNo}.pdf`);
+                    doc.save(`Swapnil-Chemicals-Invoice-${invoiceNo.replace(/\//g, "-")}.pdf`);
                     flyPdfToDownloads(btn);
                 } catch (err) {
                     console.error("Cart PDF generation failed:", err);
@@ -5545,11 +5320,11 @@
                   <input type="tel" id="${p}-phone" class="enquiry-input" maxlength="10" inputmode="numeric" autocomplete="tel-national" placeholder="10-digit mobile number" aria-describedby="${p}-phone-error ${p}-customer-hint">
               </div>
               <p id="${p}-phone-error" class="enquiry-error text-red-500 text-xs mt-1 hidden" role="alert">Enter a valid 10-digit mobile number</p>
-              <p id="${p}-customer-hint" class="text-xs text-gray-500 mt-1" aria-live="polite">Registered with us? Your name fills in automatically.</p>
+              <p id="${p}-customer-hint" class="text-xs text-gray-500 mt-1" aria-live="polite">Registered with us? Your workshop name fills in automatically.</p>
           </div>
           <div class="enquiry-field-wrap mb-4">
               <div class="flex justify-between items-center mb-1">
-                  <label class="block text-sm font-semibold text-gray-700" for="${p}-workshop">Name</label>
+                  <label class="block text-sm font-semibold text-gray-700" for="${p}-workshop">Workshop Name</label>
                   <button type="button" id="${p}-workshop-edit" class="workshop-change-btn hidden">Edit</button>
               </div>
               <input type="text" id="${p}-workshop" class="enquiry-input" maxlength="120" autocomplete="organization" placeholder="Fills in from your WhatsApp number">
@@ -5637,7 +5412,7 @@
                         choiceEl.classList.remove("hidden");
                         hintEl.textContent = "This number has more than one workshop with us - pick yours below.";
                     } else {
-                        hintEl.textContent = "Name filled in from our customer records.";
+                        hintEl.textContent = "Workshop name filled in from our customer records.";
                     }
                 };
 
@@ -5716,7 +5491,7 @@
                 const lines = [];
                 if (customer.workshop) {
                     lines.push(
-                        `🏪 *Name:* ${customer.workshop}${customer.registered ? " ✅ (Khatabook customer)" : ""}`
+                        `🏪 *Workshop:* ${customer.workshop}${customer.registered ? " ✅ (Khatabook customer)" : ""}`
                     );
                 }
                 lines.push(
@@ -6068,13 +5843,6 @@
                     };
                 }
 
-                if (/\b(pay|payment|upi|gpay|google pay)\b/.test(text)) {
-                    return {
-                        html: `You can pay via Google Pay / UPI to <b>9352470085</b>, or scan the QR code in the Contact section. Call us to discuss other payment arrangements.`,
-                        isFallback: false,
-                    };
-                }
-
                 if (/\b(order|buy|purchase)\b/.test(text)) {
                     return {
                         html: `To order: pick a product above, choose a quantity, and tap "Add to Cart" (then "Send Enquiry" in your cart), or tap "Enquiry" to send your requirement directly to us on WhatsApp.`,
@@ -6324,9 +6092,6 @@
                         break;
                     case "copy":
                         copyText(target.dataset.copyText, target);
-                        break;
-                    case "upi-pay":
-                        openUpiApp(e);
                         break;
                     case "open-cart-enquiry":
                         openCartEnquiry();
